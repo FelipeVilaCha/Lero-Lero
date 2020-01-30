@@ -22,7 +22,7 @@ public class AlunosDAO {
      
     public boolean insertAluno(Alunos aluno, int id) throws SQLException {
         
-        String sql = "INSERT INTO alunos (id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO lerolero.alunos (id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection db = conexaoDB.conectar();
 
         boolean registroInserido;
@@ -48,7 +48,7 @@ public class AlunosDAO {
     public List<Alunos> listarAlunos() throws SQLException {
         List<Alunos> listaAlunos = new ArrayList<>();
          
-        String sql = "SELECT * FROM alunos";
+        String sql = "SELECT * FROM lerolero.alunos";
          
         Connection db = conexaoDB.conectar();
          

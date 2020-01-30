@@ -16,10 +16,17 @@ public class Interface extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String user = (String) request.getAttribute("user");
+       
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+        String path = request.getServletPath();
+        String user;
+        if("/ProcessaLogin".equals(path)){
+            user = (String) request.getAttribute("user");
+        } else {
+            user = (String) request.getAttribute("login");
+        }
         
         out.println("<html>");
         out.println("<head>");

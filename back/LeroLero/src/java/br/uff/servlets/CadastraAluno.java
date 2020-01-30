@@ -50,6 +50,7 @@ public class CadastraAluno extends HttpServlet {
                 id = alunosDAO.listarAlunos().size() + 1;
                 boolean status = alunosDAO.insertAluno(aluno, id);
                 if(status){
+                    request.setAttribute("login", login);
                     request.setAttribute("status", status);
                     request.getRequestDispatcher("/Interface").include(request, response);
                 } else {
