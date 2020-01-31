@@ -6,6 +6,7 @@ import br.uff.database.AlunosDAO;
 import br.uff.dominio.Alunos;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -45,27 +46,27 @@ public class CadastraAluno extends HttpServlet {
         
         try {
             Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep);
-            if(!alunosDAO.listarAlunos().contains(aluno)){
-                int id;
-                id = alunosDAO.listarAlunos().size() + 1;
+            List<Alunos> listaAlunos = alunosDAO.listarAlunos();
+            int id = listaAlunos.size() + 1;
+            boolean existe = alunosDAO.verificaAluno(aluno);
+            
+            if(!existe){
                 boolean status = alunosDAO.insertAluno(aluno, id);
+            
                 if(status){
-                    request.setAttribute("login", login);
+                    String permissao = "alunos";
                     request.setAttribute("status", status);
+                    request.setAttribute("id", id);
+                    request.setAttribute("permissao", permissao);
                     request.getRequestDispatcher("/Interface").include(request, response);
                 } else {
                     request.getRequestDispatcher("/cadastroAluno.html").forward(request, response);
                 }
+            } else {
+                request.getRequestDispatcher("/cadastroAluno.html").forward(request, response);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, null, ex.getCause());
+            Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
     }
-    
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-    
-   
 }

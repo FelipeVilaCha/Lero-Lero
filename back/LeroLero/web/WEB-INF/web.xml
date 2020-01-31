@@ -20,6 +20,14 @@
         <servlet-name>ControllerAluno</servlet-name>
         <servlet-class>br.uff.servlets.ControllerAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InformacoesAluno</servlet-name>
+        <servlet-class>br.uff.servlets.InformacoesAluno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlanoDeEstudos</servlet-name>
+        <servlet-class>br.uff.servlets.Historico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RealizaLogin</servlet-name>
         <url-pattern>/RealizaLogin</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>ControllerAluno</servlet-name>
         <url-pattern>/ControllerAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InformacoesAluno</servlet-name>
+        <url-pattern>/InformacoesAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlanoDeEstudos</servlet-name>
+        <url-pattern>/PlanoDeEstudos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

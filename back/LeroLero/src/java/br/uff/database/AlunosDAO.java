@@ -150,17 +150,24 @@ public class AlunosDAO {
          
         return aluno;
     }
-    public boolean conectou() throws SQLException {
-        
-        boolean status = false;
+    
+    public boolean verificaAluno(Alunos aluno) throws SQLException {
+        String verifica = "SELECT count(*) as count FROM lerolero.alunos WHERE cpf = ?";
+        boolean registroExiste = false;
         Connection db = conexaoDB.conectar();
         
-        if(db.isClosed()){
-            status = false;
-        } else {
-            status = true;
+        PreparedStatement comando = db.prepareStatement(verifica);
+        comando.setString(1, aluno.getCpf());
+ 
+        ResultSet resultado = comando.executeQuery();
+        if (resultado.next()) {
+            if(resultado.getString("count").contains("1")){
+                registroExiste = true;
+            }
         }
-         
-        return status;
+       
+        comando.close();
+        conexaoDB.desconectar();
+        return registroExiste;
     }
 }

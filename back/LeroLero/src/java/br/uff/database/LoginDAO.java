@@ -10,10 +10,33 @@ import java.sql.SQLException;
  * @author FelipeVilaChadosSant
  */
 public class LoginDAO {
-    private Conexao conexaoDB;
+    private final Conexao conexaoDB;
+    private final AlunosDAO alunos;
+    private final InstrutoresDAO instrutores;
+    private final AdministradorDAO admin;
     
     public LoginDAO(Conexao conexaoDB) {
         this.conexaoDB = conexaoDB;
+        this.alunos = new AlunosDAO(conexaoDB);
+        this.instrutores = new InstrutoresDAO(conexaoDB);
+        this.admin = new AdministradorDAO(conexaoDB);
+    }
+    
+    public int getConexaoID(String user, String senha, String permissao) throws SQLException{
+        int id = 0;
+        String sql = "SELECT id FROM lerolero." + permissao + "WHERE login = ? and senha = ?";
+        Connection db = conexaoDB.conectar();
+        
+        PreparedStatement comando = db.prepareStatement(sql);
+        comando.setString(1, user);
+        comando.setString(2, senha);
+         
+        ResultSet resultado = comando.executeQuery();
+         
+        if(resultado.next()){
+            id = Integer.parseInt(resultado.getString("id"));
+        }
+        return id;
     }
     
     public boolean validaLogin(String login, String senha, String permissao) throws SQLException {

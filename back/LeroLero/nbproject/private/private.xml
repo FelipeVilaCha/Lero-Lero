@@ -5,8 +5,13 @@
         <group>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/database/AlunosDAO.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/CadastraAluno.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/Interface.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaLogin.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/database/LoginDAO.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/InformacoesAluno.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerAluno.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/database/Conexao.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/RealizaLogin.java</file>
         </group>
     </open-files>
 </project-private>

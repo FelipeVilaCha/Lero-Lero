@@ -32,13 +32,16 @@ public class ProcessaLogin extends HttpServlet {
         try {
             String user = request.getParameter("username");
             String senha = request.getParameter("senha");
-            String permissao = "alunos";
+            String permissao = request.getParameter("permissao");
             
-            Boolean status = login.validaLogin(user, senha, permissao);
+            boolean status = login.validaLogin(user, senha, permissao);
+            /*int id = login.getConexaoID(user, senha, permissao);*/
             
             if(status == true){
-                request.setAttribute("user", user);
-                request.setAttribute("logado", status);
+                request.setAttribute("permissao", permissao);
+                request.setAttribute("status", status);
+                /*request.setAttribute("id", id);*/
+                
                 request.getRequestDispatcher("/Interface").include(request, response);
             } else {
                 request.getRequestDispatcher("/RealizaLogin").forward(request, response);
