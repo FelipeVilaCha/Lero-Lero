@@ -11,27 +11,25 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author FelipeVilaChadosSant
  */
-public class ControllerAluno extends HttpServlet {
-    
+public class ControllerAdmin extends HttpServlet {
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String permissao = (String) request.getAttribute("permissao");
-        request.setAttribute("permissao", permissao);
-        
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Aluno</title>");            
+            out.println("<title> Administrador </title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1> Aluno </h1>");  
-            out.println("<a href=\"http://localhost:8080/LeroLero/InformacoesAluno\"> Informações </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/PlanoEstudos\"> Plano de estudos </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/RealizarMatricula\"> Realizar Matricula </a> </br>");
+            out.println("<h1> Administrador </h1>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Listagem\"> Listagem </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Inclusao\"> Inclusão </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Atualizar\"> Atualizar </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Excluir\"> Exclusão </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Cursos\"> Cursos </a> </br>");
             out.println("</body>");
             out.println("</html>");
         }

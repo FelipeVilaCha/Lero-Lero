@@ -41,7 +41,7 @@ public class LoginDAO {
     
     public boolean validaLogin(String login, String senha, String permissao) throws SQLException {
         boolean status;
-        String sql = "SELECT * FROM " + permissao + " WHERE login = ? and senha = ?";
+        String sql = "SELECT * FROM lerolero." + permissao + " WHERE login = ? and senha = ?";
          
         Connection db = conexaoDB.conectar();
          

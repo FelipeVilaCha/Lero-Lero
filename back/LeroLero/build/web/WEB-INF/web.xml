@@ -9,10 +9,6 @@
         <servlet-class>br.uff.servlets.CadastraAluno</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Interface</servlet-name>
-        <servlet-class>br.uff.servlets.Interface</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProcessaLogin</servlet-name>
         <servlet-class>br.uff.servlets.ProcessaLogin</servlet-class>
     </servlet>
@@ -26,7 +22,19 @@
     </servlet>
     <servlet>
         <servlet-name>PlanoDeEstudos</servlet-name>
-        <servlet-class>br.uff.servlets.Historico</servlet-class>
+        <servlet-class>br.uff.servlets.PlanoDeEstudos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllerInstrutores</servlet-name>
+        <servlet-class>br.uff.servlets.ControllerInstrutores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllerAdmin</servlet-name>
+        <servlet-class>br.uff.servlets.ControllerAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DadosInstrutores</servlet-name>
+        <servlet-class>br.uff.servlets.DadosInstrutores</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RealizaLogin</servlet-name>
@@ -35,10 +43,6 @@
     <servlet-mapping>
         <servlet-name>CadastraAluno</servlet-name>
         <url-pattern>/CadastraAluno</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Interface</servlet-name>
-        <url-pattern>/Interface</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProcessaLogin</servlet-name>
@@ -56,11 +60,26 @@
         <servlet-name>PlanoDeEstudos</servlet-name>
         <url-pattern>/PlanoDeEstudos</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerInstrutores</servlet-name>
+        <url-pattern>/ControllerInstrutores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerAdmin</servlet-name>
+        <url-pattern>/ControllerAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DadosInstrutores</servlet-name>
+        <url-pattern>/DadosInstrutores</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
     <error-page>
         <error-code>404</error-code>
         <location>/erro.html</location>

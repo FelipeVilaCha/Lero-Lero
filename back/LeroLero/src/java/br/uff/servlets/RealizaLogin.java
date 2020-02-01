@@ -28,7 +28,7 @@ public class RealizaLogin extends HttpServlet {
         out.println("<form method=\"POST\" action=\"http://localhost:8080/LeroLero/ProcessaLogin\">");
         out.println("Email:<input type=\"text\" name=\"username\" /> <br />");
         out.println("Senha: <input type=\"password\" name=\"senha\" /> <br />");
-        out.println("<input type=\"radio\" name=\"permissao\" value=\"administradores\"> Administrador");
+        out.println("<input type=\"radio\" name=\"permissao\" value=\"administrador\"> Administrador");
         out.println("<input type=\"radio\" name=\"permissao\" value=\"alunos\"> Aluno");
         out.println("<input type=\"radio\" name=\"permissao\" value=\"instrutores\"> Instrutor <br />");
         out.println("<input type=\"submit\" value=\"LOGIN\">");

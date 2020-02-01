@@ -21,7 +21,7 @@ public class InstrutoresDAO {
     }
      
     public boolean insertInstrutor(Instrutores instrutor) throws SQLException {
-        String sql = "INSERT INTO instrutores (nome, email, valor_hora, login, senha) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO instrutores (nome, email, valor_hora, login, senha, experiencia) VALUES (?, ?, ?, ?, ?, ?)";
         
         Connection db = conexaoDB.conectar();
          
@@ -31,6 +31,7 @@ public class InstrutoresDAO {
         comando.setInt(3, instrutor.getValor_hora());
         comando.setString(4, instrutor.getLogin());
         comando.setString(5, instrutor.getSenha());
+        comando.setString(6, instrutor.getExperiencia());
          
         boolean registroInserido = comando.executeUpdate() > 0;
         comando.close();
@@ -55,8 +56,9 @@ public class InstrutoresDAO {
             int valor_hora = resultado.getInt("valor_hora");
             String login = resultado.getString("login");
             String senha = resultado.getString("senha");
+            String experiencia = resultado.getString("experiencia");
              
-            Instrutores instrutor = new Instrutores(id, nome, email, valor_hora, login, senha);
+            Instrutores instrutor = new Instrutores(id, nome, email, valor_hora, login, senha, experiencia);
             listaInstrutores.add(instrutor);
         }
          
@@ -95,7 +97,8 @@ public class InstrutoresDAO {
         comando.setInt(3, instrutor.getValor_hora());
         comando.setString(4, instrutor.getLogin());
         comando.setString(5, instrutor.getSenha());
-        comando.setInt(6, instrutor.getId());
+        comando.setString(6, instrutor.getExperiencia());
+        comando.setInt(7, instrutor.getId());
          
         boolean registroAtualizado = comando.executeUpdate() > 0;
         comando.close();
@@ -121,8 +124,9 @@ public class InstrutoresDAO {
             int valor_hora = resultado.getInt("valor_hora");
             String login = resultado.getString("login");
             String senha = resultado.getString("senha");
-             
-            instrutor = new Instrutores(id, nome, email, valor_hora, login, senha);
+            String experiencia = resultado.getString("experiencia");
+            
+            instrutor = new Instrutores(id, nome, email, valor_hora, login, senha, experiencia);
         }
          
         resultado.close();

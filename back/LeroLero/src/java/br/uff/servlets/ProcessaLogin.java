@@ -41,8 +41,21 @@ public class ProcessaLogin extends HttpServlet {
                 request.setAttribute("permissao", permissao);
                 request.setAttribute("status", status);
                 /*request.setAttribute("id", id);*/
+                String nivel = "";
                 
-                request.getRequestDispatcher("/Interface").include(request, response);
+                switch (permissao) {
+                    case "alunos":
+                        nivel = "Aluno"; 
+                        break;
+                    case "administrador":
+                        nivel = "Admin"; 
+                        break;
+                    case "instrutores":
+                        nivel = "Instrutores"; 
+                        break;
+                }
+                
+                request.getRequestDispatcher("/Controller" + nivel).forward(request, response);
             } else {
                 request.getRequestDispatcher("/RealizaLogin").forward(request, response);
             }

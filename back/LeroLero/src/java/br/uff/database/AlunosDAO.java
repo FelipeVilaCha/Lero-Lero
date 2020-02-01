@@ -20,24 +20,23 @@ public class AlunosDAO {
         this.conexaoDB = conexaoDB;
     }
      
-    public boolean insertAluno(Alunos aluno, int id) throws SQLException {
+    public boolean insertAluno(Alunos aluno) throws SQLException {
         
-        String sql = "INSERT INTO lerolero.alunos (id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO lerolero.alunos (cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection db = conexaoDB.conectar();
 
         boolean registroInserido;
         try (PreparedStatement comando = db.prepareStatement(sql)) {
-            comando.setInt(1, id);
-            comando.setString(2, aluno.getCpf());
-            comando.setString(3, aluno.getNome());
-            comando.setString(4, aluno.getEmail());
-            comando.setString(5, aluno.getCelular());
-            comando.setString(6, aluno.getLogin());
-            comando.setString(7, aluno.getSenha());
-            comando.setString(8, aluno.getEndereco());
-            comando.setString(9, aluno.getCidade());
-            comando.setString(10, aluno.getBairro());
-            comando.setString(11, aluno.getCep());
+            comando.setString(1, aluno.getCpf());
+            comando.setString(2, aluno.getNome());
+            comando.setString(3, aluno.getEmail());
+            comando.setString(4, aluno.getCelular());
+            comando.setString(5, aluno.getLogin());
+            comando.setString(6, aluno.getSenha());
+            comando.setString(7, aluno.getEndereco());
+            comando.setString(8, aluno.getCidade());
+            comando.setString(9, aluno.getBairro());
+            comando.setString(10, aluno.getCep());
             registroInserido = comando.executeUpdate() > 0;
         }
         conexaoDB.desconectar();

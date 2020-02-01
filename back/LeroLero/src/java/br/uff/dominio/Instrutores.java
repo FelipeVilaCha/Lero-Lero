@@ -11,22 +11,25 @@ public class Instrutores {
     protected int valor_hora;
     protected String login;
     protected String senha;
+    protected String experiencia;
 
-    public Instrutores(int id, String nome, String email, int valor_hora, String login, String senha) {
+    public Instrutores(int id, String nome, String email, int valor_hora, String login, String senha, String experiencia) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.valor_hora = valor_hora;
         this.login = login;
         this.senha = senha;
+        this.experiencia = experiencia;
     }
     
-    public Instrutores(String nome, String email, int valor_hora, String login, String senha) {
+    public Instrutores(String nome, String email, int valor_hora, String login, String senha, String experiencia) {
         this.nome = nome;
         this.email = email;
         this.valor_hora = valor_hora;
         this.login = login;
         this.senha = senha;
+        this.experiencia = experiencia;
     }
 
     public int getId() {
@@ -75,7 +78,16 @@ public class Instrutores {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }    
+    }
+
+    public String getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
+    }
+    
 }
 
 

@@ -6,7 +6,6 @@ import br.uff.database.AlunosDAO;
 import br.uff.dominio.Alunos;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -46,19 +45,16 @@ public class CadastraAluno extends HttpServlet {
         
         try {
             Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep);
-            List<Alunos> listaAlunos = alunosDAO.listarAlunos();
-            int id = listaAlunos.size() + 1;
             boolean existe = alunosDAO.verificaAluno(aluno);
             
             if(!existe){
-                boolean status = alunosDAO.insertAluno(aluno, id);
+                boolean status = alunosDAO.insertAluno(aluno);
             
                 if(status){
                     String permissao = "alunos";
                     request.setAttribute("status", status);
-                    request.setAttribute("id", id);
                     request.setAttribute("permissao", permissao);
-                    request.getRequestDispatcher("/Interface").include(request, response);
+                    request.getRequestDispatcher("/ControllerAluno").include(request, response);
                 } else {
                     request.getRequestDispatcher("/cadastroAluno.html").forward(request, response);
                 }

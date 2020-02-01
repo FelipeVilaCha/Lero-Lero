@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author FelipeVilaChadosSant
  */
-public class Historico extends HttpServlet {
+public class PlanoDeEstudos extends HttpServlet {
     private TurmasDAO turmasDAO;
     private MatriculasDAO matriculaDAO;
     private Conexao conexaoDB;
@@ -66,7 +66,7 @@ public class Historico extends HttpServlet {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Historico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanoDeEstudos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         if(turmas_id == null){
