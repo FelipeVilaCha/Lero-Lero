@@ -72,34 +72,215 @@
               <li><a href="instructors.html">Instrutores</a></li>
               <li><a href="coments.html">Comentários</a></li>
               <li><a href="tables.html">Tabelas</a></li>
-              <li><a href="#">Registrar</a></li>
               <li>
-                <a href="contacts.html">Login</a>
+                <a
+                  class="text-white"
+                  style="cursor: pointer"
+                  data-toggle="modal"
+                  data-target="#register"
+                  >Registrar</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-white"
+                  style="cursor: pointer"
+                  data-toggle="modal"
+                  data-target="#login"
+                  >Login</a
+                >
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <div class="search-input" id="search-input-box">
-        <div class="container">
-          <form class="d-flex justify-content-between">
-            <input
-              type="text"
-              class="form-control"
-              id="search-input"
-              placeholder="Search Here"
-            />
-            <button type="submit" class="btn"></button>
-            <span
-              class="lnr lnr-cross"
-              id="close-search"
-              title="Close Search"
-            ></span>
-          </form>
-        </div>
-      </div>
     </header>
     <!-- ================ End Header Area ================= -->
+
+    <!-- ================ Start Login Modal ================= -->
+    <div
+      class="modal fade"
+      id="login"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="card">
+            <article class="card-body">
+              <h4 class="card-title mb-4 mt-1">Login</h4>
+              <form>
+                <div class="form-group">
+                  <label>E-mail</label>
+                  <input
+                    name=""
+                    class="form-control"
+                    placeholder="Email"
+                    type="email"
+                  />
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                  <a class="float-right" href="#">Esqueceu sua senha?</a>
+                  <label>Senha</label>
+                  <input
+                    class="form-control"
+                    placeholder="******"
+                    type="password"
+                  />
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label> <input type="checkbox" /> Salvar senha </label>
+                  </div>
+                  <!-- checkbox .// -->
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Entrar
+                  </button>
+                </div>
+                <!-- form-group// -->
+              </form>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================ End Login Modal ================= -->
+
+    <!-- ================ Start Register Modal ================= -->
+    <div
+      class="modal fade"
+      id="register"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="card">
+            <article class="card-body">
+              <h4 class="card-title mb-4 mt-1">Registrar</h4>
+              <form>
+                <div class="d-flex justify-content-between">
+                  <div class="form-group">
+                    <label>Nome</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Nome"
+                      type="text"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>E-mail</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Email"
+                      type="email"
+                    />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="form-group">
+                    <label>CPF</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="999.999.999-99"
+                      type="text"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Celular</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="99 99999999"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="form-group">
+                    <label>CEP</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="21930150"
+                      type="text"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Endereço</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Estrada do Galeão, 10"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="form-group">
+                    <label>Cidade</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Rio de Janeiro"
+                      type="text"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Bairro</label>
+                    <input
+                      name=""
+                      class="form-control"
+                      placeholder="Rio de Janeiro"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                  <label>Senha</label>
+                  <input
+                    class="form-control"
+                    placeholder="******"
+                    type="password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Confirmar senha</label>
+                  <input
+                    class="form-control"
+                    placeholder="******"
+                    type="password"
+                  />
+                </div>
+                <!-- form-group// -->
+
+                <!-- form-group// -->
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Cadastrar
+                  </button>
+                </div>
+                <!-- form-group// -->
+              </form>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================ End Registrar Modal ================= -->
 
     <!-- ================ start banner Area ================= -->
     <section class="home-banner-area">
