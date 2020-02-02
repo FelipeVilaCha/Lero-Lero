@@ -42,9 +42,11 @@ public class CadastraAluno extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String bairro = request.getParameter("bairro");
         String cep = request.getParameter("cep");
+        String comentario = null;
+        String aprovado = null;
         
         try {
-            Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep);
+            Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
             boolean existe = alunosDAO.verificaAluno(aluno);
             
             if(!existe){

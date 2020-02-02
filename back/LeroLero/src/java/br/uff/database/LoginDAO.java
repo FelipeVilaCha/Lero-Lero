@@ -24,7 +24,7 @@ public class LoginDAO {
     
     public int getConexaoID(String user, String senha, String permissao) throws SQLException{
         int id = 0;
-        String sql = "SELECT id FROM lerolero." + permissao + "WHERE login = ? and senha = ?";
+        String sql = "SELECT id FROM lerolero." + permissao + " WHERE login = ? and senha = ?";
         Connection db = conexaoDB.conectar();
         
         PreparedStatement comando = db.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class LoginDAO {
         ResultSet resultado = comando.executeQuery();
          
         if(resultado.next()){
-            id = Integer.parseInt(resultado.getString("id"));
+            id = Integer.parseInt(resultado.getString("id").replace("!",""));
         }
         return id;
     }
