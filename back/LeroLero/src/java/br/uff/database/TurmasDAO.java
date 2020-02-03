@@ -21,7 +21,7 @@ public class TurmasDAO {
         this.conexaoDB = conexaoDB;
     }
      
-    public boolean insertInstrutor(Turmas turma) throws SQLException {
+    public boolean insertTurmas(Turmas turma) throws SQLException {
         String sql = "INSERT INTO turmas (instrutores_id, cursos_id, data_inicio, data_final, carga_horaria) VALUES (?, ?, ?, ?, ?)";
         
         Connection db = conexaoDB.conectar();
@@ -69,7 +69,7 @@ public class TurmasDAO {
         return listaTurmas;
     }
      
-    public boolean deletaInstrutor(Turmas turma) throws SQLException {
+    public boolean deletaTurmas(Turmas turma) throws SQLException {
         String sql = "DELETE FROM turmas where id = ?";
          
         Connection db = conexaoDB.conectar();
@@ -84,7 +84,7 @@ public class TurmasDAO {
         return registroDeletado;     
     }
      
-    public boolean atualizaInstrutor(Turmas turma) throws SQLException {
+    public boolean atualizaTurmas(Turmas turma) throws SQLException {
         String sql = "UPDATE turmas SET instrutores_id = ?, cursos_id = ?, data_inicio = ?, data_final = ?, carga_horaria = ?";
         sql += " WHERE id = ?";
         
@@ -105,7 +105,7 @@ public class TurmasDAO {
         return registroAtualizado;     
     }
      
-    public Turmas getInstrutor(int id) throws SQLException {
+    public Turmas getTurmas(int id) throws SQLException {
         Turmas turma = null;
         String sql = "SELECT * FROM turmas WHERE id = ?";
          

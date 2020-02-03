@@ -16,8 +16,10 @@ public class Alunos {
     protected String cidade;
     protected String bairro;
     protected String cep;
+    protected String comentario;
+    protected String aprovado;
 
-    public Alunos(int id, String cpf, String nome, String email, String celular, String login, String senha, String endereco, String cidade, String bairro, String cep) {
+    public Alunos(int id, String cpf, String nome, String email, String celular, String login, String senha, String endereco, String cidade, String bairro, String cep, String comentario, String aprovado) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -29,9 +31,11 @@ public class Alunos {
         this.cidade = cidade;
         this.bairro = bairro;
         this.cep = cep;
+        this.comentario = comentario;
+        this.aprovado = aprovado;
     }
     
-    public Alunos(String cpf, String nome, String email, String celular, String login, String senha, String endereco, String cidade, String bairro, String cep) {
+    public Alunos(String cpf, String nome, String email, String celular, String login, String senha, String endereco, String cidade, String bairro, String cep, String comentario, String aprovado) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -42,6 +46,8 @@ public class Alunos {
         this.cidade = cidade;
         this.bairro = bairro;
         this.cep = cep;
+        this.comentario = comentario;
+        this.aprovado = aprovado;
     }
 
     public int getId() {
@@ -130,6 +136,22 @@ public class Alunos {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getAprovado() {
+        return aprovado;
+    }
+
+    public void setAprovado(String aprovado) {
+        this.aprovado = aprovado;
     }
     
     

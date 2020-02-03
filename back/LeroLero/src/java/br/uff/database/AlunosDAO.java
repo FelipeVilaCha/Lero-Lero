@@ -22,7 +22,7 @@ public class AlunosDAO {
      
     public boolean insertAluno(Alunos aluno) throws SQLException {
         
-        String sql = "INSERT INTO lerolero.alunos (cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO lerolero.alunos (cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection db = conexaoDB.conectar();
 
         boolean registroInserido;
@@ -37,6 +37,8 @@ public class AlunosDAO {
             comando.setString(8, aluno.getCidade());
             comando.setString(9, aluno.getBairro());
             comando.setString(10, aluno.getCep());
+            comando.setString(11, aluno.getComentario());
+            comando.setString(12, aluno.getAprovado());
             registroInserido = comando.executeUpdate() > 0;
         }
         conexaoDB.desconectar();
@@ -66,8 +68,10 @@ public class AlunosDAO {
             String cidade = resultado.getString("cidade");
             String bairro = resultado.getString("bairro");
             String cep = resultado.getString("cep");
+            String comentario = resultado.getString("comentario");
+            String aprovado = resultado.getString("aprovado");
              
-            Alunos aluno = new Alunos(id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep);
+            Alunos aluno = new Alunos(id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
             listaAlunos.add(aluno);
         }
          
@@ -94,7 +98,7 @@ public class AlunosDAO {
     }
      
     public boolean atualizaAluno(Alunos aluno) throws SQLException {
-        String sql = "UPDATE alunos SET cpf = ?, nome = ?, email = ?, celular = ?, login = ?, senha = ?, endereco = ?, cidade = ?, bairro = ?, cep = ?";
+        String sql = "UPDATE alunos SET cpf = ?, nome = ?, email = ?, celular = ?, login = ?, senha = ?, endereco = ?, cidade = ?, bairro = ?, cep = ?, comentario = ?, aprovado = ?";
         sql += " WHERE id = ?";
         Connection db = conexaoDB.conectar();
          
@@ -109,7 +113,9 @@ public class AlunosDAO {
         comando.setString(8, aluno.getCidade());
         comando.setString(9, aluno.getBairro());
         comando.setString(10, aluno.getCep());
-        comando.setInt(11, aluno.getId());
+        comando.setString(11, aluno.getComentario());
+        comando.setString(12, aluno.getAprovado());
+        comando.setInt(13, aluno.getId());
          
         boolean registroAtualizado = comando.executeUpdate() > 0;
         comando.close();
@@ -139,8 +145,10 @@ public class AlunosDAO {
             String cidade = resultado.getString("cidade");
             String bairro = resultado.getString("bairro");
             String cep = resultado.getString("cep");
-             
-            aluno = new Alunos(id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep);
+            String comentario = resultado.getString("comentario");
+            String aprovado = resultado.getString("aprovado");
+            
+            aluno = new Alunos(id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
         }
          
         resultado.close();
