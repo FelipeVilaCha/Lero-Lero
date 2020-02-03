@@ -71,7 +71,31 @@
               <li><a href="courses.html">Cursos</a></li>
               <li><a href="instructors.html">Instrutores</a></li>
               <li><a href="coments.html">Comentários</a></li>
-              <li><a href="tables.html">Tabelas</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                  Tabelas
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="tables/course-form.html"
+                    >Cursos</a
+                  >
+                  <a class="dropdown-item" href="tables/instructors-form.html"
+                    >Instrutores</a
+                  >
+                  <a class="dropdown-item" href="tables/matriculas-form.html"
+                    >Matriculas</a
+                  >
+                  <a class="dropdown-item" href="tables/turmas-form.html"
+                    >Turmas</a
+                  >
+                  <a class="dropdown-item" href="tables/alunos-form.html"
+                    >Alunos</a
+                  >
+                  <a class="dropdown-item" href="tables/admin-form.html"
+                    >Admin</a
+                  >
+                </div>
+              </li>
               <li>
                 <a
                   class="text-white"
@@ -119,6 +143,7 @@
                     class="form-control"
                     placeholder="Email"
                     type="email"
+                    required
                   />
                 </div>
                 <!-- form-group// -->
@@ -128,7 +153,9 @@
                   <input
                     class="form-control"
                     placeholder="******"
+                    minlength="3"
                     type="password"
+                    required
                   />
                 </div>
                 <!-- form-group// -->
@@ -174,8 +201,10 @@
                     <input
                       name=""
                       class="form-control"
+                      minlength="3"
                       placeholder="Nome"
                       type="text"
+                      required
                     />
                   </div>
                   <div class="form-group">
@@ -185,6 +214,7 @@
                       class="form-control"
                       placeholder="Email"
                       type="email"
+                      required
                     />
                   </div>
                 </div>
@@ -194,8 +224,11 @@
                     <input
                       name=""
                       class="form-control"
+                      minlength="3"
+                      maxlength="11"
                       placeholder="999.999.999-99"
                       type="text"
+                      required
                     />
                   </div>
                   <div class="form-group">
@@ -204,7 +237,10 @@
                       name=""
                       class="form-control"
                       placeholder="99 99999999"
+                      minlength="3"
+                      maxlength="11"
                       type="text"
+                      required
                     />
                   </div>
                 </div>
@@ -214,8 +250,11 @@
                     <input
                       name=""
                       class="form-control"
+                      minlength="3"
+                      maxlength="8"
                       placeholder="21930150"
                       type="text"
+                      required
                     />
                   </div>
                   <div class="form-group">
@@ -225,6 +264,8 @@
                       class="form-control"
                       placeholder="Estrada do Galeão, 10"
                       type="text"
+                      minlength="3"
+                      required
                     />
                   </div>
                 </div>
@@ -236,6 +277,8 @@
                       class="form-control"
                       placeholder="Rio de Janeiro"
                       type="text"
+                      minlength="3"
+                      required
                     />
                   </div>
                   <div class="form-group">
@@ -245,6 +288,8 @@
                       class="form-control"
                       placeholder="Rio de Janeiro"
                       type="text"
+                      minlength="3"
+                      required
                     />
                   </div>
                 </div>
@@ -255,6 +300,8 @@
                     class="form-control"
                     placeholder="******"
                     type="password"
+                    minlength="3"
+                    required
                   />
                 </div>
                 <div class="form-group">
@@ -262,7 +309,9 @@
                   <input
                     class="form-control"
                     placeholder="******"
+                    minlength="3"
                     type="password"
+                    required
                   />
                 </div>
                 <!-- form-group// -->
