@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>RealizaLogin</servlet-name>
-        <servlet-class>br.uff.servlets.RealizaLogin</servlet-class>
-    </servlet>
+    <filter>
+        <filter-name>Log</filter-name>
+        <filter-class>br.uff.filters.Log</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Log</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>CadastraAluno</servlet-name>
         <servlet-class>br.uff.servlets.CadastraAluno</servlet-class>
@@ -21,10 +25,6 @@
         <servlet-class>br.uff.servlets.InformacoesAluno</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PlanoDeEstudos</servlet-name>
-        <servlet-class>br.uff.servlets.PlanoDeEstudos</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ControllerInstrutores</servlet-name>
         <servlet-class>br.uff.servlets.ControllerInstrutores</servlet-class>
     </servlet>
@@ -36,10 +36,38 @@
         <servlet-name>DadosInstrutores</servlet-name>
         <servlet-class>br.uff.servlets.DadosInstrutores</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>RealizaLogin</servlet-name>
-        <url-pattern>/RealizaLogin</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>Solicitacoes</servlet-name>
+        <servlet-class>br.uff.servlets.Solicitacoes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewPlanoDeEstudos</servlet-name>
+        <servlet-class>br.uff.servlets.ViewPlanoDeEstudos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MontaPlanoDeEstudos</servlet-name>
+        <servlet-class>br.uff.servlets.MontaPlanoDeEstudos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCursosDisponiveis</servlet-name>
+        <servlet-class>br.uff.servlets.ViewCursosDisponiveis</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessaMatriculas</servlet-name>
+        <servlet-class>br.uff.servlets.ProcessaMatriculas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TurmasDisponiveis</servlet-name>
+        <servlet-class>br.uff.servlets.TurmasDisponiveis</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewTurmasDisponiveis</servlet-name>
+        <servlet-class>br.uff.servlets.ViewTurmasDisponiveis</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CursosDisponiveis</servlet-name>
+        <servlet-class>br.uff.servlets.CursosDisponiveis</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraAluno</servlet-name>
         <url-pattern>/CadastraAluno</url-pattern>
@@ -57,10 +85,6 @@
         <url-pattern>/InformacoesAluno</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PlanoDeEstudos</servlet-name>
-        <url-pattern>/PlanoDeEstudos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ControllerInstrutores</servlet-name>
         <url-pattern>/ControllerInstrutores</url-pattern>
     </servlet-mapping>
@@ -72,13 +96,45 @@
         <servlet-name>DadosInstrutores</servlet-name>
         <url-pattern>/DadosInstrutores</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Solicitacoes</servlet-name>
+        <url-pattern>/Solicitacoes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPlanoDeEstudos</servlet-name>
+        <url-pattern>/ViewPlanoDeEstudos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MontaPlanoDeEstudos</servlet-name>
+        <url-pattern>/MontaPlanoDeEstudos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCursosDisponiveis</servlet-name>
+        <url-pattern>/ViewCursosDisponiveis</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessaMatriculas</servlet-name>
+        <url-pattern>/ProcessaMatriculas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TurmasDisponiveis</servlet-name>
+        <url-pattern>/TurmasDisponiveis</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewTurmasDisponiveis</servlet-name>
+        <url-pattern>/ViewTurmasDisponiveis</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CursosDisponiveis</servlet-name>
+        <url-pattern>/CursosDisponiveis</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>/index.jsp</welcome-file>
+        <welcome-file>/index.html</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>

@@ -21,7 +21,7 @@ public class CursosDAO {
     }
      
     public boolean insertCurso(Cursos curso) throws SQLException {
-        String sql = "INSERT INTO alunos (nome, requisito, ementa, carga_horaria, preco) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO lerolero.alunos (nome, requisito, ementa, carga_horaria, preco) VALUES (?, ?, ?, ?, ?)";
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
@@ -41,7 +41,7 @@ public class CursosDAO {
     public List<Cursos> listarCursos() throws SQLException {
         List<Cursos> listaCursos = new ArrayList<>();
          
-        String sql = "SELECT * FROM cursos";
+        String sql = "SELECT * FROM lerolero.cursos";
          
         Connection db = conexaoDB.conectar();
          
@@ -68,7 +68,7 @@ public class CursosDAO {
     }
      
     public boolean deletaCurso(Cursos curso) throws SQLException {
-        String sql = "DELETE FROM cursos where id = ?";
+        String sql = "DELETE FROM lerolero.cursos where id = ?";
          
         Connection db = conexaoDB.conectar();
          
@@ -82,7 +82,7 @@ public class CursosDAO {
     }
      
     public boolean atualizaCurso(Cursos curso) throws SQLException {
-        String sql = "UPDATE cursos SET nome = ?, requisito = ?, ementa = ?, carga_horaria = ?, preco = ?";
+        String sql = "UPDATE lerolero.cursos SET nome = ?, requisito = ?, ementa = ?, carga_horaria = ?, preco = ?";
         sql += " WHERE id = ?";
         
         Connection db = conexaoDB.conectar();
@@ -103,7 +103,7 @@ public class CursosDAO {
      
     public Cursos getCurso(int id) throws SQLException {
         Cursos curso = null;
-        String sql = "SELECT * FROM cursos WHERE id = ?";
+        String sql = "SELECT * FROM lerolero.cursos WHERE id = ?";
          
         Connection db = conexaoDB.conectar();
          

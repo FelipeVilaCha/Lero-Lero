@@ -49,7 +49,7 @@ public class AlunosDAO {
     public List<Alunos> listarAlunos() throws SQLException {
         List<Alunos> listaAlunos = new ArrayList<>();
          
-        String sql = "SELECT * FROM lerolero.alunos";
+        String sql = "SELECT * FROM lerolero.alunos WHERE aprovado != \"P\"";
          
         Connection db = conexaoDB.conectar();
          
@@ -176,5 +176,69 @@ public class AlunosDAO {
         comando.close();
         conexaoDB.desconectar();
         return registroExiste;
+    }
+    
+    public List<Alunos> listarSolicitacoes() throws SQLException {
+        List<Alunos> listaAlunos = new ArrayList<>();
+        Connection db = conexaoDB.conectar();
+        
+        String solicitacoes = "SELECT * FROM lerolero.alunos WHERE aprovado = ?";
+        boolean registroExiste = false;
+        
+        PreparedStatement comando = db.prepareStatement(solicitacoes);
+        comando.setString(1, "P");
+        
+        ResultSet resultado = comando.executeQuery();
+        
+        while (resultado.next()) {
+            int id = resultado.getInt("id");
+            String cpf = resultado.getString("cpf");
+            String nome = resultado.getString("nome");
+            String email = resultado.getString("email");
+            String celular = resultado.getString("celular");
+            String login = resultado.getString("login");
+            String senha = resultado.getString("senha");
+            String endereco = resultado.getString("endereco");
+            String cidade = resultado.getString("cidade");
+            String bairro = resultado.getString("bairro");
+            String cep = resultado.getString("cep");
+            String comentario = resultado.getString("comentario");
+            String aprovado = resultado.getString("aprovado");
+             
+            Alunos aluno = new Alunos(id, cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
+            listaAlunos.add(aluno);
+        }
+       
+        comando.close();
+        conexaoDB.desconectar();
+        return listaAlunos;
+    }
+    
+    public boolean aceitarSolicitacao(Alunos aluno) throws SQLException {
+        List<Alunos> listaAlunos = new ArrayList<>();
+        Connection db = conexaoDB.conectar();
+        
+        String sql = "UPDATE alunos SET cpf = ?, nome = ?, email = ?, celular = ?, login = ?, senha = ?, endereco = ?, cidade = ?, bairro = ?, cep = ?, comentario = ?, aprovado = ?";
+        sql += " WHERE id = ?";
+         
+        PreparedStatement comando = db.prepareStatement(sql);
+        comando.setString(1, aluno.getCpf());
+        comando.setString(2, aluno.getNome());
+        comando.setString(3, aluno.getEmail());
+        comando.setString(4, aluno.getCelular());
+        comando.setString(5, aluno.getLogin());
+        comando.setString(6, aluno.getSenha());
+        comando.setString(7, aluno.getEndereco());
+        comando.setString(8, aluno.getCidade());
+        comando.setString(9, aluno.getBairro());
+        comando.setString(10, aluno.getCep());
+        comando.setString(11, aluno.getComentario());
+        comando.setString(12, "N");
+        comando.setInt(13, aluno.getId());
+         
+        boolean registroAtualizado = comando.executeUpdate() > 0;
+        comando.close();
+        conexaoDB.desconectar();
+        return registroAtualizado;
     }
 }

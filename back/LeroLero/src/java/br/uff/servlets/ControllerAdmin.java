@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -17,6 +18,10 @@ public class ControllerAdmin extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        HttpSession session = request.getSession();
+        int id = (Integer) session.getAttribute("id");
+        
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -25,10 +30,10 @@ public class ControllerAdmin extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1> Administrador </h1>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/Listagem\"> Listagem </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/Inclusao\"> Inclusão </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/Atualizar\"> Atualizar </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/Excluir\"> Exclusão </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Solicitacoes\"> Listagem </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Alteracoes\"> Inclusão </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Cadastro\"> Atualizar </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/Cancelamentos\"> Exclusão </a> </br>");
             out.println("<a href=\"http://localhost:8080/LeroLero/Cursos\"> Cursos </a> </br>");
             out.println("</body>");
             out.println("</html>");

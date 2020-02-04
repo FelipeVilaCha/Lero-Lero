@@ -1,11 +1,14 @@
 package br.uff.database;
 
 import br.uff.dominio.Matriculas;
+import br.uff.dominio.PlanoEstudos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -127,5 +130,45 @@ public class MatriculasDAO {
         conexaoDB.desconectar();
          
         return matricula;
+    }
+    
+    public List<PlanoEstudos> listarPlanoDeEstudos(int alunos_id) throws SQLException, ParseException {
+        List<PlanoEstudos> plano = new ArrayList<>();
+        
+        String sql = "SELECT m.id, m.data_matricula, i.nome as nome_instrutor, c.nome as nome_curso, c.carga_horaria, m.nota, t.data_inicio, t.data_final "
+                + "FROM lerolero.matriculas m, lerolero.cursos c, lerolero.turmas t, lerolero.instrutores i "
+                + "WHERE t.instrutores_id = i.id and m.alunos_id = " + alunos_id + " and CURDATE() BETWEEN t.data_inicio and t.data_final";
+         
+        Connection db = conexaoDB.conectar();
+        
+        PreparedStatement comando = db.prepareStatement(sql);
+        
+        ResultSet resultado = comando.executeQuery(sql);
+        
+        while (resultado.next()) {
+            int id_matricula = resultado.getInt("id");
+            String data_matricula = resultado.getString("data_matricula");
+            String nome_instrutor = resultado.getString("nome_instrutor");
+            String nome_curso = resultado.getString("nome_curso");
+            int carga_horaria = resultado.getInt("carga_horaria");
+            Float nota = resultado.getFloat("nota");
+            String data_inicio = resultado.getString("data_inicio");
+            String data_final = resultado.getString("data_final");
+            
+            SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            
+            String data_matricula_formatada = sdf.format(sd.parse(data_matricula));
+            String data_inicio_formatada = sdf.format(sd.parse(data_inicio));
+            String data_final_formatada = sdf.format(sd.parse(data_final));
+            
+            plano.add(new PlanoEstudos(id_matricula, data_matricula_formatada, nome_instrutor, nome_curso, carga_horaria, nota, data_inicio_formatada, data_final_formatada));
+        }
+        
+        resultado.close();
+        comando.close();
+        conexaoDB.desconectar();
+         
+        return plano;
     }
 }

@@ -43,7 +43,7 @@ public class CadastraAluno extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cep = request.getParameter("cep");
         String comentario = null;
-        String aprovado = null;
+        String aprovado = "P";
         
         try {
             Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
@@ -51,12 +51,12 @@ public class CadastraAluno extends HttpServlet {
             
             if(!existe){
                 boolean status = alunosDAO.insertAluno(aluno);
-            
+                
                 if(status){
                     String permissao = "alunos";
                     request.setAttribute("status", status);
                     request.setAttribute("permissao", permissao);
-                    request.getRequestDispatcher("/ControllerAluno").include(request, response);
+                    request.getRequestDispatcher("/solicitacaoRealizada.jsp").include(request, response);
                 } else {
                     request.getRequestDispatcher("/cadastroAluno.html").forward(request, response);
                 }

@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,8 +33,11 @@ public class DadosInstrutores extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Instrutores instrutorLogado = null;
+        HttpSession session = request.getSession();
+        int id = (Integer) session.getAttribute("id");
+        
         try {
-            instrutorLogado = instrutoresDAO.getInstrutor(1);
+            instrutorLogado = instrutoresDAO.getInstrutor(id);
         } catch (SQLException ex) {
             Logger.getLogger(DadosInstrutores.class.getName()).log(Level.SEVERE, null, ex);
         }

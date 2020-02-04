@@ -20,7 +20,6 @@ public class AdministradorDAO {
         this.conexaoDB = conexaoDB;
     }
      
-     
     public boolean insertAdmin(Administrador admin) throws SQLException {
         String sql = "INSERT INTO administrador (nome, login, senha) VALUES (?, ?, ?)";
         Connection db = conexaoDB.conectar();

@@ -24,7 +24,14 @@ public class LoginDAO {
     
     public int getConexaoID(String user, String senha, String permissao) throws SQLException{
         int id = 0;
-        String sql = "SELECT id FROM lerolero." + permissao + " WHERE login = ? and senha = ?";
+        String sql = "";
+        
+        if(permissao.equals("alunos")){
+            sql = "SELECT id FROM lerolero." + permissao + " WHERE login = ? and senha = ? and aprovado != \"P\"";
+        } else {
+            sql = "SELECT id FROM lerolero." + permissao + " WHERE login = ? and senha = ?";
+        }
+        
         Connection db = conexaoDB.conectar();
         
         PreparedStatement comando = db.prepareStatement(sql);
@@ -41,7 +48,34 @@ public class LoginDAO {
     
     public boolean validaLogin(String login, String senha, String permissao) throws SQLException {
         boolean status;
-        String sql = "SELECT * FROM lerolero." + permissao + " WHERE login = ? and senha = ?";
+        String sql = "";
+        
+        if(permissao.equals("alunos")){
+            sql = "SELECT * FROM lerolero." + permissao + " WHERE login = ? and senha = ? and aprovado != \"P\"";
+        } else {
+            sql = "SELECT * FROM lerolero." + permissao + " WHERE login = ? and senha = ?";
+        }
+         
+        Connection db = conexaoDB.conectar();
+         
+        PreparedStatement comando = db.prepareStatement(sql);
+        comando.setString(1, login);
+        comando.setString(2, senha);
+         
+        ResultSet resultado = comando.executeQuery();
+         
+        status = resultado.next();
+         
+        resultado.close();
+        comando.close();
+        conexaoDB.desconectar();
+        
+        return status;
+    }
+    
+    public boolean validaLoginAdmin(String login, String senha) throws SQLException {
+        boolean status;
+        String sql = "SELECT * FROM lerolero.administrador WHERE login = ? and senha = ?";
          
         Connection db = conexaoDB.conectar();
          

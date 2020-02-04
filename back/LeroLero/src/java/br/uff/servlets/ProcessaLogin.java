@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author FelipeVilaChadosSant
@@ -30,34 +31,39 @@ public class ProcessaLogin extends HttpServlet {
             throws ServletException, IOException {
         
         try {
-            String user = request.getParameter("username");
+            HttpSession session = request.getSession();
+            
+            String user = request.getParameter("login");
             String senha = request.getParameter("senha");
             String permissao = request.getParameter("permissao");
             
-            boolean status = login.validaLogin(user, senha, permissao);
-            /*int id = login.getConexaoID(user, senha, permissao);*/
+            boolean adminUser = login.validaLoginAdmin(user, senha);
             
-            if(status == true){
-                request.setAttribute("permissao", permissao);
-                request.setAttribute("status", status);
-                /*request.setAttribute("id", id);*/
+            int id = login.getConexaoID(user, senha, permissao);
+            session.setAttribute("id", id);
+            
+            if(adminUser){
+                request.getRequestDispatcher("/ControllerAdmin").include(request, response);
+            }
+            
+            boolean status = login.validaLogin(user, senha, permissao);
+            
+            if(status) {
+                session.setAttribute("permissao", permissao);
                 String nivel = "";
                 
                 switch (permissao) {
                     case "alunos":
                         nivel = "Aluno"; 
                         break;
-                    case "administrador":
-                        nivel = "Admin"; 
-                        break;
                     case "instrutores":
                         nivel = "Instrutores"; 
                         break;
                 }
                 
-                request.getRequestDispatcher("/Controller" + nivel).forward(request, response);
+                request.getRequestDispatcher("/Controller" + nivel).include(request, response);
             } else {
-                request.getRequestDispatcher("/RealizaLogin").forward(request, response);
+                request.getRequestDispatcher("/index.html").forward(request, response);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, null, ex.getCause());

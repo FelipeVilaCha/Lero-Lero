@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,16 +28,19 @@ public class InformacoesAluno extends HttpServlet {
         alunosDAO = new AlunosDAO(conexaoDB);
     }
     
+    
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        int id = (Integer) session.getAttribute("id");
         Alunos alunoLogado = null;
-        /*int id = Integer.valueOf((String) request.getAttribute("id"));*/
+        
         try {
-            alunoLogado = alunosDAO.getAluno(1);
+            alunoLogado = alunosDAO.getAluno(id);
         } catch (SQLException ex) {
-            Logger.getLogger(InformacoesAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InformacoesAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         try (PrintWriter out = response.getWriter()) {

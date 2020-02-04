@@ -22,7 +22,7 @@ public class Turmas {
         this.data_final = data_final;
         this.carga_horaria = carga_horaria;
     }
-
+    
     public int getId() {
         return id;
     }

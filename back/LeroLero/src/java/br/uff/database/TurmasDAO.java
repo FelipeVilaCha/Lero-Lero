@@ -7,8 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -131,5 +135,36 @@ public class TurmasDAO {
         conexaoDB.desconectar();
         
         return turma;
+    }
+    
+    public List<Turmas> listarTurmasDisponiveis(int cursos_id) throws SQLException, ParseException {
+        List<Turmas> listaTurmas = new ArrayList<>();
+         
+        String sql = "SELECT id, instrutores_id, data_inicio, data_final, carga_horaria "
+                + "FROM lerolero.turmas "
+                + "WHERE CURDATE() <= data_inicio and cursos_id = " + cursos_id;
+         
+        Connection db = conexaoDB.conectar();
+         
+        PreparedStatement comando = db.prepareStatement(sql);
+        
+        ResultSet resultado = comando.executeQuery(sql);
+         
+        while (resultado.next()) {
+            int id = resultado.getInt("id");
+            int instrutores_id = resultado.getInt("instrutores_id");
+            Date data_inicio = resultado.getDate("data_inicio");
+            Date data_final = resultado.getDate("data_final");
+            int carga_horaria = resultado.getInt("carga_horaria");
+            
+            Turmas turmas = new Turmas(id, instrutores_id, cursos_id, data_inicio, data_final, carga_horaria);
+            listaTurmas.add(turmas);
+        }
+         
+        resultado.close();
+        comando.close();
+        conexaoDB.desconectar();
+         
+        return listaTurmas;
     }
 }
