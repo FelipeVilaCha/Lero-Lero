@@ -1,9 +1,8 @@
 package br.uff.servlets;
 
-import br.uff.database.Conexao;
-import br.uff.database.CursosDAO;
-import br.uff.database.MatriculasDAO;
-import br.uff.dominio.Cursos;
+import br.uff.dao.Conexao;
+import br.uff.dao.CursosDAO;
+import br.uff.model.Cursos;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -22,13 +21,11 @@ import javax.servlet.http.HttpSession;
 public class CursosDisponiveis extends HttpServlet {
     
     private Conexao conexaoDB;
-    private MatriculasDAO matriculasDAO;
     private CursosDAO cursosDAO;
     
     @Override
     public void init() {
         conexaoDB = new Conexao();
-        matriculasDAO = new MatriculasDAO(conexaoDB);
         cursosDAO = new CursosDAO(conexaoDB);
     }
     
@@ -37,7 +34,7 @@ public class CursosDisponiveis extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int id = (Integer) session.getAttribute("id");
+        int userID = (Integer) session.getAttribute("userID");
         
         try {
             List<Cursos> cursosDisponiveis = cursosDAO.listarCursos();
@@ -45,7 +42,6 @@ public class CursosDisponiveis extends HttpServlet {
             request.getRequestDispatcher("/ViewCursosDisponiveis").forward(request, response);         
         } catch (SQLException ex) {
             Logger.getLogger(MontaPlanoDeEstudos.class.getName()).log(Level.SEVERE, ex.getMessage());
-            /*request.getRequestDispatcher("/planoVazio.jsp").forward(request, response);*/
         }
     }
 }

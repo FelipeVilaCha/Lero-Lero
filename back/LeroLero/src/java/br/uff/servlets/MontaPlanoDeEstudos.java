@@ -1,10 +1,9 @@
 package br.uff.servlets;
 
-import br.uff.database.Conexao;
-import br.uff.database.MatriculasDAO;
-import br.uff.dominio.PlanoEstudos;
+import br.uff.dao.Conexao;
+import br.uff.dao.MatriculasDAO;
+import br.uff.model.PlanoEstudos;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
@@ -31,23 +30,23 @@ public class MontaPlanoDeEstudos extends HttpServlet {
         matriculasDAO = new MatriculasDAO(conexaoDB);
     }
     
-    
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int id = (Integer) session.getAttribute("id");
+        int userID = (Integer) session.getAttribute("userID");
         
-        List<PlanoEstudos> plano;
+        List<PlanoEstudos> planoEstudos;
         
         try {
-            plano = matriculasDAO.listarPlanoDeEstudos(id);
-            session.setAttribute("plano", plano);
+            planoEstudos = matriculasDAO.listarPlanoDeEstudos(userID);
+            session.setAttribute("planoEstudos", planoEstudos);
+            
             request.getRequestDispatcher("/ViewPlanoDeEstudos").forward(request, response);
+            
         } catch (SQLException | ParseException ex) {
             Logger.getLogger(MontaPlanoDeEstudos.class.getName()).log(Level.SEVERE, ex.getMessage());
-            /*request.getRequestDispatcher("/planoVazio.jsp").forward(request, response);*/
         }
     }
 }

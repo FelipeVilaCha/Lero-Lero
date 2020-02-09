@@ -1,6 +1,6 @@
 package br.uff.servlets;
 
-import br.uff.dominio.Cursos;
+import br.uff.model.Cursos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpSession;
 public class ViewCursosDisponiveis extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
-        int id = (Integer) session.getAttribute("id");
+        int userID = (Integer) session.getAttribute("userID");
         
         List<Cursos> cursosDisponiveis = (List<Cursos>) session.getAttribute("cursosDisponiveis");
-        session.setAttribute("cursoEscolhidoId", cursosDisponiveis.get(0).getId());
+        session.setAttribute("cursoEscolhidoID", cursosDisponiveis.get(0).getId());
         
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");

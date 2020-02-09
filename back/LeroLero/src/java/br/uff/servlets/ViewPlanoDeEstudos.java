@@ -1,6 +1,6 @@
 package br.uff.servlets;
 
-import br.uff.dominio.PlanoEstudos;
+import br.uff.model.PlanoEstudos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,12 +17,11 @@ import javax.servlet.http.HttpSession;
 public class ViewPlanoDeEstudos extends HttpServlet {
     
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        int id = (Integer) session.getAttribute("id");
-        List<PlanoEstudos> plano = (List<PlanoEstudos>) session.getAttribute("plano");
+        List<PlanoEstudos> plano = (List<PlanoEstudos>) session.getAttribute("planoEstudos");
         
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");

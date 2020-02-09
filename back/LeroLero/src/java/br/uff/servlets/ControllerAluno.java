@@ -27,7 +27,7 @@ public class ControllerAluno extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1> Aluno </h1>");  
-            out.println("<a href=\"http://localhost:8080/LeroLero/InformacoesAluno\"> Informações </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/ViewInformacoesAluno\"> Informações </a> </br>");
             out.println("<a href=\"http://localhost:8080/LeroLero/MontaPlanoDeEstudos\"> Plano de estudos </a> </br>");
             out.println("<a href=\"http://localhost:8080/LeroLero/CursosDisponiveis\"> Realizar Matricula </a> </br>");
             out.println("</body>");

@@ -1,11 +1,13 @@
 
 package br.uff.servlets;
 
-import br.uff.database.Conexao;
-import br.uff.database.AlunosDAO;
-import br.uff.dominio.Alunos;
+import br.uff.dao.Conexao;
+import br.uff.dao.AlunosDAO;
+import br.uff.model.Alunos;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -28,22 +30,26 @@ public class CadastraAluno extends HttpServlet {
         conexaoDB = new Conexao();
         alunosDAO = new AlunosDAO(conexaoDB);    
     }
+    
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Map<String, String> mensagens = new HashMap<>();
+        EncriptaSenha enc = new EncriptaSenha();
         
         String cpf = request.getParameter("cpf");
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String celular = request.getParameter("celular");
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String senha = enc.novaSenha(request.getParameter("senha"));
         String endereco = request.getParameter("endereco");
         String cidade = request.getParameter("cidade");
         String bairro = request.getParameter("bairro");
         String cep = request.getParameter("cep");
         String comentario = null;
-        String aprovado = "P";
+        String aprovado = "N";
         
         try {
             Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
@@ -54,14 +60,14 @@ public class CadastraAluno extends HttpServlet {
                 
                 if(status){
                     String permissao = "alunos";
-                    request.setAttribute("status", status);
-                    request.setAttribute("permissao", permissao);
-                    request.getRequestDispatcher("/solicitacaoRealizada.jsp").include(request, response);
+                    response.sendRedirect("/LeroLero/index.html");
                 } else {
-                    request.getRequestDispatcher("/cadastroAluno.html").forward(request, response);
+                    request.getRequestDispatcher("/LeroLero/index.html").forward(request, response);
                 }
             } else {
-                request.getRequestDispatcher("/cadastroAluno.html").forward(request, response);
+                mensagens.put("cadastro","Seu cadastro já foi realizado!");
+                request.setAttribute("mensagens", mensagens);
+                response.sendRedirect("/LeroLero/index.html");
             }
         } catch (SQLException ex) {
             Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, ex.getMessage());

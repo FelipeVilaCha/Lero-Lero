@@ -20,7 +20,7 @@ public class ControllerAdmin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
-        int id = (Integer) session.getAttribute("id");
+        int userID = (Integer) session.getAttribute("userID");
         
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
@@ -30,7 +30,7 @@ public class ControllerAdmin extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1> Administrador </h1>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/Solicitacoes\"> Listagem </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/ProcessaSolicitacoes\"> Listagem </a> </br>");
             out.println("<a href=\"http://localhost:8080/LeroLero/Alteracoes\"> Inclusão </a> </br>");
             out.println("<a href=\"http://localhost:8080/LeroLero/Cadastro\"> Atualizar </a> </br>");
             out.println("<a href=\"http://localhost:8080/LeroLero/Cancelamentos\"> Exclusão </a> </br>");

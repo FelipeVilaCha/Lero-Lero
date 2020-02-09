@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,9 +31,9 @@ public class ControllerInstrutores extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1> Instrutor </h1>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/DadosInstrutores\"> Dados Pessoais </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/AtribuicaoNotas\"> Atribuição de notas </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/Pagamento\"> Visualizar Pagamento </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/ViewInformacoesInstrutor\"> Dados Pessoais </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/ListaTurmasInstrutor\"> Atribuição de notas </a> </br>");
+            out.println("<a href=\"http://localhost:8080/LeroLero/ProcessaPagamento\"> Visualizar Pagamento </a> </br>");
             out.println("</body>");
             out.println("</html>");
         }

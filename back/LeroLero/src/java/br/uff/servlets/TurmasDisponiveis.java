@@ -1,13 +1,11 @@
 package br.uff.servlets;
 
-import br.uff.database.Conexao;
-import br.uff.database.CursosDAO;
-import br.uff.database.InstrutoresDAO;
-import br.uff.database.MatriculasDAO;
-import br.uff.database.TurmasDAO;
-import br.uff.dominio.Cursos;
-import br.uff.dominio.Instrutores;
-import br.uff.dominio.Turmas;
+import br.uff.dao.Conexao;
+import br.uff.dao.InstrutoresDAO;
+import br.uff.dao.MatriculasDAO;
+import br.uff.dao.TurmasDAO;
+import br.uff.model.Instrutores;
+import br.uff.model.Turmas;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -40,15 +38,15 @@ public class TurmasDisponiveis extends HttpServlet {
     }
     
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int id = (Integer) session.getAttribute("id");
-        int curso_id =  (Integer) session.getAttribute("cursoEscolhidoId");
+        
+        int cursoID =  (Integer) session.getAttribute("cursoEscolhidoID");
         
         try {
-            List<Turmas> turmasDisponiveis = turmasDAO.listarTurmasDisponiveis(curso_id);
+            List<Turmas> turmasDisponiveis = turmasDAO.listarTurmasDisponiveis(cursoID);
             List<Instrutores> instrutores = instrutoresDAO.listarInstrutores();
             
             session.setAttribute("turmasDisponiveis", turmasDisponiveis);
