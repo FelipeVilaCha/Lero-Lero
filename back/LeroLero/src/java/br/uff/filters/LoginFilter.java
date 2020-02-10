@@ -8,10 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,25 +32,25 @@ public class LoginFilter implements Filter {
             String nomeParametro = params.nextElement();
             String valorParametro = request.getParameter(nomeParametro);
             String homePage = "";
-            
+
             if("permissao".equals(nomeParametro)) { 
                 switch(valorParametro){
-                    case "alunos":
-                        homePage = "/ControllerAluno";
-                        break;
-                    case "instrutores":
-                        homePage = "/ControllerInstrutores";
-                        break;
-                    case "administrador":
-                        homePage = "/ControllerAdmin";
-                        break;
+                        case "alunos":
+                            homePage = "/ControllerAluno";
+                            break;
+                        case "instrutores":
+                            homePage = "/ControllerInstrutores";
+                            break;
+                        case "administrador":
+                            homePage = "/ControllerAdmin";
+                            break;
+                    }
+                    request.getRequestDispatcher(homePage).forward(request, response);
+                } else {
+                    chain.doFilter(request, response);
                 }
-                request.getRequestDispatcher(homePage).forward(request, response);
-            } else {
-                chain.doFilter(request, response);
             }
         }
-    }
 
     @Override
 	public void destroy() {}

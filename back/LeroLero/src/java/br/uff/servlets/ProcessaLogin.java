@@ -6,6 +6,8 @@ import br.uff.model.Usuario;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,7 +20,6 @@ import javax.servlet.http.HttpSession;
 public class ProcessaLogin extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private HttpSession session;
 	private String url;
         private LoginDAO login;
         private Conexao conexaoDB;
@@ -31,10 +32,10 @@ public class ProcessaLogin extends HttpServlet {
         
         @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		session = request.getSession();
+            HttpSession session = request.getSession();
 
             if(request.getParameter("logout") != null){
-                logout();
+                logout(session);
                 url = "/index.html";
             }
 
@@ -43,7 +44,7 @@ public class ProcessaLogin extends HttpServlet {
 
         @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            session = request.getSession();
+            HttpSession session = request.getSession();
             
             Usuario usuario = null;
             
@@ -66,12 +67,12 @@ public class ProcessaLogin extends HttpServlet {
                 session.setAttribute("permissao", permissao);
             } else {
                 String errorMessage = "Error: Unrecognized Username or Password<br>";
-                request.setAttribute("errorMessage", errorMessage);
-                url = "/index.html";
+                session.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("/index.html").forward(request, response);
             }
         }
 
-	public void logout() {
+	public void logout(HttpSession session) {
             session.invalidate();
 	}
 }
