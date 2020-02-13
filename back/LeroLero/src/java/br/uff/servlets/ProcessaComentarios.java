@@ -5,10 +5,6 @@ import br.uff.dao.AlunosDAO;
 import br.uff.model.Alunos;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -33,20 +29,24 @@ public class ProcessaComentarios extends HttpServlet {
         alunosDAO = new AlunosDAO(conexaoDB);    
     }
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Map<String, String> mensagens = new HashMap<>();
         HttpSession session = request.getSession();
-        List<Alunos> comentariosAlunos = new ArrayList<>();
+        int userID = ((Alunos) session.getAttribute("alunoLogado")).getId();
+        String comentario = request.getParameter("comentario");
+        boolean comentarioInserido = false;
         
         try {
-            comentariosAlunos = alunosDAO.listarComentarios();
-            session.setAttribute("comentariosAlunos", comentariosAlunos);
+            comentarioInserido = alunosDAO.insereComentarios(userID, comentario);
         } catch (SQLException ex) {
             Logger.getLogger(ProcessaComentarios.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        request.getRequestDispatcher("/coments.html").include(request, response);
+        if(comentarioInserido){
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/plano.jsp");
+        } else {
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/plano.jsp");
+        }
     }
 }

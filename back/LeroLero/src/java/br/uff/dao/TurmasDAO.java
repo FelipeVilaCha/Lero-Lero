@@ -134,41 +134,10 @@ public class TurmasDAO {
         return turma;
     }
     
-    public List<Turmas> listarTurmasDisponiveis(int cursos_id) throws SQLException, ParseException {
-        List<Turmas> listaTurmas = new ArrayList<>();
-         
-        String sql = "SELECT id, instrutores_id, data_inicio, data_final, carga_horaria "
-                + "FROM escola.turmas "
-                + "WHERE CURDATE() <= data_inicio and cursos_id = " + cursos_id;
-         
-        Connection db = conexaoDB.conectar();
-         
-        PreparedStatement comando = db.prepareStatement(sql);
-        
-        ResultSet resultado = comando.executeQuery(sql);
-         
-        while (resultado.next()) {
-            int id = resultado.getInt("id");
-            int instrutores_id = resultado.getInt("instrutores_id");
-            Date data_inicio = resultado.getDate("data_inicio");
-            Date data_final = resultado.getDate("data_final");
-            int carga_horaria = resultado.getInt("carga_horaria");
-            
-            Turmas turmas = new Turmas(id, instrutores_id, cursos_id, data_inicio, data_final, carga_horaria);
-            listaTurmas.add(turmas);
-        }
-         
-        resultado.close();
-        comando.close();
-        conexaoDB.desconectar();
-         
-        return listaTurmas;
-    }
-    
     public List<Turmas> listarTurmasPorInstrutor(int instrutorID) throws SQLException, ParseException {
         List<Turmas> listaTurmas = new ArrayList<>();
          
-        String sql = "SELECT id, instrutores_id, data_inicio, data_final, carga_horaria "
+        String sql = "SELECT id, cursos_id, data_inicio, data_final, carga_horaria "
                     +   "FROM escola.turmas "
                     +   "WHERE CURDATE() BETWEEN data_inicio and data_final and instrutores_id = " + instrutorID;
          
@@ -180,12 +149,44 @@ public class TurmasDAO {
          
         while (resultado.next()) {
             int id = resultado.getInt("id");
-            int instrutores_id = resultado.getInt("instrutores_id");
+            int cursos_id = resultado.getInt("cursos_id");
             Date data_inicio = resultado.getDate("data_inicio");
             Date data_final = resultado.getDate("data_final");
             int carga_horaria = resultado.getInt("carga_horaria");
             
-            Turmas turmas = new Turmas(id, instrutores_id, instrutorID, data_inicio, data_final, carga_horaria);
+            Turmas turmas = new Turmas(id, instrutorID, cursos_id, data_inicio, data_final, carga_horaria);
+            listaTurmas.add(turmas);
+        }
+         
+        resultado.close();
+        comando.close();
+        conexaoDB.desconectar();
+         
+        return listaTurmas;
+    }
+    
+    public List<Turmas> listarTurmasAbertas() throws SQLException, ParseException {
+        List<Turmas> listaTurmas = new ArrayList<>();
+         
+        String sql = "SELECT id, instrutores_id, cursos_id, data_inicio, data_final, carga_horaria "
+                   + " FROM escola.turmas"
+                   + " WHERE CURDATE() <= data_inicio";
+         
+        Connection db = conexaoDB.conectar();
+         
+        PreparedStatement comando = db.prepareStatement(sql);
+        
+        ResultSet resultado = comando.executeQuery(sql);
+         
+        while (resultado.next()) {
+            int id = resultado.getInt("id");
+            int instrutores_id = resultado.getInt("instrutores_id");
+            int cursos_id = resultado.getInt("cursos_id");
+            Date data_inicio = resultado.getDate("data_inicio");
+            Date data_final = resultado.getDate("data_final");
+            int carga_horaria = resultado.getInt("carga_horaria");
+            
+            Turmas turmas = new Turmas(id, instrutores_id, cursos_id, data_inicio, data_final, carga_horaria);
             listaTurmas.add(turmas);
         }
          

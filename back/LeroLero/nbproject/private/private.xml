@@ -4,43 +4,36 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/model/Usuario.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/index.html</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/solicitacaoRealizada.jsp</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/CadastraAluno.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewTurmasInstrutor.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewCursosDisponiveis.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaLogin.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaNota.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaPagamento.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/TurmasDAO.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/MontaPlanoDeEstudos.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/EncriptaSenha.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/InstrutoresDAO.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewInformacoesAluno.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewInformacoesInstrutor.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/MatriculasDAO.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/AlunosDAO.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerInstrutores.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaComentarios.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewSolicitacoes.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewPagamentoInstrutor.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/planoVazio.jsp</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/filters/LoginFilter.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewPlanoDeEstudos.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerAluno.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaComentarios.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewAtribuiNota.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaMatricula.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/AdministradorDAO.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ListaTurmasInstrutor.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerAluno.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerAdmin.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/AceitaSolicitacao.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/LoginDAO.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewTurmasDisponiveis.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/TurmasDisponiveis.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaLogout.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/about.html</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewSolicitacoes.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/CursosDisponiveis.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/aluno/index.jsp</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/CursosDAO.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewInformacoesAluno.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewTurmasInstrutor.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaSolicitacoes.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewPlanoDeEstudos.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerAdmin.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaLogout.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewCursosDisponiveis.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/AdministradorDAO.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ViewTurmasDisponiveis.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/index.html</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/erro.html</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/solicitacaoRealizada.jsp</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/EncriptaSenha.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaNota.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/TurmasDAO.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/MontaPlanoDeEstudos.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/AceitaSolicitacao.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/CadastraAluno.java</file>
         </group>
     </open-files>
 </project-private>

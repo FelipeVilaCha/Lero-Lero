@@ -5,37 +5,72 @@
  */
 package br.uff.servlets;
 
+import br.uff.dao.Conexao;
+import br.uff.dao.CursosDAO;
+import br.uff.dao.InstrutoresDAO;
+import br.uff.dao.MatriculasDAO;
+import br.uff.dao.TurmasDAO;
+import br.uff.model.Cursos;
+import br.uff.model.Instrutores;
+import br.uff.model.Matriculas;
+import br.uff.model.Turmas;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author FelipeVilaChadosSant
  */
 public class ControllerInstrutores extends HttpServlet {
-
+    
+    private Conexao conexaoDB;
+    private InstrutoresDAO instrutoresDAO;
+    private TurmasDAO turmasDAO;
+    private CursosDAO cursosDAO;
+    private MatriculasDAO matriculasDAO;
+    
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    public void init() {
+        conexaoDB = new Conexao();
+        turmasDAO = new TurmasDAO(conexaoDB);
+        cursosDAO = new CursosDAO(conexaoDB);
+        matriculasDAO = new MatriculasDAO(conexaoDB);
+        instrutoresDAO = new InstrutoresDAO(conexaoDB);
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title> Instrutor </title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1> Instrutor </h1>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/ViewInformacoesInstrutor\"> Dados Pessoais </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/ListaTurmasInstrutor\"> Atribuição de notas </a> </br>");
-            out.println("<a href=\"http://localhost:8080/LeroLero/ProcessaPagamento\"> Visualizar Pagamento </a> </br>");
-            out.println("</body>");
-            out.println("</html>");
+        int userID = (Integer) session.getAttribute("userID");
+        
+        Instrutores instrutorLogado = null;
+        
+        try {
+            instrutorLogado = instrutoresDAO.getInstrutor(userID);
+            List<Turmas> turmasInstrutor = turmasDAO.listarTurmasPorInstrutor(userID);
+            List<Cursos> cursosInstrutor = cursosDAO.listarCursosPorInstrutor(userID);
+            List<Matriculas> matriculasInstrutor = matriculasDAO.listarMatriculasPorTurmaDeInstrutor(userID);
+            
+            session.setAttribute("turmasInstrutor", turmasInstrutor);
+            session.setAttribute("cursosInstrutor", cursosInstrutor);
+            session.setAttribute("matriculasInstrutor", matriculasInstrutor);
+        } catch (SQLException | ParseException ex) {
+            Logger.getLogger(ControllerAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
+        
+        session.setAttribute("instrutorLogado", instrutorLogado);
+        response.sendRedirect("http://localhost:8080/LeroLero/modules/instrutor/index.jsp");
     }
 }

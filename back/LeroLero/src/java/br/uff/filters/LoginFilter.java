@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -27,6 +28,7 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
         Enumeration<String> params = req.getParameterNames();
         while(params.hasMoreElements()){
             String nomeParametro = params.nextElement();
@@ -36,16 +38,16 @@ public class LoginFilter implements Filter {
             if("permissao".equals(nomeParametro)) { 
                 switch(valorParametro){
                         case "alunos":
-                            homePage = "/ControllerAluno";
+                            homePage = "/LeroLero/ControllerAluno";
                             break;
                         case "instrutores":
-                            homePage = "/ControllerInstrutores";
+                            homePage = "/LeroLero/ControllerInstrutores";
                             break;
                         case "administrador":
-                            homePage = "/ControllerAdmin";
+                            homePage = "/LeroLero/ControllerAdmin";
                             break;
                     }
-                    request.getRequestDispatcher(homePage).forward(request, response);
+                    res.sendRedirect(homePage);
                 } else {
                     chain.doFilter(request, response);
                 }

@@ -6,6 +6,7 @@ import br.uff.model.PlanoEstudos;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,20 +32,19 @@ public class MontaPlanoDeEstudos extends HttpServlet {
     }
     
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
         int userID = (Integer) session.getAttribute("userID");
         
-        List<PlanoEstudos> planoEstudos;
+        List<PlanoEstudos> planoEstudos = new ArrayList<>();
         
         try {
             planoEstudos = matriculasDAO.listarPlanoDeEstudos(userID);
             session.setAttribute("planoEstudos", planoEstudos);
             
-            request.getRequestDispatcher("/ViewPlanoDeEstudos").forward(request, response);
-            
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/plano.jsp");
         } catch (SQLException | ParseException ex) {
             Logger.getLogger(MontaPlanoDeEstudos.class.getName()).log(Level.SEVERE, ex.getMessage());
         }

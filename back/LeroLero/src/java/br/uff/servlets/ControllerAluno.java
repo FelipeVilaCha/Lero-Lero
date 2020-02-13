@@ -4,10 +4,7 @@ import br.uff.dao.AlunosDAO;
 import br.uff.dao.Conexao;
 import br.uff.model.Alunos;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -32,7 +29,7 @@ public class ControllerAluno extends HttpServlet {
     }
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         int userID = (Integer) session.getAttribute("userID");
@@ -46,6 +43,6 @@ public class ControllerAluno extends HttpServlet {
         }
         
         session.setAttribute("alunoLogado", alunoLogado);
-        request.getRequestDispatcher("/modules/aluno/index.jsp").forward(request, response);
+        response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/index.jsp");
     }
 }

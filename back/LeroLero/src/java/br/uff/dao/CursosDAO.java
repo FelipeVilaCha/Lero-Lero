@@ -1,11 +1,14 @@
 package br.uff.dao;
 
 import br.uff.model.Cursos;
+import br.uff.model.Turmas;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -127,5 +130,70 @@ public class CursosDAO {
         conexaoDB.desconectar();
          
         return curso;
+    }
+    
+    public List<Cursos> listarCursosPorInstrutor(int instrutorID) throws SQLException, ParseException {
+        List<Cursos> listaCursos = new ArrayList<>();
+         
+        String sql = "SELECT c.id, c.nome, c.requisito, c.ementa, c.carga_horaria, c.preco "
+                   + "FROM escola.cursos c, turmas t "
+                   + "WHERE CURDATE() BETWEEN t.data_inicio and t.data_final and t.instrutores_id = " + instrutorID
+                   + " AND t.cursos_id = c.id";
+         
+        Connection db = conexaoDB.conectar();
+         
+        PreparedStatement comando = db.prepareStatement(sql);
+        
+        ResultSet resultado = comando.executeQuery(sql);
+         
+        while (resultado.next()) {
+            int id = resultado.getInt("id");
+            String nome = resultado.getString("nome");
+            String requisito = resultado.getString("requisito");
+            String ementa = resultado.getString("ementa");
+            int carga_horaria = resultado.getInt("carga_horaria");
+            Double preco = resultado.getDouble("preco");
+            
+            Cursos curso = new Cursos(id, nome, requisito, ementa, carga_horaria, preco);
+            listaCursos.add(curso);
+        }
+         
+        resultado.close();
+        comando.close();
+        conexaoDB.desconectar();
+         
+        return listaCursos;
+    }
+    
+    public List<Cursos> listarCursosComTurmas() throws SQLException, ParseException {
+        List<Cursos> listaCursos = new ArrayList<>();
+         
+        String sql = "SELECT c.id, c.nome, c.requisito, c.ementa, c.carga_horaria, c.preco "
+                   + "FROM escola.cursos c, turmas t "
+                   + "WHERE CURDATE() <= t.data_inicio AND t.cursos_id = c.id";
+         
+        Connection db = conexaoDB.conectar();
+         
+        PreparedStatement comando = db.prepareStatement(sql);
+        
+        ResultSet resultado = comando.executeQuery(sql);
+         
+        while (resultado.next()) {
+            int id = resultado.getInt("id");
+            String nome = resultado.getString("nome");
+            String requisito = resultado.getString("requisito");
+            String ementa = resultado.getString("ementa");
+            int carga_horaria = resultado.getInt("carga_horaria");
+            Double preco = resultado.getDouble("preco");
+            
+            Cursos curso = new Cursos(id, nome, requisito, ementa, carga_horaria, preco);
+            listaCursos.add(curso);
+        }
+         
+        resultado.close();
+        comando.close();
+        conexaoDB.desconectar();
+         
+        return listaCursos;
     }
 }

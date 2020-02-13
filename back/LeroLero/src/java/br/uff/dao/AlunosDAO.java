@@ -260,4 +260,20 @@ public class AlunosDAO {
         conexaoDB.desconectar();
         return listaAlunos;
     }
+    
+    public boolean insereComentarios(int userID, String comentario) throws SQLException {
+        Connection db = conexaoDB.conectar();
+        
+        String sql = "UPDATE escola.alunos SET comentario = ? WHERE id = ?";
+        
+        PreparedStatement comando = db.prepareStatement(sql);
+        comando.setString(1, comentario);
+        comando.setInt(2, userID);
+         
+        boolean registroAtualizado = comando.executeUpdate() > 0;
+        comando.close();
+        conexaoDB.desconectar();
+        return registroAtualizado;
+    }
+    
 }

@@ -32,12 +32,12 @@ public class ProcessaMatricula extends HttpServlet {
     }
     
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         Map<String, String> mensagens = new HashMap<>();
         HttpSession session = request.getSession();
-        int turmasID = (Integer) session.getAttribute("turmaEscolhidaID");
+        int turmasID = Integer.parseInt(request.getParameter("turmaEscolhidaID"));
         int userID = (Integer) session.getAttribute("userID");
         Date data_matricula = new Date();
         Double nota = 0.0;
@@ -58,7 +58,8 @@ public class ProcessaMatricula extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ProcessaMatricula.class.getName()).log(Level.SEVERE, null, ex);
             }
-            response.sendRedirect("/LeroLero/ViewCursosDisponiveis");
+            
+            request.getRequestDispatcher("/MontaPlanoDeEstudos").forward(request, response);
         } else {
             mensagens.put("matricula", "Você já está cadastrado nesse curso!");
             request.setAttribute("mensagens", mensagens);

@@ -136,13 +136,12 @@ public class InstrutoresDAO {
         return instrutor;
     }
     
-    public Double calculaPagamento(int instrutorID) throws SQLException {
-        Instrutores instrutor = null;
-        List<Double> pagamento = new ArrayList<>();
+    public Double calculaPagamentoPorTurma(int instrutorID, int turmaID) throws SQLException {
+        Double calculoPorTurma = null;
         String sql = "SELECT i.valor_hora as valor, t.carga_horaria as horas "
                 + "FROM turmas t, instrutores i "
-                + "WHERE t.instrutores_id = " + instrutorID + " AND t.instrutores_id  = i.id "
-                + "AND CURDATE() BETWEEN t.data_inicio AND t.data_final";
+                + "WHERE t.instrutores_id = " + instrutorID + " AND t.id = " + turmaID 
+                + " AND CURDATE() BETWEEN t.data_inicio AND t.data_final";
          
         Connection db = conexaoDB.conectar();
          
@@ -154,21 +153,14 @@ public class InstrutoresDAO {
             Double valorHora = resultado.getDouble("valor");
             int horas = resultado.getInt("horas");
             
-            Double calculoPorTurma = valorHora * horas; 
-                    
-            pagamento.add(calculoPorTurma);
+            calculoPorTurma = valorHora * horas; 
         }
          
         resultado.close();
         comando.close();
         conexaoDB.desconectar();
         
-        Double soma = 0.0;
-        for(int i = 0; i < pagamento.size(); i ++){
-            soma += pagamento.get(i);
-        }
-        
-        return soma;
+        return calculoPorTurma;
     }
     
     public boolean atribuiNota(int alunoID, int turmaID, Double nota) throws SQLException {
