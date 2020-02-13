@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
   <head>
@@ -24,9 +25,9 @@
       rel="stylesheet"
     />
     <!--
-          CSS
-          =============================================
-        -->
+      CSS
+      =============================================
+    -->
     <link rel="stylesheet" href="css/linearicons.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/bootstrap.css" />
@@ -46,7 +47,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -66,36 +67,11 @@
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">Sobre</a></li>
-              <li><a href="courses.html">Cursos</a></li>
-              <li><a href="instructors.html">Instrutores</a></li>
-              <li><a href="coments.html">Comentários</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                  Tabelas
-                </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="tables/course-form.html"
-                    >Cursos</a
-                  >
-                  <a class="dropdown-item" href="tables/instructors-form.html"
-                    >Instrutores</a
-                  >
-                  <a class="dropdown-item" href="tables/matriculas-form.html"
-                    >Matriculas</a
-                  >
-                  <a class="dropdown-item" href="tables/turmas-form.html"
-                    >Turmas</a
-                  >
-                  <a class="dropdown-item" href="tables/alunos-form.html"
-                    >Alunos</a
-                  >
-                  <a class="dropdown-item" href="tables/admin-form.html"
-                    >Admin</a
-                  >
-                </div>
-              </li>
+              <li><a href="index.jsp">Home</a></li>
+              <li><a href="about.jsp">Sobre</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListagemCursosDisponiveis">Cursos</a></li>
+              <li><a href="instructors.jsp">Instrutores</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaComentarios">Comentários</a></li>
               <li>
                 <a
                   class="text-white"
@@ -267,11 +243,11 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label>Endereço</label>
+                    <label>EndereÃ§o</label>
                     <input
                       name="endereco"
                       class="form-control"
-                      placeholder="Estrada do Galeão, 10"
+                      placeholder="Estrada do GaleÃ£o, 10"
                       type="text"
                       minlength="3"
                       required
@@ -358,16 +334,16 @@
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-12 banner-right">
             <h1 class="text-white">
-              Comentários
+              Sobre nós
             </h1>
             <p class="mx-auto text-white  mt-20 mb-40">
-              Conheça um pouco sobre nossos alunos e feedbacks
+              Melhorando vidas por meio do aprendizado
             </p>
             <div class="link-nav">
               <span class="box">
-                <a href="index.html">Home </a>
+                <a href="index.jsp">Home </a>
                 <i class="lnr lnr-arrow-right"></i>
-                <a href="coments.html">Comentários</a>
+                <a href="about.jsp">Sobre nós </a>
               </span>
             </div>
           </div>
@@ -376,64 +352,34 @@
     </section>
     <!-- ================ End banner Area ================= -->
 
-    <!-- ================ Start Testimonials Area ================= -->
-    <section class="testimonials-area section-gap">
+    <!-- ================- Start About Area ================= -->
+    <section class="about-area section-gap">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-4">
-            <div class="card" style="width: 18em;">
-              <img
-                class="card-img-top"
-                src="img/testimonial/t1.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  Felipe Vila Cha <small> - Big Data Developer</small>
-                </h5>
-                <p class="card-text">
-                  Os curso de python é muito bom, consegui sair de iniciante a
-                  profissional contratado por uma grande empresa.
-                </p>
-              </div>
-            </div>
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-5 col-md-6 about-left">
+            <img class="img-fluid" src="img/about-img.png" alt="" />
           </div>
-          <div class="col-lg-4">
-            <div class="card" style="width: 18em;">
-              <img
-                class="card-img-top"
-                src="img/testimonial/t1.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5>Nicholas Ferrer <small> - Software Developer</small></h5>
-                <p class="card-text">
-                  Aprendi tudo o que eu sei sobre javascript aqui, enorme
-                  gratidão a plataforma LeroLero.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card" style="width: 18em;">
-              <img
-                class="card-img-top"
-                src="img/testimonial/t1.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5>Gabriel Barbosa <small> - Software Developer</small></h5>
-                <p class="card-text">
-                  Aprendi tudo o que eu sei sobre javascript aqui, enorme
-                  gratidão a plataforma LeroLero.
-                </p>
-              </div>
+          <div class="offset-lg-1 col-lg-5 col-md-12 about-right">
+            <h1>
+              Mais de <br />
+              2500 cursos, <br />
+              100 mil alunos
+            </h1>
+            <div>
+              <p>
+                A LeroLero é o marketplace líder global para ensino e
+                aprendizado, conectando alunos de qualquer lugar aos melhores
+                instrutores ao redor do mundo. Os funcionários da LeroLero vivem
+                nossos valores todos os dias também como alunos e professores.
+                Nossa cultura é diversificada, inclusiva e comprometida com o
+                desenvolvimento pessoal e profissional.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ================ End Testimonials Area ================= -->
+    <!-- ================- End About Area ================= -->
 
     <!-- ================ start footer Area ================= -->
     <footer class="footer-area section-gap">

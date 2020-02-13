@@ -120,6 +120,14 @@
         <servlet-name>DeletaAluno</servlet-name>
         <servlet-class>br.uff.servlets.DeletaAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListaComentarios</servlet-name>
+        <servlet-class>br.uff.servlets.ListaComentarios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListagemCursosDisponiveis</servlet-name>
+        <servlet-class>br.uff.servlets.ListagemCursosDisponiveis</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraAluno</servlet-name>
         <url-pattern>/CadastraAluno</url-pattern>
@@ -232,13 +240,21 @@
         <servlet-name>DeletaAluno</servlet-name>
         <url-pattern>/DeletaAluno</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaComentarios</servlet-name>
+        <url-pattern>/ListaComentarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListagemCursosDisponiveis</servlet-name>
+        <url-pattern>/ListagemCursosDisponiveis</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>

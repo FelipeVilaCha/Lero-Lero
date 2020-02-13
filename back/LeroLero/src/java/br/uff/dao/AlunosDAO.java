@@ -231,7 +231,7 @@ public class AlunosDAO {
         List<Alunos> listaAlunos = new ArrayList<>();
         Connection db = conexaoDB.conectar();
         
-        String sql = "SELECT * FROM escola.alunos WHERE comentarios is not null";
+        String sql = "SELECT * FROM escola.alunos WHERE comentario is not null";
         
         PreparedStatement comando = db.prepareStatement(sql);
         

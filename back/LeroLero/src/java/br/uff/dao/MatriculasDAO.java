@@ -136,12 +136,12 @@ public class MatriculasDAO {
         return matricula;
     }
     
-    public List<PlanoEstudos> listarPlanoDeEstudos(int alunos_id) throws SQLException, ParseException {
+    public List<PlanoEstudos> listarPlanoDeEstudosAtual(int alunos_id) throws SQLException, ParseException {
         List<PlanoEstudos> plano = new ArrayList<>();
         
         String sql = "SELECT m.id, m.data_matricula, i.nome as nome_instrutor, c.nome as nome_curso, c.carga_horaria, m.nota, t.data_inicio, t.data_final\n" +
                      "FROM escola.matriculas m, escola.cursos c, escola.turmas t, escola.instrutores i\n" +
-                     "WHERE m.turmas_id = t.id and t.cursos_id = c.id and m.alunos_id = " + alunos_id;
+                     "WHERE CURDATE() < t.data_final and m.turmas_id = t.id and t.cursos_id = c.id and m.alunos_id = " + alunos_id;
          
         Connection db = conexaoDB.conectar();
         
@@ -169,16 +169,16 @@ public class MatriculasDAO {
         return plano;
     }
     
-    public boolean validaMatricula(int turmas_id, int user_id) throws SQLException {
+    public boolean validaMatricula(int userID, int cursosID) throws SQLException {
         boolean status;
         
-        String sql = "SELECT * FROM escola.matriculas WHERE turmas_id = ? and alunos_id = ?";
+        String sql = "SELECT * FROM escola.matriculas m, escola.turmas t WHERE m.turmas_id = t.id and alunos_id = ? and cursos_id = ?";
          
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
-        comando.setInt(1, turmas_id);
-        comando.setInt(2, user_id);
+        comando.setInt(1, userID);
+        comando.setInt(2, cursosID);
          
         ResultSet resultado = comando.executeQuery();
          
@@ -221,5 +221,38 @@ public class MatriculasDAO {
         conexaoDB.desconectar();
          
         return listaMatriculas;
+    }
+    
+    public List<PlanoEstudos> listarHistorico(int alunos_id) throws SQLException, ParseException {
+        List<PlanoEstudos> plano = new ArrayList<>();
+        
+        String sql = "SELECT m.id, m.data_matricula, i.nome as nome_instrutor, c.nome as nome_curso, c.carga_horaria, m.nota, t.data_inicio, t.data_final\n" +
+                     "FROM escola.matriculas m, escola.cursos c, escola.turmas t, escola.instrutores i\n" +
+                     "WHERE CURDATE() > t.data_final and m.turmas_id = t.id and t.cursos_id = c.id and m.alunos_id = " + alunos_id;
+         
+        Connection db = conexaoDB.conectar();
+        
+        PreparedStatement comando = db.prepareStatement(sql);
+        
+        ResultSet resultado = comando.executeQuery(sql);
+        
+        while (resultado.next()) {
+            int id_matricula = resultado.getInt("id");
+            String data_matricula = resultado.getString("data_matricula");
+            String nome_instrutor = resultado.getString("nome_instrutor");
+            String nome_curso = resultado.getString("nome_curso");
+            int carga_horaria = resultado.getInt("carga_horaria");
+            double nota = resultado.getDouble("nota");
+            String data_inicio = resultado.getString("data_inicio");
+            String data_final = resultado.getString("data_final");
+            
+            plano.add(new PlanoEstudos(id_matricula, data_matricula, nome_instrutor, nome_curso, carga_horaria, nota, data_inicio, data_final));
+        }
+        
+        resultado.close();
+        comando.close();
+        conexaoDB.desconectar();
+         
+        return plano;
     }
 }

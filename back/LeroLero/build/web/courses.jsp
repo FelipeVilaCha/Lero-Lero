@@ -1,3 +1,6 @@
+<%@page import="br.uff.model.Cursos"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
   <head>
@@ -46,7 +49,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -66,10 +69,10 @@
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">Sobre</a></li>
-              <li><a href="courses.html">Cursos</a></li>
-              <li><a href="instructors.html">Instrutores</a></li>
+              <li><a href="index.jsp">Home</a></li>
+              <li><a href="about.jsp">Sobre</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListagemCursosDisponiveis">Cursos</a></li>
+              <li><a href="instructors.jsp">Instrutores</a></li>
               <li><a href="http://localhost:8080/LeroLero/ListaComentarios">Comentários</a></li>
               <li>
                 <a
@@ -143,9 +146,9 @@
                 </div>
                 <div class="form-group">
                   <div class="checkbox">
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                     <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
                     <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
+                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                   </div>
                   <!-- checkbox .// -->
                 </div>
@@ -208,7 +211,7 @@
                     <input
                       name="cpf"
                       class="form-control"
-                      minlength="3"
+                      minlength="11"
                       maxlength="11"
                       placeholder="999.999.999-99"
                       type="text"
@@ -221,7 +224,7 @@
                       name="celular"
                       class="form-control"
                       placeholder="99 999 99999999"
-                      minlength="3"
+                      minlength="14"
                       maxlength="14"
                       type="text"
                       required
@@ -234,7 +237,7 @@
                     <input
                       name="cep"
                       class="form-control"
-                      minlength="3"
+                      minlength="8"
                       maxlength="8"
                       placeholder="21930150"
                       type="text"
@@ -369,90 +372,21 @@
 
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-lg-4">
-              <div class="card" style="width: 18rem;">
-                <img
-                  class="f-img img-fluid mx-auto"
-                  src="img/popular-course/p4.jpg"
-                  alt=""
-                />
-                <div class="card-body">
-                  <div class="d-flex justify-content-between mb-20">
-                    <h5>Aprenda Python</h5>
-                    <p class="value">R$90</p>
-                  </div>
-                  <p>
-                    Aprenda tudo sobre Python e entre no mundo do big data
-                  </p>
-                  <div class="bottom d-flex mt-15">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <p class="ml-20">25 Reviews</p>
-                  </div>
-                  <a href="#" class="btn btn-primary">Compre já</a>
+            <% for (int i = 0; i < ((List<Cursos>) request.getAttribute("cursosDisponiveis")).size(); i++){
+                    out.println("<div class=\"col-lg-4\">");
+                    out.println("<div class=\"card\" style=\"width: 18rem;\">");
+                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"img/popular-course/p4.jpg\" alt=\"\" />");
+                    out.println("<div class=\"card-body\">");
+                    out.println("<div class=\"d-flex justify-content-between mb-20\">");
+                    out.println("<h5> " + ((List<Cursos>) request.getAttribute("cursosDisponiveis")).get(i).getNome() + " </h5>");
+                    out.println("<p class=\"value\">R$" + ((List<Cursos>) request.getAttribute("cursosDisponiveis")).get(i).getPreco() + "</p>");
+                    out.println("</div>");
+                    out.println("<p> " + ((List<Cursos>) request.getAttribute("cursosDisponiveis")).get(i).getEmenta() + " </p>");
+                    out.println("<button href=\"#login\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#login\"> Matricule-se já!</button>");
+                }%>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="card" style="width: 18rem;">
-                <img
-                  class="f-img img-fluid mx-auto"
-                  src="img/popular-course/p4.jpg"
-                  alt=""
-                />
-                <div class="card-body">
-                  <div class="d-flex justify-content-between mb-20">
-                    <h5>Aprenda React JS</h5>
-                    <p class="value">R$220</p>
-                  </div>
-                  <p>
-                    Aprenda tudo sobre o mais querido framework de Javasript
-                  </p>
-                  <div class="bottom d-flex mt-15">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <p class="ml-20">25 Reviews</p>
-                  </div>
-                  <a href="#" class="btn btn-primary">Compre já</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card" style="width: 18rem;">
-                <img
-                  class="f-img img-fluid mx-auto"
-                  src="img/popular-course/p4.jpg"
-                  alt=""
-                />
-                <div class="card-body">
-                  <div class="d-flex justify-content-between mb-20">
-                    <h5>Aprenda Vue JS</h5>
-                    <p class="value">R$150</p>
-                  </div>
-                  <p>
-                    Aprenda tudo sobre o mais querido framework de Javasript
-                  </p>
-                  <div class="bottom d-flex mt-15">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <p class="ml-20">25 Reviews</p>
-                  </div>
-                  <a href="#" class="btn btn-primary">Compre já</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
     <!-- ================ End Popular Course Area ================= -->
 

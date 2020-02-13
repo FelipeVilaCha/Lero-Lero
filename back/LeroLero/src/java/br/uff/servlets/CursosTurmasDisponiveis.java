@@ -35,11 +35,10 @@ public class CursosTurmasDisponiveis extends HttpServlet {
     }
     
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int userID = (Integer) session.getAttribute("userID");
         
         try {
             List<Cursos> cursosDisponiveis = cursosDAO.listarCursosComTurmas();
@@ -47,9 +46,10 @@ public class CursosTurmasDisponiveis extends HttpServlet {
             List<Turmas> turmasDisponiveis = turmasDAO.listarTurmasAbertas();
             session.setAttribute("turmasDisponiveis", turmasDisponiveis);
             
-            response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/cursos-disponiveis.jsp");
         } catch (SQLException | ParseException ex) {
             Logger.getLogger(CursosTurmasDisponiveis.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
+        
+        response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/cursos-disponiveis.jsp");
     }
 }

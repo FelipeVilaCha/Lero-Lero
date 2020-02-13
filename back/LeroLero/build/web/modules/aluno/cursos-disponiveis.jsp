@@ -133,7 +133,7 @@
                                 out.println("<div class=\"bottom d-flex mt-15\">");
                                 out.println("<p class=\"Carga\">" + ((List<Cursos>) session.getAttribute("cursosDisponiveis")).get(i).getCarga_horaria() + "h </p>");
                                 out.println("</div>");
-                                out.println("<input type=\"button\" value=\"Matricular agora!\" class=\"btn btn-primary\" onclick=\"window.location.href='http://localhost:8080/LeroLero/ProcessaMatricula?turmaEscolhidaID=".concat(String.valueOf(((List<Turmas>) session.getAttribute("turmasDisponiveis")).get(j).getId())).concat("'\"/>"));
+                                out.println("<input type=\"button\" value=\"Matricular agora!\" class=\"btn btn-primary\" onclick=\"window.location.href='http://localhost:8080/LeroLero/ProcessaMatricula?turmaEscolhidaID=".concat(String.valueOf(((List<Turmas>) session.getAttribute("turmasDisponiveis")).get(j).getId())).concat("&cursoEscolhidoID=").concat(String.valueOf(((List<Cursos>) session.getAttribute("cursosDisponiveis")).get(i).getId())).concat("'\"/>"));
                                 out.println("</div>");
                                 out.println("</div>");
                                 out.println("</div>");

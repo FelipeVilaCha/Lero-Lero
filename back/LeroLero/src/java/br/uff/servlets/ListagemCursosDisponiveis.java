@@ -1,15 +1,9 @@
 package br.uff.servlets;
 
-import br.uff.dao.AlunosDAO;
 import br.uff.dao.Conexao;
 import br.uff.dao.CursosDAO;
-import br.uff.dao.InstrutoresDAO;
-import br.uff.dao.MatriculasDAO;
 import br.uff.dao.TurmasDAO;
-import br.uff.model.Alunos;
 import br.uff.model.Cursos;
-import br.uff.model.Matriculas;
-import br.uff.model.Turmas;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -20,36 +14,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author FelipeVilaChadosSant
  */
-public class ListaAlunos extends HttpServlet {
+public class ListagemCursosDisponiveis extends HttpServlet {
     
     private Conexao conexaoDB;
-    private AlunosDAO alunosDAO;
+    private CursosDAO cursosDAO;
     
     @Override
     public void init() {
         conexaoDB = new Conexao();
-        alunosDAO = new AlunosDAO(conexaoDB);
+        cursosDAO = new CursosDAO(conexaoDB);
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
-        
         try {
-            List<Alunos> listaAlunos = alunosDAO.listarAlunos();
-            session.setAttribute("listaAlunos", listaAlunos);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListaAlunos.class.getName()).log(Level.SEVERE, ex.getMessage());
+            List<Cursos> cursosDisponiveis = cursosDAO.listarCursosComTurmas();
+            request.setAttribute("cursosDisponiveis", cursosDisponiveis);
+            
+        } catch (SQLException | ParseException ex) {
+            Logger.getLogger(ListagemCursosDisponiveis.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
-        request.getRequestDispatcher("/modules/admin/tables/alunos-table.jsp").forward(request, response);
+        request.getRequestDispatcher("/courses.jsp").forward(request, response);
     }
 }

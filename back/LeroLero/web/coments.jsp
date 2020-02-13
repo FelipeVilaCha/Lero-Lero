@@ -1,5 +1,8 @@
+<%@page import="br.uff.model.Alunos"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="pt" class="no-js">
+<html lang="zxx" class="no-js">
   <head>
     <!-- Mobile Specific Meta -->
     <meta
@@ -24,9 +27,9 @@
       rel="stylesheet"
     />
     <!--
-      CSS
-      =============================================
-    -->
+          CSS
+          =============================================
+        -->
     <link rel="stylesheet" href="css/linearicons.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/bootstrap.css" />
@@ -46,7 +49,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -66,11 +69,11 @@
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">Sobre</a></li>
-              <li><a href="courses.html">Cursos</a></li>
-              <li><a href="instructors.html">Instrutores</a></li>
-              <li><a href="coments.html">Comentários</a></li>
+              <li><a href="index.jsp">Home</a></li>
+              <li><a href="about.jsp">Sobre</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListagemCursosDisponiveis">Cursos</a></li>
+              <li><a href="instructors.jsp">Instrutores</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaComentarios">Comentários</a></li>
               <li>
                 <a
                   class="text-white"
@@ -142,9 +145,11 @@
                   <!-- checkbox .// -->
                 </div>
                 <div class="form-group">
+                  <div class="checkbox">
+                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                     <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
                     <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
+                  </div>
                   <!-- checkbox .// -->
                 </div>
                 <!-- form-group// -->
@@ -206,7 +211,7 @@
                     <input
                       name="cpf"
                       class="form-control"
-                      minlength="11"
+                      minlength="3"
                       maxlength="11"
                       placeholder="999.999.999-99"
                       type="text"
@@ -219,7 +224,7 @@
                       name="celular"
                       class="form-control"
                       placeholder="99 999 99999999"
-                      minlength="14"
+                      minlength="3"
                       maxlength="14"
                       type="text"
                       required
@@ -232,7 +237,7 @@
                     <input
                       name="cep"
                       class="form-control"
-                      minlength="8"
+                      minlength="3"
                       maxlength="8"
                       placeholder="21930150"
                       type="text"
@@ -240,7 +245,7 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label>Endereço</label>
+                    <label>EndereÃ§o</label>
                     <input
                       name="endereco"
                       class="form-control"
@@ -326,291 +331,45 @@
     <!-- ================ End Registrar Modal ================= -->
 
     <!-- ================ start banner Area ================= -->
-    <section class="home-banner-area">
+    <section class="banner-area">
       <div class="container">
-        <div class="row justify-content-center fullscreen align-items-center">
-          <div class="col-lg-5 col-md-8 home-banner-left">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-12 banner-right">
             <h1 class="text-white">
-              Aprenda as melhores tecnologias
+              Comentários
             </h1>
             <p class="mx-auto text-white  mt-20 mb-40">
-              Imagine você dominando as mesmas tecnologias adotadas pelos
-              melhores times do mundo, construindo aplicações de alta
-              performance e se destacando entre os maiores programadores.
+              Conheça um pouco sobre nossos alunos e feedbacks
             </p>
-          </div>
-          <div class="offset-lg-2 col-lg-5 col-md-12 home-banner-right">
-            <img class="img-fluid" src="img/header-img.png" alt="" />
+            <div class="link-nav">
+              <span class="box">
+                <a href="index.jsp">Home </a>
+                <i class="lnr lnr-arrow-right"></i>
+                <a href="http://localhost:8080/LeroLero/ListaComentarios">Comentários</a>
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </section>
     <!-- ================ End banner Area ================= -->
 
-    <!-- ================ Start Feature Area ================= -->
-    <section class="feature-area">
-      <div class="container-fluid">
-        <div class="feature-inner row">
-          <div class="col-lg-2 col-md-6">
-            <div class="feature-item d-flex">
-              <i class="ti-book"></i>
-              <div class="ml-20">
-                <h4>Novas turmas</h4>
-                <p>
-                  A cada dia aumentando oportunidades.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6">
-            <div class="feature-item d-flex">
-              <i class="ti-cup"></i>
-              <div class="ml-20">
-                <h4>Novos Cursos</h4>
-                <p>
-                  Inove, se atualize. O que diferencial é o diferencial.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6">
-            <div class="feature-item d-flex border-right-0">
-              <i class="ti-desktop"></i>
-              <div class="ml-20">
-                <h4>E-Books</h4>
-                <p>
-                  Não há como não chegarmos até você, vem com a gente.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ================ End Feature Area ================= -->
-
-    <!-- ================ Start Popular Course Area ================= -->
-    <section class="popular-course-area section-gap">
-      <div class="container-fluid">
-        <div class="row justify-content-center section-title">
-          <div class="col-lg-12">
-            <h2>
-              Cursos populares <br />
-              Disponíveis agora!
-            </h2>
-            <p>
-              
-            </p>
-          </div>
-        </div>
-        <div class="owl-carousel popuar-course-carusel">
-          <div class="single-popular-course">
-            <div class="thumb">
-              <img
-                class="f-img img-fluid mx-auto"
-                src="img/popular-course/p1.jpg"
-                alt=""
-              />
-            </div>
-            <div class="details">
-              <div class="d-flex justify-content-between mb-20">
-                <p class="name">Programação</p>
-                <p class="value">$150</p>
-              </div>
-              <a href="#">
-                <h4>Aprenda Angular JS</h4>
-              </a>
-              <div class="bottom d-flex mt-15">
-                <ul class="list">
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                </ul>
-                <p class="ml-20">25 Reviews</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="single-popular-course">
-            <div class="thumb">
-              <img
-                class="f-img img-fluid mx-auto"
-                src="img/popular-course/p2.jpg"
-                alt=""
-              />
-            </div>
-            <div class="details">
-              <div class="d-flex justify-content-between mb-20">
-                <p class="name">Programação</p>
-                <p class="value">$150</p>
-              </div>
-              <a href="#">
-                <h4>Aprenda Python</h4>
-              </a>
-              <div class="bottom d-flex mt-15">
-                <ul class="list">
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                </ul>
-                <p class="ml-20">25 Reviews</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="single-popular-course">
-            <div class="thumb">
-              <img
-                class="f-img img-fluid mx-auto"
-                src="img/popular-course/p3.jpg"
-                alt=""
-              />
-            </div>
-            <div class="details">
-              <div class="d-flex justify-content-between mb-20">
-                <p class="name">Programação</p>
-                <p class="value">$150</p>
-              </div>
-              <a href="#">
-                <h4>Aprenda Vue JS</h4>
-              </a>
-              <div class="bottom d-flex mt-15">
-                <ul class="list">
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                </ul>
-                <p class="ml-20">25 Reviews</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="single-popular-course">
-            <div class="thumb">
-              <img
-                class="f-img img-fluid mx-auto"
-                src="img/popular-course/p4.jpg"
-                alt=""
-              />
-            </div>
-            <div class="details">
-              <div class="d-flex justify-content-between mb-20">
-                <p class="name">Programação</p>
-                <p class="value">$150</p>
-              </div>
-              <a href="#">
-                <h4>Aprenda React JS</h4>
-              </a>
-              <div class="bottom d-flex mt-15">
-                <ul class="list">
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </li>
-                </ul>
-                <p class="ml-20">25 Reviews</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ================ End Popular Course Area ================= -->
-
     <!-- ================ Start Testimonials Area ================= -->
     <section class="testimonials-area section-gap">
       <div class="container">
-        <div class="testi-slider owl-carousel" data-slider-id="1">
-          <div class="row align-items-center">
-            <div class="col-lg-5">
-              <div class="item">
-                <div class="testi-item">
-                  <img src="img/quote.png" alt="" />
-                  <div class="mt-40 text">
-                    <p>
-                      Os curso de phyton é muito bom, consegui sair de iniciante
-                      a profissional contratado por uma grande empresa.
-                    </p>
-                  </div>
-                  <h4>Felipe Vila Chã</h4>
-                  <p>Big Data Developer</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="offset-lg-1 col-lg-6">
-              <img src="img/testimonial/t1.jpg" alt="" />
-            </div>
-          </div>
-
-          <div class="row align-items-center">
-            <div class="col-lg-5">
-              <div class="item">
-                <div class="testi-item">
-                  <img src="img/quote.png" alt="" />
-                  <div class="mt-40 text">
-                    <p>
-                      Aprendi tudo o que eu sei sobre javascript aqui, enorme
-                      gratidão a plataforma LeroLero.
-                    </p>
-                  </div>
-                  <h4>Nicholas Ferrer</h4>
-                  <p>Software Developer</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="offset-lg-1 col-lg-6">
-              <img src="img/testimonial/t1.jpg" alt="" />
-            </div>
-          </div>
+        <div class="row align-items-center">
+          <% for (int i = 0; i < ((List<Alunos>) request.getAttribute("comentariosAlunos")).size(); i++){
+              out.println("<div class=\"col-lg-4\">");
+              out.println("<div class=\"card\" style=\"width: 18em;\">");
+              out.println("<img class=\"card-img-top\" src=\"img/testimonial/t1.jpg\" alt=\"Card image cap\"/>");
+              out.println("<div class=\"card-body\">");
+              out.println("<h5 class=\"card-title\">");
+              out.println(((List<Alunos>) request.getAttribute("comentariosAlunos")).get(i).getNome() + " <small> - Aluno</small>");
+              out.println("</h5>");
+              out.println("<p class=\"card-text\">");
+              out.println(((List<Alunos>) request.getAttribute("comentariosAlunos")).get(i).getComentario());
+              out.println("</p></div></div></div>");
+          }%>
         </div>
       </div>
     </section>
@@ -663,6 +422,5 @@
     <script src="js/waypoints.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/main.js"></script>
-            
   </body>
 </html>

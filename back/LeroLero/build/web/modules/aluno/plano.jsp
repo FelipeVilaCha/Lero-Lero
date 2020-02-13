@@ -98,7 +98,7 @@
     </section>
     <!-- ================ End banner Area ================= -->
 
-    <!-- ================ Start Popular Course Area ================= -->
+    <!-- ================ Plano Estudos Area ================= -->
     <section class="popular-course-area section-gap">
       <div class="container-fluid">
         <div class="row justify-content-center section-title">
@@ -131,8 +131,42 @@
               </div>
             </div>
     </section>
-    <!-- ================ End Popular Course Area ================= -->
+    <!-- ================ End Plano Estudos Area ================= -->
+    
+    <!-- ================ Historico Area================= -->
+    <section class="popular-course-area section-gap">
+      <div class="container-fluid">
+        <div class="row justify-content-center section-title">
+          <div class="col-lg-12">
+            <h2>Já finalizados <br /></h2>
+            <p>
+              Esses cursos já foram finalizados.
+            </p>
+          </div>
+        </div>
 
+        <div class="container">
+          <div class="row align-items-center">
+            <% for(int i = 0; i < ((List<PlanoEstudos>) session.getAttribute("historico")).size(); i++){
+                    out.println("<div class=\"col-lg-4\">");
+                    out.println("<div class=\"card\" style=\"width: 18rem;\">");
+                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/p4.jpg\" alt=\"\" />");
+                    out.println("<div class=\"card-body\">");
+                    out.println("<div class=\"d-flex justify-content-between mb-20\">");
+                    out.println("<h5> " + ((List<PlanoEstudos>) session.getAttribute("historico")).get(i).getNome_curso() + " </h5>");
+                    out.println("</div>");
+                    out.println("<p>    Professor: " + ((List<PlanoEstudos>) session.getAttribute("historico")).get(i).getNome_professor() + "</p>");
+                    out.println("<p>    Carga Horária: " + ((List<PlanoEstudos>) session.getAttribute("historico")).get(i).getCarga_horaria() + "</p>");
+                    out.println("<a href=\"http://localhost:8080/LeroLero/MontaPlanoDeEstudos\" class=\"btn btn-primary mt-3\">Comece agora</a>");
+                    out.println("<button type=\"button\" class=\"btn btn-primary mt-3\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-nota=\""+ ((List<PlanoEstudos>) session.getAttribute("historico")).get(i).getNota() +"\">");
+                    out.println("Ver nota</button>");
+                    out.println("</div> </div> </div>");
+            }%>
+                </div>
+              </div>
+            </div>
+    </section>
+    <!-- ================ End Historico Area ================= -->
     <!-- Modal de nota -->
     <div
       class="modal fade"

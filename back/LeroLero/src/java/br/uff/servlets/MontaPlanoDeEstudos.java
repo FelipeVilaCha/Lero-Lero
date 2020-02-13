@@ -39,14 +39,18 @@ public class MontaPlanoDeEstudos extends HttpServlet {
         int userID = (Integer) session.getAttribute("userID");
         
         List<PlanoEstudos> planoEstudos = new ArrayList<>();
+        List<PlanoEstudos> historico = new ArrayList<>();
         
         try {
-            planoEstudos = matriculasDAO.listarPlanoDeEstudos(userID);
+            planoEstudos = matriculasDAO.listarPlanoDeEstudosAtual(userID);
+            historico = matriculasDAO.listarHistorico(userID);
             session.setAttribute("planoEstudos", planoEstudos);
+            session.setAttribute("historico", historico);
             
-            response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/plano.jsp");
         } catch (SQLException | ParseException ex) {
             Logger.getLogger(MontaPlanoDeEstudos.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
+        
+        response.sendRedirect("http://localhost:8080/LeroLero/modules/aluno/plano.jsp");
     }
 }

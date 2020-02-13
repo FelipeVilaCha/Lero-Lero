@@ -35,19 +35,21 @@ public class ProcessaMatricula extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Map<String, String> mensagens = new HashMap<>();
         HttpSession session = request.getSession();
-        int turmasID = Integer.parseInt(request.getParameter("turmaEscolhidaID"));
+        
+        int turmaID = Integer.parseInt(request.getParameter("turmaEscolhidaID"));
+        int cursoID = Integer.parseInt(request.getParameter("cursoEscolhidoID"));
         int userID = (Integer) session.getAttribute("userID");
+        
         Date data_matricula = new Date();
         Double nota = 0.0;
         
-        Matriculas matricula = new Matriculas(turmasID, userID, data_matricula, nota);
+        Matriculas matricula = new Matriculas(turmaID, userID, data_matricula, nota);
         
         boolean existe = false;
         
         try {
-            existe = matriculasDAO.validaMatricula(turmasID, userID);
+            existe = matriculasDAO.validaMatricula(userID, cursoID);
         } catch (SQLException ex) {
             Logger.getLogger(ProcessaMatricula.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,10 +62,7 @@ public class ProcessaMatricula extends HttpServlet {
             }
             
             request.getRequestDispatcher("/MontaPlanoDeEstudos").forward(request, response);
-        } else {
-            mensagens.put("matricula", "Você já está cadastrado nesse curso!");
-            request.setAttribute("mensagens", mensagens);
-            response.sendRedirect("/LeroLero/ViewTurmasDisponiveis");
+        } else
+            request.getRequestDispatcher("/CursosTurmasDisponiveis").forward(request, response);
         }
     }
-}

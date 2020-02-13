@@ -1,5 +1,6 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="pt" class="no-js">
   <head>
     <!-- Mobile Specific Meta -->
     <meta
@@ -46,7 +47,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -66,36 +67,11 @@
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">Sobre</a></li>
-              <li><a href="courses.html">Cursos</a></li>
-              <li><a href="instructors.html">Instrutores</a></li>
-              <li><a href="coments.html">Comentários</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                  Tabelas
-                </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="tables/course-form.html"
-                    >Cursos</a
-                  >
-                  <a class="dropdown-item" href="tables/instructors-form.html"
-                    >Instrutores</a
-                  >
-                  <a class="dropdown-item" href="tables/matriculas-form.html"
-                    >Matriculas</a
-                  >
-                  <a class="dropdown-item" href="tables/turmas-form.html"
-                    >Turmas</a
-                  >
-                  <a class="dropdown-item" href="tables/alunos-form.html"
-                    >Alunos</a
-                  >
-                  <a class="dropdown-item" href="tables/admin-form.html"
-                    >Admin</a
-                  >
-                </div>
-              </li>
+              <li><a href="index.jsp">Home</a></li>
+              <li><a href="about.jsp">Sobre</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListagemCursosDisponiveis">Cursos</a></li>
+              <li><a href="instructors.jsp">Instrutores</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaComentarios">Comentários</a></li>
               <li>
                 <a
                   class="text-white"
@@ -167,11 +143,9 @@
                   <!-- checkbox .// -->
                 </div>
                 <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                     <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
                     <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
-                  </div>
+                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                   <!-- checkbox .// -->
                 </div>
                 <!-- form-group// -->
@@ -233,7 +207,7 @@
                     <input
                       name="cpf"
                       class="form-control"
-                      minlength="3"
+                      minlength="11"
                       maxlength="11"
                       placeholder="999.999.999-99"
                       type="text"
@@ -246,7 +220,7 @@
                       name="celular"
                       class="form-control"
                       placeholder="99 999 99999999"
-                      minlength="3"
+                      minlength="14"
                       maxlength="14"
                       type="text"
                       required
@@ -259,7 +233,7 @@
                     <input
                       name="cep"
                       class="form-control"
-                      minlength="3"
+                      minlength="8"
                       maxlength="8"
                       placeholder="21930150"
                       type="text"
@@ -353,57 +327,68 @@
     <!-- ================ End Registrar Modal ================= -->
 
     <!-- ================ start banner Area ================= -->
-    <section class="banner-area">
+    <section class="home-banner-area">
       <div class="container">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-lg-12 banner-right">
+        <div class="row justify-content-center fullscreen align-items-center">
+          <div class="col-lg-5 col-md-8 home-banner-left">
             <h1 class="text-white">
-              Sobre nós
+              Aprenda as melhores tecnologias
             </h1>
             <p class="mx-auto text-white  mt-20 mb-40">
-              Melhorando vidas por meio do aprendizado
+              Imagine você dominando as mesmas tecnologias adotadas pelos
+              melhores times do mundo, construindo aplicações de alta
+              performance e se destacando entre os maiores programadores.
             </p>
-            <div class="link-nav">
-              <span class="box">
-                <a href="index.html">Home </a>
-                <i class="lnr lnr-arrow-right"></i>
-                <a href="about.html">Sobre nós </a>
-              </span>
-            </div>
+          </div>
+          <div class="offset-lg-2 col-lg-5 col-md-12 home-banner-right">
+            <img class="img-fluid" src="img/header-img.png" alt="" />
           </div>
         </div>
       </div>
     </section>
     <!-- ================ End banner Area ================= -->
 
-    <!-- ================- Start About Area ================= -->
-    <section class="about-area section-gap">
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-lg-5 col-md-6 about-left">
-            <img class="img-fluid" src="img/about-img.png" alt="" />
+    <!-- ================ Start Feature Area ================= -->
+    <section class="feature-area">
+      <div class="container-fluid">
+        <div class="feature-inner row">
+          <div class="col-lg-2 col-md-6">
+            <div class="feature-item d-flex">
+              <i class="ti-book"></i>
+              <div class="ml-20">
+                <h4>Novas turmas</h4>
+                <p>
+                  A cada dia aumentando oportunidades.
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="offset-lg-1 col-lg-5 col-md-12 about-right">
-            <h1>
-              Mais de <br />
-              2500 cursos, <br />
-              100 mil alunos
-            </h1>
-            <div>
-              <p>
-                A LeroLero é o marketplace líder global para ensino e
-                aprendizado, conectando alunos de qualquer lugar aos melhores
-                instrutores ao redor do mundo. Os funcionários da LeroLero vivem
-                nossos valores todos os dias também como alunos e professores.
-                Nossa cultura é diversificada, inclusiva e comprometida com o
-                desenvolvimento pessoal e profissional.
-              </p>
+          <div class="col-lg-2 col-md-6">
+            <div class="feature-item d-flex">
+              <i class="ti-cup"></i>
+              <div class="ml-20">
+                <h4>Novos Cursos</h4>
+                <p>
+                  Inove, se atualize. O que diferencia é o diferencial.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <div class="feature-item d-flex border-right-0">
+              <i class="ti-desktop"></i>
+              <div class="ml-20">
+                <h4>E-Books</h4>
+                <p>
+                  Não há como não chegarmos até você, vem com a gente.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ================- End About Area ================= -->
+    <!-- ================ End Feature Area ================= -->
 
     <!-- ================ start footer Area ================= -->
     <footer class="footer-area section-gap">
@@ -452,5 +437,6 @@
     <script src="js/waypoints.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/main.js"></script>
+            
   </body>
 </html>
