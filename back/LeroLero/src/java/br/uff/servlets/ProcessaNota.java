@@ -2,6 +2,7 @@ package br.uff.servlets;
 
 import br.uff.dao.Conexao;
 import br.uff.dao.InstrutoresDAO;
+import br.uff.dao.MatriculasDAO;
 import br.uff.model.Turmas;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,12 +22,14 @@ import javax.servlet.http.HttpSession;
 public class ProcessaNota extends HttpServlet {
     
     private InstrutoresDAO instrutorDAO;
+    private MatriculasDAO matriculasDAO;
     private Conexao conexaoDB;
     
     @Override
     public void init() {
         conexaoDB = new Conexao();
         instrutorDAO = new InstrutoresDAO(conexaoDB);
+        matriculasDAO = new MatriculasDAO(conexaoDB);
     }
  
     @Override
@@ -34,22 +37,23 @@ public class ProcessaNota extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int userID = (Integer) session.getAttribute("userID");
-        Turmas turma = (Turmas) session.getAttribute("turmaEscolhida");
+        
+        int turmaEscolhidaID = Integer.parseInt(request.getParameter("turmaEscolhidaID"));;
         int alunoID =  Integer.parseInt(request.getParameter("alunoID"));
-        Double nota = Double.parseDouble(request.getParameter("NotaAluno"));
-        Map<String, String> mensagens = new HashMap<>();
+        Double nota = Double.parseDouble(request.getParameter("nota"));
+        
+        boolean updateNota = false;
         
         try {
-            boolean updateNota = instrutorDAO.atribuiNota(alunoID, turma.getId(), nota);
-            
-            if(updateNota){
-                request.getRequestDispatcher("/ViewAtribuiNota").forward(request, response);
-            } else {
-                request.getRequestDispatcher("/ViewAtribuiNota").forward(request, response);
-            }
+            updateNota = instrutorDAO.atribuiNota(alunoID, turmaEscolhidaID, nota);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+            Logger.getLogger(ProcessaNota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(updateNota){
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/instrutor/turmas.jsp");
+        } else {
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/instrutor/turmas.jsp");
         }
     }
 }

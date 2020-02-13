@@ -52,7 +52,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="homeInstrutor.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -76,6 +76,7 @@
               <li><a href="turmas.jsp">Turmas</a></li>
               <li><a href="remuneracao.jsp">Remuneração</a></li>
               <li><a href="infoPessoal.jsp">Informações pessoais</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -119,7 +120,6 @@
                         if(((List<Turmas>) session.getAttribute("turmasInstrutor")).get(i).getCursos_id() == ((List<Cursos>) session.getAttribute("cursosInstrutor")).get(j).getId()){
                             out.println("<div class=\"col-lg-4\">");
                             out.println("<div class=\"card\" style=\"width: 18rem;\">");
-                            out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/p4.jpg alt=\"\"/>");
                             out.println("<div class=\"card-body\">");
                             out.println("<div class=\"d-flex justify-content-between mb-20\">");
                             out.println("<h5> " + ((List<Cursos>) session.getAttribute("cursosInstrutor")).get(j).getNome() + " </h5>");
@@ -157,7 +157,7 @@
                   <div class="form-group">
                   <label> ID Turma </label>
                   <input
-                    name="id_turma"
+                    name="turmaEscolhidaID"
                     class="form-control"
                     placeholder="00"
                     type="text"
@@ -167,7 +167,7 @@
                 <div class="form-group">
                   <label> ID Aluno </label>
                   <input
-                    name="id_aluno"
+                    name="alunoID"
                     class="form-control"
                     placeholder="00"
                     type="text"
@@ -178,6 +178,7 @@
                 <div class="form-group">
                   <label> Nota </label>
                   <input
+                    name="nota"
                     class="form-control"
                     placeholder="0.0"
                     minlength="3"
@@ -187,9 +188,7 @@
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">
-                    Entrar
-                  </button>
+                  <input type="submit" class="btn btn-primary btn-block" value="Entrar">
                 </div>
                 <!-- form-group// -->
               </form>
@@ -247,6 +246,15 @@
     <script src="../../js/waypoints.min.js"></script>
     <script src="../../js/jquery.nice-select.min.js"></script>
     <script src="../../js/main.js"></script>
+    <script>
+        $(function () {
+            $('#nota').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var nota = button.data('nota'); // Extract info from data-* attributes
+            var modal = $(this);
+            modal.find('#nota').val(nota);
+            });
+        });
     </script>
   </body>
 </html>

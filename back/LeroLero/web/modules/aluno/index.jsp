@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : Feb 11, 2020, 12:30:38 PM
-    Author     : FelipeVilaChadosSant
---%>
-
 <%@page import="br.uff.model.Alunos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -78,6 +72,7 @@
               <li><a href="http://localhost:8080/LeroLero/MontaPlanoDeEstudos">Plano atual</a></li>
               <li><a href="http://localhost:8080/LeroLero/CursosTurmasDisponiveis">Cursos Disponíveis</a></li>
               <li><a href="info-pessoal.jsp">Informações pessoais</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>

@@ -35,7 +35,7 @@ public class LoginFilter implements Filter {
             String valorParametro = request.getParameter(nomeParametro);
             String homePage = "";
 
-            if("permissao".equals(nomeParametro)) { 
+            if("permissao".equals(nomeParametro)) {
                 switch(valorParametro){
                         case "alunos":
                             homePage = "/LeroLero/ControllerAluno";

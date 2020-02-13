@@ -164,8 +164,8 @@ public class InstrutoresDAO {
     }
     
     public boolean atribuiNota(int alunoID, int turmaID, Double nota) throws SQLException {
-        String sql = "UPDATE escola.matriculas SET nota = ?";
-        sql += " WHERE alunos_id = ? and turmas_id = ?";
+        String sql = "UPDATE escola.matriculas SET nota = ? WHERE alunos_id = ?" + 
+                " and turmas_id = ?";
         
         Connection db = conexaoDB.conectar();
          

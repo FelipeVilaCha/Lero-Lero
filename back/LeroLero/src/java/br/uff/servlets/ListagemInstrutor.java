@@ -10,9 +10,13 @@ import br.uff.dao.CursosDAO;
 import br.uff.dao.InstrutoresDAO;
 import br.uff.dao.MatriculasDAO;
 import br.uff.dao.TurmasDAO;
-import br.uff.model.Instrutores;
+import br.uff.model.Cursos;
+import br.uff.model.Matriculas;
+import br.uff.model.Turmas;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -25,7 +29,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author FelipeVilaChadosSant
  */
-public class ControllerInstrutores extends HttpServlet {
+public class ListagemInstrutor extends HttpServlet {
     
     private Conexao conexaoDB;
     private InstrutoresDAO instrutoresDAO;
@@ -49,16 +53,18 @@ public class ControllerInstrutores extends HttpServlet {
         
         int userID = (Integer) session.getAttribute("userID");
         
-        Instrutores instrutorLogado = null;
-        
         try {
-            instrutorLogado = instrutoresDAO.getInstrutor(userID);
-            session.setAttribute("instrutorLogado", instrutorLogado);
-        } catch (SQLException ex) {
-            Logger.getLogger(ControllerAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+            List<Turmas> turmasInstrutor = turmasDAO.listarTurmasPorInstrutor(userID);
+            List<Cursos> cursosInstrutor = cursosDAO.listarCursosPorInstrutor(userID);
+            List<Matriculas> matriculasInstrutor = matriculasDAO.listarMatriculasPorTurmaDeInstrutor(userID);
+            
+            session.setAttribute("turmasInstrutor", turmasInstrutor);
+            session.setAttribute("cursosInstrutor", cursosInstrutor);
+            session.setAttribute("matriculasInstrutor", matriculasInstrutor);
+        } catch (SQLException | ParseException ex) {
+            Logger.getLogger(ListagemInstrutor.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
-        session.setAttribute("instrutorLogado", instrutorLogado);
-        request.getRequestDispatcher("/ListagemInstrutor").forward(request, response);
+        response.sendRedirect("http://localhost:8080/LeroLero/modules/instrutor/index.jsp");
     }
 }

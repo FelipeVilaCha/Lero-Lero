@@ -1,3 +1,5 @@
+<%@page import="br.uff.model.Alunos"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
   <head>
@@ -46,7 +48,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -66,8 +68,9 @@
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav">
-              <li><a href="../index.html">Painel Administrativo</a></li>
-              <li><a href="../regristar.html">Novos Registros</a></li>
+              <li><a href="../index.jsp">Painel Administrativo</a></li>
+              <li><a href="../registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -110,13 +113,13 @@
             </div>
             <table id="mytable" class="table table-bordred table-striped">
               <thead>
-                <th><input type="checkbox" id="checkall" /></th>
+                <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>CPF</th>
                 <th>Celular</th>
                 <th>CEP</th>
-                <th>EndereÃ§o</th>
+                <th>Endereço</th>
                 <th>Cidade</th>
                 <th>Bairro</th>
                 <th>Editar</th>
@@ -124,83 +127,22 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="checkbox" class="checkthis" /></td>
-                  <td>Nicholas Ferrer</td>
-                  <td>nicholasferrer@gmail.com</td>
-                  <td>19220329322</td>
-                  <td>21933442233</td>
-                  <td>+21930138</td>
-                  <td>Rua Maldonado</td>
-                  <td>Rio de Janeiro</td>
-                  <td>Rio de Janeiro</td>
-                  <td>
-                    <p data-placement="top" data-toggle="tooltip" title="Edit">
-                      <button
-                        class="btn btn-primary btn-xs"
-                        data-title="Edit"
-                        data-toggle="modal"
-                        data-target="#edit"
-                      >
-                        Editar
-                      </button>
-                    </p>
-                  </td>
-                  <td>
-                    <p
-                      data-placement="top"
-                      data-toggle="tooltip"
-                      title="Delete"
-                    >
-                      <button
-                        class="btn btn-danger btn-xs"
-                        data-title="Delete"
-                        data-toggle="modal"
-                        data-target="#delete"
-                      >
-                        Excluir
-                      </button>
-                    </p>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td><input type="checkbox" class="checkthis" /></td>
-                  <td>Nicholas Ferrer</td>
-                  <td>nicholasferrer@gmail.com</td>
-                  <td>19220329322</td>
-                  <td>21933442233</td>
-                  <td>+21930138</td>
-                  <td>Rua Maldonado</td>
-                  <td>Rio de Janeiro</td>
-                  <td>Rio de Janeiro</td>
-                  <td>
-                    <p data-placement="top" data-toggle="tooltip" title="Edit">
-                      <button
-                        class="btn btn-primary btn-xs"
-                        data-title="Edit"
-                        data-toggle="modal"
-                        data-target="#edit"
-                      >
-                        Editar
-                      </button>
-                    </p>
-                  </td>
-                  <td>
-                    <p
-                      data-placement="top"
-                      data-toggle="tooltip"
-                      title="Delete"
-                    >
-                      <button
-                        class="btn btn-danger btn-xs"
-                        data-title="Delete"
-                        data-toggle="modal"
-                        data-target="#delete"
-                      >
-                        Excluir
-                      </button>
-                    </p>
-                  </td>
+                  <% for (int i = 0; i < ((List<Alunos>) session.getAttribute("listaAlunos")).size(); i++){
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getId() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getNome() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getCpf() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getCelular() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getCep() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getEndereco() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getCidade() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getBairro() + " </td>");
+                      out.println("<td> <p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\">");
+                      out.println("<button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit\">Editar</button>");
+                      out.println("</p></td>");
+                      out.println("<td> <p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Delete\">");
+                      out.println("<button class=\"btn btn-danger btn-xs\" data-title=\"Delete\" data-toggle=\"modal\" data-target=\"#delete\" data-id=\"" + ((List<Alunos>) session.getAttribute("listaAlunos")).get(i).getId() + "\">Excluir</button>");
+                      out.println("</p></td>");
+                  }%>
                 </tr>
               </tbody>
             </table>
@@ -237,12 +179,12 @@
             </h4>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="http://localhost:8080/LeroLero/AdicionaAluno" method="POST">
               <div class="d-flex justify-content-between">
                 <div class="form-group">
                   <label>Nome</label>
                   <input
-                    name=""
+                    name="nome"
                     class="form-control"
                     minlength="3"
                     placeholder="Nome"
@@ -253,7 +195,7 @@
                 <div class="form-group">
                   <label>E-mail</label>
                   <input
-                    name=""
+                    name="email"
                     class="form-control"
                     placeholder="Email"
                     type="email"
@@ -265,9 +207,9 @@
                 <div class="form-group">
                   <label>CPF</label>
                   <input
-                    name=""
+                    name="cpf"
                     class="form-control"
-                    minlength="3"
+                    minlength="11"
                     maxlength="11"
                     placeholder="999.999.999-99"
                     type="text"
@@ -277,11 +219,11 @@
                 <div class="form-group">
                   <label>Celular</label>
                   <input
-                    name=""
+                    name="celular"
                     class="form-control"
-                    placeholder="99 99999999"
-                    minlength="3"
-                    maxlength="11"
+                    placeholder="99 999 99999999"
+                    minlength="14"
+                    maxlength="14"
                     type="text"
                     required
                   />
@@ -291,7 +233,7 @@
                 <div class="form-group">
                   <label>CEP</label>
                   <input
-                    name=""
+                    name="cep"
                     class="form-control"
                     minlength="3"
                     maxlength="8"
@@ -301,11 +243,11 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label>EndereÃ§o</label>
+                  <label>Endereço</label>
                   <input
-                    name=""
+                    name="endereco"
                     class="form-control"
-                    placeholder="Estrada do GaleÃ£o, 10"
+                    placeholder="Estrada do Galeão, 10"
                     type="text"
                     minlength="3"
                     required
@@ -316,7 +258,7 @@
                 <div class="form-group">
                   <label>Cidade</label>
                   <input
-                    name=""
+                    name="cidade"
                     class="form-control"
                     placeholder="Rio de Janeiro"
                     type="text"
@@ -327,7 +269,7 @@
                 <div class="form-group">
                   <label>Bairro</label>
                   <input
-                    name=""
+                    name="bairro"
                     class="form-control"
                     placeholder="Rio de Janeiro"
                     type="text"
@@ -338,8 +280,20 @@
               </div>
               <!-- form-group// -->
               <div class="form-group">
+                <label>Login</label>
+                <input
+                  nome="login"
+                  class="form-control"
+                  placeholder="login"
+                  type="text"
+                  minlength="3"
+                  required
+                />
+              </div>
+              <div class="form-group">
                 <label>Senha</label>
                 <input
+                  nome="senha"
                   class="form-control"
                   placeholder="******"
                   type="password"
@@ -399,12 +353,12 @@
             </h4>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="http://localhost:8080/LeroLero/AtualizaAluno" method="POST">
               <div class="d-flex justify-content-between">
                 <div class="form-group">
                   <label>Nome</label>
                   <input
-                    name=""
+                    name="nome"
                     class="form-control"
                     minlength="3"
                     placeholder="Nome"
@@ -415,7 +369,7 @@
                 <div class="form-group">
                   <label>E-mail</label>
                   <input
-                    name=""
+                    name="email"
                     class="form-control"
                     placeholder="Email"
                     type="email"
@@ -427,7 +381,7 @@
                 <div class="form-group">
                   <label>CPF</label>
                   <input
-                    name=""
+                    name="cpf"
                     class="form-control"
                     minlength="3"
                     maxlength="11"
@@ -439,11 +393,11 @@
                 <div class="form-group">
                   <label>Celular</label>
                   <input
-                    name=""
+                    name="celular"
                     class="form-control"
-                    placeholder="99 99999999"
-                    minlength="3"
-                    maxlength="11"
+                    placeholder="99 999 99999999"
+                    minlength="14"
+                    maxlength="14"
                     type="text"
                     required
                   />
@@ -453,7 +407,7 @@
                 <div class="form-group">
                   <label>CEP</label>
                   <input
-                    name=""
+                    name="cep"
                     class="form-control"
                     minlength="3"
                     maxlength="8"
@@ -463,9 +417,9 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label>EndereÃ§o</label>
+                  <label>Endereço</label>
                   <input
-                    name=""
+                    name="endereco"
                     class="form-control"
                     placeholder="Estrada do GaleÃ£o, 10"
                     type="text"
@@ -478,7 +432,7 @@
                 <div class="form-group">
                   <label>Cidade</label>
                   <input
-                    name=""
+                    name="cidade"
                     class="form-control"
                     placeholder="Rio de Janeiro"
                     type="text"
@@ -489,7 +443,7 @@
                 <div class="form-group">
                   <label>Bairro</label>
                   <input
-                    name=""
+                    name="bairro"
                     class="form-control"
                     placeholder="Rio de Janeiro"
                     type="text"
@@ -500,8 +454,20 @@
               </div>
               <!-- form-group// -->
               <div class="form-group">
+                <label>Login</label>
+                <input
+                  nome="login"
+                  class="form-control"
+                  placeholder="login"
+                  type="text"
+                  minlength="3"
+                  required
+                />
+              </div>
+              <div class="form-group">
                 <label>Senha</label>
                 <input
+                  nome="senha"
                   class="form-control"
                   placeholder="******"
                   type="password"
@@ -562,17 +528,19 @@
           </div>
           <div class="modal-body">
             <div class="alert alert-danger">
-              <span class="glyphicon glyphicon-warning-sign"></span> VocÃª tem
+              <span class="glyphicon glyphicon-warning-sign"></span> Você tem
               certeza que deseja excluir?
             </div>
           </div>
           <div class="modal-footer ">
-            <button type="button" class="btn btn-success">
+            <form action="http://localhost:8080/LeroLero/DeletaAluno" method="POST">
+                <input type="number" class="form-control" name="alunoID" id="id" readonly >
+            <input type="submit" class="btn btn-success">
               <span class="glyphicon glyphicon-ok-sign"></span> Yes
-            </button>
             <button type="button" class="btn btn-default" data-dismiss="modal">
               <span class="glyphicon glyphicon-remove"></span> No
             </button>
+            </form>
           </div>
         </div>
         <!-- /.modal-content -->
@@ -645,5 +613,15 @@
     <script src="../../../js/waypoints.min.js"></script>
     <script src="../../../js/jquery.nice-select.min.js"></script>
     <script src="../../../js/main.js"></script>
+    <script>
+        $(function () {
+            $('#delete').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var id = button.data('id'); // Extract info from data-* attributes
+            var modal = $(this);
+            modal.find('#id').val(id);
+            });
+        });
+    </script>
   </body>
 </html>

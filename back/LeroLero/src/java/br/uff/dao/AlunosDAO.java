@@ -83,13 +83,13 @@ public class AlunosDAO {
         return listaAlunos;
     }
      
-    public boolean deletaAluno(Alunos aluno) throws SQLException {
-        String sql = "DELETE FROM alunos where id = ?";
+    public boolean deletaAluno(int alunoID) throws SQLException {
+        String sql = "DELETE FROM escola.alunos where id = ?";
          
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
-        comando.setInt(1, aluno.getId());
+        comando.setInt(1, alunoID);
          
         boolean registroDeletado = comando.executeUpdate() > 0;
         comando.close();

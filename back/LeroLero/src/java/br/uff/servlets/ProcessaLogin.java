@@ -28,19 +28,7 @@ public class ProcessaLogin extends HttpServlet {
         public void init() {
             conexaoDB = new Conexao();
             login = new LoginDAO(conexaoDB);
-        }
-        
-        @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            HttpSession session = request.getSession();
-
-            if(request.getParameter("logout") != null){
-                logout(session);
-                url = "/index.html";
-            }
-
-            request.getRequestDispatcher(url).forward(request, response);
-	}
+        }        
 
         @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

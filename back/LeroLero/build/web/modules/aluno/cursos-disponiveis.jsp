@@ -74,6 +74,7 @@
               <li><a href="http://localhost:8080/LeroLero/MontaPlanoDeEstudos">Plano atual</a></li>
               <li><a href="http://localhost:8080/LeroLero/CursosTurmasDisponiveis">Cursos Disponíveis</a></li>
               <li><a href="info-pessoal.jsp">Informações Pessoais</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>

@@ -97,7 +97,7 @@ public class AdministradorDAO {
      
     public Administrador getAdmin(int id) throws SQLException {
         Administrador admin = null;
-        String sql = "SELECT * FROM administrador WHERE id = ?";
+        String sql = "SELECT * FROM escola.administrador WHERE id = ?";
          
         Connection db = conexaoDB.conectar();
          
@@ -108,10 +108,10 @@ public class AdministradorDAO {
          
         if (resultado.next()) {
             String nome = resultado.getString("nome");
-            String email = resultado.getString("email");
+            String login = resultado.getString("login");
             String senha = resultado.getString("senha");
              
-            admin = new Administrador(id, nome, email, senha);
+            admin = new Administrador(id, nome, login, senha);
         }
          
         resultado.close();

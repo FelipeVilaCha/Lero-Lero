@@ -73,6 +73,7 @@
               <li><a href="http://localhost:8080/LeroLero/MontaPlanoDeEstudos">Plano atual</a></li>
               <li><a href="http://localhost:8080/LeroLero/CursosTurmasDisponiveis">Cursos Disponíveis</a></li>
               <li><a href="info-pessoal.jsp">Informações pessoais</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -162,7 +163,7 @@
                     <div class="form-group">
                         <label> Avaliação do curso </label>
                         <form action="http://localhost:8080/LeroLero/ProcessaComentarios" method="POST">
-                        <input type="text" class="form-control" rows="2" id="comment" name="comentario" placeholder="Aprendi tudo o que eu sei sobre javascript aqui, enorme gratidão a plataforma LeroLero." >
+                            <input type="text" class="form-control" rows="2" id="comment" name="comentario" placeholder="Aprendi tudo o que eu sei sobre javascript aqui, enorme gratidão a plataforma LeroLero." >
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" > Fechar </button>

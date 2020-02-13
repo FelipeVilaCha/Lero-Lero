@@ -100,6 +100,26 @@
         <servlet-name>ProcessaLogin</servlet-name>
         <servlet-class>br.uff.servlets.ProcessaLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListagemInstrutor</servlet-name>
+        <servlet-class>br.uff.servlets.ListagemInstrutor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaAlunos</servlet-name>
+        <servlet-class>br.uff.servlets.ListaAlunos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdicionaAluno</servlet-name>
+        <servlet-class>br.uff.servlets.AdicionaAluno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizaAluno</servlet-name>
+        <servlet-class>br.uff.servlets.AtualizaAluno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletaAluno</servlet-name>
+        <servlet-class>br.uff.servlets.DeletaAluno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraAluno</servlet-name>
         <url-pattern>/CadastraAluno</url-pattern>
@@ -191,6 +211,26 @@
     <servlet-mapping>
         <servlet-name>ProcessaLogin</servlet-name>
         <url-pattern>/ProcessaLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListagemInstrutor</servlet-name>
+        <url-pattern>/ListagemInstrutor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaAlunos</servlet-name>
+        <url-pattern>/ListaAlunos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaAluno</servlet-name>
+        <url-pattern>/AdicionaAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaAluno</servlet-name>
+        <url-pattern>/AtualizaAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletaAluno</servlet-name>
+        <url-pattern>/DeletaAluno</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

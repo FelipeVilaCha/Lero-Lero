@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
   <head>
@@ -46,7 +47,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -68,6 +69,7 @@
             <ul class="navbar-nav">
               <li><a href="index.jsp">Painel Administrativo</a></li>
               <li><a href="registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -107,7 +109,7 @@
                   <p class="card-text">
                     Lista, inclui, altera e exclui dados dos alunos no sistema.
                   </p>
-                  <a href="tables/alunos-table.html" class="btn btn-dark"
+                  <a href="http://localhost:8080/LeroLero/ListaAlunos" class="btn btn-dark"
                     >Mais informações</a
                   >
                 </div>
@@ -121,7 +123,7 @@
                     Lista, inclui, altera e exclui dados dos intrutores no
                     sistema.
                   </p>
-                  <a href="tables/instrutor-table.html" class="btn btn-dark"
+                  <a href="tables/instrutor-table.jsp" class="btn btn-dark"
                     >Mais informações</a
                   >
                 </div>
@@ -134,7 +136,7 @@
                   <p class="card-text">
                     Lista, inclui, altera e exclui dados dos cursos no sistema.
                   </p>
-                  <a href="tables/cursos-table.html" class="btn btn-dark"
+                  <a href="tables/cursos-table.jsp" class="btn btn-dark"
                     >Mais informações</a
                   >
                 </div>
@@ -147,7 +149,7 @@
                   <p class="card-text">
                     Lista, inclui, altera e exclui dados dos turmas no sistema.
                   </p>
-                  <a href="tables/turmas-table.html" class="btn btn-dark"
+                  <a href="tables/turmas-table.jsp" class="btn btn-dark"
                     >Mais informações</a
                   >
                 </div>
@@ -161,7 +163,7 @@
                     Lista todos os alunos de um curso/turma e suas respectivas
                     notas.
                   </p>
-                  <a href="tables/alunoCursos-table.html" class="btn btn-dark"
+                  <a href="tables/alunoCursos-table.jsp" class="btn btn-dark"
                     >Mais informações</a
                   >
                 </div>
@@ -176,7 +178,7 @@
                     valor total que irá receber.
                   </p>
                   <a
-                    href="tables/cursoInstrutores-table.html"
+                    href="tables/cursoInstrutores-table.jsp"
                     class="btn btn-dark"
                     >Mais informações</a
                   >

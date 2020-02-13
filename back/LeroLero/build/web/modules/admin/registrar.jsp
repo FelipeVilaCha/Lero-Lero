@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
   <head>
@@ -68,6 +69,7 @@
             <ul class="navbar-nav">
               <li><a href="index.jsp">Painel Administrativo</a></li>
               <li><a href="registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -108,7 +110,7 @@
                 <th>CPF</th>
                 <th>Celular</th>
                 <th>CEP</th>
-                <th>Endereço</th>
+                <th>EndereÃ§o</th>
                 <th>Cidade</th>
                 <th>Bairro</th>
                 <th>Aceitar</th>

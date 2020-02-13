@@ -171,9 +171,8 @@ public class MatriculasDAO {
     
     public boolean validaMatricula(int turmas_id, int user_id) throws SQLException {
         boolean status;
-        String sql = "";
         
-        sql = "SELECT * FROM escola.matriculas WHERE turmas_id = ? and alunos_id = ?";
+        String sql = "SELECT * FROM escola.matriculas WHERE turmas_id = ? and alunos_id = ?";
          
         Connection db = conexaoDB.conectar();
          
@@ -195,7 +194,7 @@ public class MatriculasDAO {
     public List<Matriculas> listarMatriculasPorTurmaDeInstrutor(int instrutorID) throws SQLException, ParseException {
         List<Matriculas> listaMatriculas = new ArrayList<>();
          
-        String sql = "SELECT id, turmas_id, alunos_id, data_matricula, nota "
+        String sql = "SELECT m.id, m.turmas_id, m.alunos_id, m.data_matricula, m.nota "
                    + "FROM escola.matriculas m, turmas t "
                    + "WHERE CURDATE() BETWEEN t.data_inicio and t.data_final and t.id = m.turmas_id "
                    + "AND t.instrutores_id = " + instrutorID;

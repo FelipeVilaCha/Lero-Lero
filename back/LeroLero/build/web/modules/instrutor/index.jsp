@@ -48,7 +48,7 @@
     <header class="default-header">
       <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-          <a class="navbar-brand text-white" href="homeInstrutor.html">
+          <a class="navbar-brand text-white" href="index.jsp">
             LeroLero
           </a>
           <button
@@ -72,6 +72,7 @@
               <li><a href="turmas.jsp">Turmas</a></li>
               <li><a href="remuneracao.jsp">Remuneração</a></li>
               <li><a href="infoPessoal.jsp">Informações pessoais</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>

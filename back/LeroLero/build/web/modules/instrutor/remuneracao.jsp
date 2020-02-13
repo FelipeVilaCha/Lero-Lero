@@ -71,9 +71,10 @@
           >
             <ul class="navbar-nav">
               <li><a href="index.jsp">Home</a></li>
-              <li><a href="http://localhost:8080/LeroLero/ListagensPorInstrutor">Turmas</a></li>
-              <li><a href="http://localhost:8080/LeroLero/ListagensPorInstrutor">Remuneração</a></li>
+              <li><a href="turmas.jsp">Turmas</a></li>
+              <li><a href="remuneracao.jsp">Remuneração</a></li>
               <li><a href="infoPessoal.jsp">Informações pessoais</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -133,10 +134,9 @@
                                     out.println("<tr>");
                                     out.println("<th scope=\"row\"> "+ contRow + " </th>");
                                     out.println("<td> " + ((List<Cursos>)session.getAttribute("cursosInstrutor")).get(i).getNome() + " </td>");
-                                    out.println("<td> " + ((List<Turmas>)session.getAttribute("turmasInstrutor")).get(j) + " </td>");
-                                    out.println("<td> " + ((List<Turmas>)session.getAttribute("turmasInstrutor")).get(j) + " </td>");
+                                    out.println("<td> " + ((List<Turmas>)session.getAttribute("turmasInstrutor")).get(j).getId() + " </td>");
                                     out.println("<td> " + ((List<Turmas>)session.getAttribute("turmasInstrutor")).get(j).getCarga_horaria() + "h </td>");
-                                    out.println("<td> R$" + ((Instrutores)session.getAttribute("instrutorLogado")).getValor_hora() + " </td>");
+                                    out.println("<td> R$" + ((Instrutores) session.getAttribute("instrutorLogado")).getValor_hora() + " </td>");
                                     out.println("<td> R$" + ((Instrutores)session.getAttribute("instrutorLogado")).getValor_hora() * ((List<Cursos>)session.getAttribute("cursosInstrutor")).get(i).getCarga_horaria() + " </td>");
                                     out.println("</tr>");
                                 }

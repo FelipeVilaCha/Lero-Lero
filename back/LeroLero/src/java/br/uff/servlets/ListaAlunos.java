@@ -1,12 +1,19 @@
 package br.uff.servlets;
 
-import br.uff.dao.AdministradorDAO;
 import br.uff.dao.AlunosDAO;
 import br.uff.dao.Conexao;
-import br.uff.model.Administrador;
+import br.uff.dao.CursosDAO;
+import br.uff.dao.InstrutoresDAO;
+import br.uff.dao.MatriculasDAO;
+import br.uff.dao.TurmasDAO;
 import br.uff.model.Alunos;
+import br.uff.model.Cursos;
+import br.uff.model.Matriculas;
+import br.uff.model.Turmas;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,32 +26,30 @@ import javax.servlet.http.HttpSession;
  *
  * @author FelipeVilaChadosSant
  */
-public class ControllerAdmin extends HttpServlet {
+public class ListaAlunos extends HttpServlet {
     
-    private AdministradorDAO adminDAO;
     private Conexao conexaoDB;
+    private AlunosDAO alunosDAO;
     
     @Override
     public void init() {
         conexaoDB = new Conexao();
-        adminDAO = new AdministradorDAO(conexaoDB);    
+        alunosDAO = new AlunosDAO(conexaoDB);
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        int userID = (Integer) session.getAttribute("userID");
         
-        Administrador adminLogado = null;
+        HttpSession session = request.getSession();
         
         try {
-            adminLogado = adminDAO.getAdmin(userID);
-            session.setAttribute("adminLogadoLogado", adminLogado);
+            List<Alunos> listaAlunos = alunosDAO.listarAlunos();
+            session.setAttribute("listaAlunos", listaAlunos);
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListagemInstrutor.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
-        response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/index.jsp");
+        response.sendRedirect("http://http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
     }
 }
