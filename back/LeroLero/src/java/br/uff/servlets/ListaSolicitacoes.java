@@ -2,17 +2,9 @@ package br.uff.servlets;
 
 import br.uff.dao.AlunosDAO;
 import br.uff.dao.Conexao;
-import br.uff.dao.CursosDAO;
-import br.uff.dao.InstrutoresDAO;
-import br.uff.dao.MatriculasDAO;
-import br.uff.dao.TurmasDAO;
 import br.uff.model.Alunos;
-import br.uff.model.Cursos;
-import br.uff.model.Matriculas;
-import br.uff.model.Turmas;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

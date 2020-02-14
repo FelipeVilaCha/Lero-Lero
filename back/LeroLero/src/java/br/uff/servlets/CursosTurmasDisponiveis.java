@@ -41,7 +41,7 @@ public class CursosTurmasDisponiveis extends HttpServlet {
         HttpSession session = request.getSession();
         
         try {
-            List<Cursos> cursosDisponiveis = cursosDAO.listarCursosComTurmas();
+            List<Cursos> cursosDisponiveis = cursosDAO.listarCursos();
             session.setAttribute("cursosDisponiveis", cursosDisponiveis);
             List<Turmas> turmasDisponiveis = turmasDAO.listarTurmasAbertas();
             session.setAttribute("turmasDisponiveis", turmasDisponiveis);

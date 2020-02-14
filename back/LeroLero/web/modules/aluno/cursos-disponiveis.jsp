@@ -117,8 +117,8 @@
 
         <div class="container">
           <div class="row align-items-center">
-              <%    for (int i = 0; i < ((List<Cursos>) session.getAttribute("cursosDisponiveis")).size(); i++){
-                        for (int j = 0; j < ((List<Turmas>) session.getAttribute("turmasDisponiveis")).size(); j++){
+              <%    for (int j = 0; j < ((List<Turmas>) session.getAttribute("turmasDisponiveis")).size(); j++){
+                        for (int i = 0; i < ((List<Cursos>) session.getAttribute("cursosDisponiveis")).size(); i++){    
                             if(((List<Cursos>) session.getAttribute("cursosDisponiveis")).get(i).getId() == ((List<Turmas>) session.getAttribute("turmasDisponiveis")).get(j).getCursos_id()){
                                 out.println("<div class=\"col-lg-4\">");
                                 out.println("<div class=\"card\" style=\"width: 18rem;\">");

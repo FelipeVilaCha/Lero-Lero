@@ -6,8 +6,6 @@ import br.uff.model.Matriculas;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -51,14 +49,14 @@ public class ProcessaMatricula extends HttpServlet {
         try {
             existe = matriculasDAO.validaMatricula(userID, cursoID);
         } catch (SQLException ex) {
-            Logger.getLogger(ProcessaMatricula.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcessaMatricula.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         if(!existe){
             try {
                 matriculasDAO.insertMatricula(matricula);
             } catch (SQLException ex) {
-                Logger.getLogger(ProcessaMatricula.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProcessaMatricula.class.getName()).log(Level.SEVERE, ex.getMessage());
             }
             
             request.getRequestDispatcher("/MontaPlanoDeEstudos").forward(request, response);

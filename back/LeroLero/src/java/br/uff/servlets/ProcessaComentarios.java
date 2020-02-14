@@ -35,6 +35,7 @@ public class ProcessaComentarios extends HttpServlet {
         HttpSession session = request.getSession();
         int userID = ((Alunos) session.getAttribute("alunoLogado")).getId();
         String comentario = request.getParameter("comentario");
+        
         boolean comentarioInserido = false;
         
         try {

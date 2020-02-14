@@ -5,8 +5,6 @@ import br.uff.dao.Conexao;
 import br.uff.dao.TurmasDAO;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +36,9 @@ public class DeletaTurma extends HttpServlet {
         
         try {
             status = turmasDAO.deletaTurmas(turmaID);
-        } catch (SQLException ex) {
-            Logger.getLogger(DeletaTurma.class.getName()).log(Level.SEVERE, ex.getMessage());
+        } catch (Exception ex) {
+            request.setAttribute("mensagem", ex.getMessage());
+            request.getRequestDispatcher("/erro.jsp").forward(request, response);
         }
         
         if(status){

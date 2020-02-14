@@ -1,3 +1,8 @@
+<%@page import="br.uff.model.Instrutores"%>
+<%@page import="br.uff.model.Turmas"%>
+<%@page import="br.uff.model.Cursos"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
   <head>
@@ -67,7 +72,7 @@
           >
             <ul class="navbar-nav">
               <li><a href="../index.jsp">Painel Administrativo</a></li>
-              <li><a href="../registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaSolicitacoes">Novos Registros</a></li>
               <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
@@ -85,7 +90,7 @@
               Admin
             </h1>
             <p class="mx-auto text-white  mt-20 mb-40">
-              Listagem de alunos, cursos e notas
+              Listagem de cursos de cada instrutor
             </p>
           </div>
         </div>
@@ -99,28 +104,30 @@
         <div class="row ">
           <div class="col-lg-12">
             <div class="d-flex mb-4 mt-1 justify-content-between">
-              <h4 class="card-title">Alunos e Cursos</h4>
+              <h4 class="card-title">Cursos e Instrutores</h4>
             </div>
             <table id="mytable" class="table table-bordred table-striped">
               <thead>
-                <th><input type="checkbox" id="checkall" /></th>
-                <th>Aluno</th>
-                <th>Curso</th>
-                <th>Nota</th>
+                <th>ID Curso</th>
+                <th>Cursos</th>
+                <th>Instrutor</th>
+                <th>Salário Total</th>
               </thead>
               <tbody>
-                <tr>
-                  <td><input type="checkbox" class="checkthis" /></td>
-                  <td>Nicholas Ferrer</td>
-                  <td>Aprenda Python</td>
-                  <td>8.0</td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" class="checkthis" /></td>
-                  <td>Nicholas Ferrer</td>
-                  <td>Aprenda Python</td>
-                  <td>8.0</td>
-                </tr>
+                  <% for (int i = 0; i < ((List<Cursos>) session.getAttribute("listaCursos")).size(); i++){
+                        for (int j = 0; j < ((List<Turmas>) session.getAttribute("listaTurmas")).size(); j++){
+                            if(((List<Cursos>) session.getAttribute("listaCursos")).get(i).getId() == ((List<Turmas>) session.getAttribute("listaTurmas")).get(j).getCursos_id()){
+                                for (int k = 0; k < ((List<Instrutores>) session.getAttribute("listaInstrutores")).size(); k++){
+                                    out.println("<tr>");
+                                    out.println("<td>" + ((List<Cursos>) session.getAttribute("listaCursos")).get(i).getId() + "</td>");
+                                    out.println("<td>" + ((List<Cursos>) session.getAttribute("listaCursos")).get(i).getNome() + "</td>");
+                                    out.println("<td>" + ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(k).getNome() + "</td>");
+                                    out.println("<td>" + ((List<Cursos>) session.getAttribute("listaCursos")).get(i).getCarga_horaria() * ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(k).getValor_hora()+ "</td>");
+                                    out.println("</tr>");
+                                }
+                            }
+                        }
+                    }%>
               </tbody>
             </table>
           </div>

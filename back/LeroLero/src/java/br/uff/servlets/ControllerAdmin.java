@@ -1,10 +1,8 @@
 package br.uff.servlets;
 
 import br.uff.dao.AdministradorDAO;
-import br.uff.dao.AlunosDAO;
 import br.uff.dao.Conexao;
 import br.uff.model.Administrador;
-import br.uff.model.Alunos;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -42,7 +40,7 @@ public class ControllerAdmin extends HttpServlet {
             adminLogado = adminDAO.getAdmin(userID);
             session.setAttribute("adminLogadoLogado", adminLogado);
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/index.jsp");

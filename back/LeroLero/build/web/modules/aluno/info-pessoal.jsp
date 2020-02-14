@@ -1,3 +1,4 @@
+<%@page import="br.uff.util.Encriptador"%>
 <%@page import="br.uff.model.Alunos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -223,7 +224,7 @@
                     <input
                       name="senha"
                       class="form-control"
-                      placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getSenha() %>"
+                      placeholder="<%= new Encriptador().desencripta(((Alunos) session.getAttribute("alunoLogado")).getSenha()).replaceAll(".", "*") %>"
                       type="password"
                       minlength="3"
                     />
@@ -232,7 +233,7 @@
                     <label>Confirmar senha</label>
                     <input
                       class="form-control"
-                      placeholder="<%= (((Alunos) session.getAttribute("alunoLogado")).getSenha()) %>"
+                      placeholder="<%= new Encriptador().desencripta(((Alunos) session.getAttribute("alunoLogado")).getSenha()).replaceAll(".", "*") %>"
                       minlength="3"
                       type="password"
                     />

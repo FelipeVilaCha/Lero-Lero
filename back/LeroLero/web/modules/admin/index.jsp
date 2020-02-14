@@ -163,7 +163,7 @@
                     Lista todos os alunos de um curso/turma e suas respectivas
                     notas.
                   </p>
-                  <a href="tables/alunoCursos-table.jsp" class="btn btn-dark"
+                  <a href="http://localhost:8080/LeroLero/ListaNotasAlunos" class="btn btn-dark"
                     >Mais informações</a
                   >
                 </div>
@@ -178,7 +178,7 @@
                     valor total que irá receber.
                   </p>
                   <a
-                    href="tables/cursoInstrutores-table.jsp"
+                    href="http://localhost:8080/LeroLero/ListaCursosInstrutor"
                     class="btn btn-dark"
                     >Mais informações</a
                   >

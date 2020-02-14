@@ -1,4 +1,3 @@
-
 package br.uff.servlets;
 
 import br.uff.dao.Conexao;
@@ -47,7 +46,7 @@ public class AtualizaCurso extends HttpServlet {
         try {
             status = cursosDAO.atualizaCurso(curso);
         } catch (SQLException ex) {
-            Logger.getLogger(AdicionaCurso.class.getName()).log(Level.SEVERE, ex.getMessage());
+            Logger.getLogger(AtualizaCurso.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         if(status){

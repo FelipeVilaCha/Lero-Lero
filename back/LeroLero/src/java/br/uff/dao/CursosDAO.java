@@ -165,38 +165,6 @@ public class CursosDAO {
         return listaCursos;
     }
     
-    public List<Cursos> listarCursosComTurmas() throws SQLException, ParseException {
-        List<Cursos> listaCursos = new ArrayList<>();
-         
-        String sql = "SELECT c.id, c.nome, c.requisito, c.ementa, c.carga_horaria, c.preco "
-                   + "FROM escola.cursos c, turmas t "
-                   + "WHERE CURDATE() <= t.data_inicio AND t.cursos_id = c.id";
-         
-        Connection db = conexaoDB.conectar();
-         
-        PreparedStatement comando = db.prepareStatement(sql);
-        
-        ResultSet resultado = comando.executeQuery(sql);
-         
-        while (resultado.next()) {
-            int id = resultado.getInt("id");
-            String nome = resultado.getString("nome");
-            String requisito = resultado.getString("requisito");
-            String ementa = resultado.getString("ementa");
-            int carga_horaria = resultado.getInt("carga_horaria");
-            Double preco = resultado.getDouble("preco");
-            
-            Cursos curso = new Cursos(id, nome, requisito, ementa, carga_horaria, preco);
-            listaCursos.add(curso);
-        }
-         
-        resultado.close();
-        comando.close();
-        conexaoDB.desconectar();
-         
-        return listaCursos;
-    }
-    
     public boolean verificaCurso(Cursos curso) throws SQLException {
         String verifica = "SELECT count(*) as count FROM escola.cursos WHERE nome = ?";
         boolean registroExiste = false;

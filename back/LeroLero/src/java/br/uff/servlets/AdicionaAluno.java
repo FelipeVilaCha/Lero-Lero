@@ -1,4 +1,3 @@
-
 package br.uff.servlets;
 
 import br.uff.dao.Conexao;
@@ -33,6 +32,9 @@ public class AdicionaAluno extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        boolean existe = false;
+        boolean status = false;
+        
         String cpf = request.getParameter("cpf");
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
@@ -46,23 +48,28 @@ public class AdicionaAluno extends HttpServlet {
         String comentario = null;
         String aprovado = "S";
         
+        Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
+        
         try {
-            Alunos aluno = new Alunos(cpf, nome, email, celular, login, senha, endereco, cidade, bairro, cep, comentario, aprovado);
-            boolean existe = alunosDAO.verificaAluno(aluno);
+            existe = alunosDAO.verificaAluno(aluno);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdicionaAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+        }
+        
+        if(!existe){
+            try {
+                status = alunosDAO.insertAluno(aluno);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdicionaAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+            }
             
-            if(!existe){
-                boolean status = alunosDAO.insertAluno(aluno);
-                
-                if(status){
-                    request.getRequestDispatcher("/ListaAlunos").forward(request, response);
-                } else {
-                    response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
-                }
+            if(status){
+                request.getRequestDispatcher("/ListaAlunos").forward(request, response);
             } else {
                 response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AdicionaAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+        } else {
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
         }
     }
 }

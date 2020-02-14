@@ -70,7 +70,7 @@
           >
             <ul class="navbar-nav">
               <li><a href="../index.jsp">Painel Administrativo</a></li>
-              <li><a href="../registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaSolicitacoes">Novos Registros</a></li>
               <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
@@ -115,8 +115,8 @@
             <table id="mytable" class="table table-bordred table-striped">
               <thead>
                 <th>ID</th>
-                <th>InstrutoresID</th>
-                <th>CursosID</th>
+                <th>Instrutores ID</th>
+                <th>Cursos ID</th>
                 <th>Data inicio</th>
                 <th>Data final</th>
                 <th>Carga horária</th>
@@ -165,7 +165,6 @@
                     <input
                       name="instrutores_id"
                       class="form-control"
-                      minlength="3"
                       placeholder="ID do instrutor"
                       type="number"
                       required
@@ -188,7 +187,7 @@
                     <input
                       name="data_inicio"
                       class="form-control"
-                      placeholder="YYYY-MM-dd"
+                      placeholder="yyyy-MM-dd"
                       type="text"
                       required
                     />
@@ -248,7 +247,7 @@
                   <div class="form-group">
                     <label>Instrutor ID</label>
                     <input
-                      name="instrutor_id"
+                      name="instrutores_id"
                       class="form-control"
                       placeholder="ID do instrutor"
                       type="number"
@@ -296,7 +295,6 @@
                         class="form-control"
                         placeholder="Horas"
                         type="number"
-                        minlength="3"
                         required
                   />
                 </div>
@@ -343,8 +341,8 @@
             </h4>
           </div>
           <div class="modal-body">
-            <form action="http://localhost:8080/LeroLero/DeletaTurma" method="POST">
-                <input type="hidden" class="form-control" name="instrutorID" id="id" >
+            <form method="POST" action="http://localhost:8080/LeroLero/DeletaTurma">
+                <input type="hidden" class="form-control" name="turmaID" id="id" >
               <div class="alert alert-danger">
               <span class="glyphicon glyphicon-warning-sign"></span> Você tem
               certeza que deseja excluir?

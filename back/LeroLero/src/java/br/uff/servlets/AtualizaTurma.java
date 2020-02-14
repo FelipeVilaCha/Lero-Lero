@@ -4,7 +4,6 @@ package br.uff.servlets;
 import br.uff.dao.Conexao;
 import br.uff.dao.TurmasDAO;
 import br.uff.model.Turmas;
-import br.uff.util.ConversorData;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -36,7 +35,6 @@ public class AtualizaTurma extends HttpServlet {
             throws ServletException, IOException {
         
         boolean status = false;
-        EncriptaSenha enc = new EncriptaSenha();
         
         int id = Integer.parseInt(request.getParameter("id"));
         int instrutores_id = Integer.parseInt(request.getParameter("instrutores_id"));
@@ -50,7 +48,8 @@ public class AtualizaTurma extends HttpServlet {
         try {
             status = turmasDAO.atualizaTurmas(turma);
         } catch (SQLException ex) {
-            Logger.getLogger(AtualizaTurma.class.getName()).log(Level.SEVERE, ex.getMessage());
+            request.setAttribute("mensagem", ex);
+            request.getRequestDispatcher("/erro.jsp").forward(request, response);
         }
         
         if(status){

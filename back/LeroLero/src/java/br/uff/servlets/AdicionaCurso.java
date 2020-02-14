@@ -1,9 +1,7 @@
-
 package br.uff.servlets;
 
 import br.uff.dao.Conexao;
 import br.uff.dao.CursosDAO;
-import br.uff.model.Cursos;
 import br.uff.model.Cursos;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,6 +32,9 @@ public class AdicionaCurso extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        boolean existe = false;
+        boolean status = false;
+        
         String nome = request.getParameter("nome");
         String requisito = request.getParameter("requisito");
         String ementa = request.getParameter("ementa");
@@ -43,21 +44,25 @@ public class AdicionaCurso extends HttpServlet {
         Cursos curso = new Cursos(nome, requisito, ementa, carga_horaria, preco);
         
         try {
-            boolean existe = cursosDAO.verificaCurso(curso);
-            
-            if(!existe){
-                boolean status = cursosDAO.insertCurso(curso);
+            existe = cursosDAO.verificaCurso(curso);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdicionaCurso.class.getName()).log(Level.SEVERE, ex.getMessage());
+        }
+        
+        if(!existe){
+            try {
+                status = cursosDAO.insertCurso(curso);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdicionaCurso.class.getName()).log(Level.SEVERE, ex.getMessage());
+            }
                 
-                if(status){
-                    request.getRequestDispatcher("/ListaCursos").forward(request, response);
-                } else {
-                    response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/cursos-table.jsp");
-                }
+            if(status){
+                request.getRequestDispatcher("/ListaCursos").forward(request, response);
             } else {
                 response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/cursos-table.jsp");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AdicionaCurso.class.getName()).log(Level.SEVERE, ex.getMessage());
+        } else {
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/cursos-table.jsp");
         }
     }
 }

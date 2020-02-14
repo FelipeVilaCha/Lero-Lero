@@ -70,7 +70,7 @@
           >
             <ul class="navbar-nav">
               <li><a href="../index.jsp">Painel Administrativo</a></li>
-              <li><a href="../registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaSolicitacoes">Novos Registros</a></li>
               <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>

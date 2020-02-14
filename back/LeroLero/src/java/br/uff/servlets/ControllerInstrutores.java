@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.uff.servlets;
 
 import br.uff.dao.Conexao;
-import br.uff.dao.CursosDAO;
 import br.uff.dao.InstrutoresDAO;
-import br.uff.dao.MatriculasDAO;
-import br.uff.dao.TurmasDAO;
 import br.uff.model.Instrutores;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,16 +21,10 @@ public class ControllerInstrutores extends HttpServlet {
     
     private Conexao conexaoDB;
     private InstrutoresDAO instrutoresDAO;
-    private TurmasDAO turmasDAO;
-    private CursosDAO cursosDAO;
-    private MatriculasDAO matriculasDAO;
     
     @Override
     public void init() {
         conexaoDB = new Conexao();
-        turmasDAO = new TurmasDAO(conexaoDB);
-        cursosDAO = new CursosDAO(conexaoDB);
-        matriculasDAO = new MatriculasDAO(conexaoDB);
         instrutoresDAO = new InstrutoresDAO(conexaoDB);
     }
     
@@ -55,7 +41,7 @@ public class ControllerInstrutores extends HttpServlet {
             instrutorLogado = instrutoresDAO.getInstrutor(userID);
             session.setAttribute("instrutorLogado", instrutorLogado);
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+            Logger.getLogger(ControllerInstrutores.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         session.setAttribute("instrutorLogado", instrutorLogado);

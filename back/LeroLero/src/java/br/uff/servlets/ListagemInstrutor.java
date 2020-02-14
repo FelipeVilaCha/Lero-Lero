@@ -7,7 +7,6 @@ package br.uff.servlets;
 
 import br.uff.dao.Conexao;
 import br.uff.dao.CursosDAO;
-import br.uff.dao.InstrutoresDAO;
 import br.uff.dao.MatriculasDAO;
 import br.uff.dao.TurmasDAO;
 import br.uff.model.Cursos;
@@ -32,7 +31,6 @@ import javax.servlet.http.HttpSession;
 public class ListagemInstrutor extends HttpServlet {
     
     private Conexao conexaoDB;
-    private InstrutoresDAO instrutoresDAO;
     private TurmasDAO turmasDAO;
     private CursosDAO cursosDAO;
     private MatriculasDAO matriculasDAO;
@@ -43,7 +41,6 @@ public class ListagemInstrutor extends HttpServlet {
         turmasDAO = new TurmasDAO(conexaoDB);
         cursosDAO = new CursosDAO(conexaoDB);
         matriculasDAO = new MatriculasDAO(conexaoDB);
-        instrutoresDAO = new InstrutoresDAO(conexaoDB);
     }
     
     @Override
@@ -61,6 +58,7 @@ public class ListagemInstrutor extends HttpServlet {
             session.setAttribute("turmasInstrutor", turmasInstrutor);
             session.setAttribute("cursosInstrutor", cursosInstrutor);
             session.setAttribute("matriculasInstrutor", matriculasInstrutor);
+            
         } catch (SQLException | ParseException ex) {
             Logger.getLogger(ListagemInstrutor.class.getName()).log(Level.SEVERE, ex.getMessage());
         }

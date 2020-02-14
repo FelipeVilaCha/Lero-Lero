@@ -44,6 +44,7 @@ public class MontaPlanoDeEstudos extends HttpServlet {
         try {
             planoEstudos = matriculasDAO.listarPlanoDeEstudosAtual(userID);
             historico = matriculasDAO.listarHistorico(userID);
+            
             session.setAttribute("planoEstudos", planoEstudos);
             session.setAttribute("historico", historico);
             

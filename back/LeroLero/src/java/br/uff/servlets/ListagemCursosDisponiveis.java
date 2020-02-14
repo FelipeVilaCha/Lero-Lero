@@ -2,11 +2,9 @@ package br.uff.servlets;
 
 import br.uff.dao.Conexao;
 import br.uff.dao.CursosDAO;
-import br.uff.dao.TurmasDAO;
 import br.uff.model.Cursos;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,10 +33,10 @@ public class ListagemCursosDisponiveis extends HttpServlet {
             throws ServletException, IOException {
         
         try {
-            List<Cursos> cursosDisponiveis = cursosDAO.listarCursosComTurmas();
+            List<Cursos> cursosDisponiveis = cursosDAO.listarCursos();
             request.setAttribute("cursosDisponiveis", cursosDisponiveis);
             
-        } catch (SQLException | ParseException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(ListagemCursosDisponiveis.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         

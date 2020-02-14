@@ -1,5 +1,6 @@
 <%@page import="br.uff.model.Alunos"%>
 <%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
   <head>
@@ -69,7 +70,7 @@
           >
             <ul class="navbar-nav">
               <li><a href="../index.jsp">Painel Administrativo</a></li>
-              <li><a href="../registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaSolicitacoes">Novos Registros</a></li>
               <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
@@ -119,7 +120,7 @@
                 <th>CPF</th>
                 <th>Celular</th>
                 <th>CEP</th>
-                <th>Endereço</th>
+                <th>EndereÃ§o</th>
                 <th>Cidade</th>
                 <th>Bairro</th>
                 <th>Editar</th>
@@ -229,11 +230,11 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label>Endereço</label>
+                    <label>EndereÃ§o</label>
                     <input
                       name="endereco"
                       class="form-control"
-                      placeholder="Estrada do Galeão, 10"
+                      placeholder="Estrada do GaleÃ£o, 10"
                       type="text"
                       minlength="3"
                       required
@@ -390,11 +391,11 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label>Endereço</label>
+                    <label>EndereÃ§o</label>
                     <input
                       name="endereco"
                       class="form-control"
-                      placeholder="Estrada do Galeão, 10"
+                      placeholder="Estrada do GaleÃ£o, 10"
                       type="text"
                       minlength="3"
                       required
@@ -505,13 +506,13 @@
             <form action="http://localhost:8080/LeroLero/DeletaAluno" method="POST">
                 <input type="hidden" class="form-control" name="alunoID" id="id" >
               <div class="alert alert-danger">
-              <span class="glyphicon glyphicon-warning-sign"></span> Você tem
+              <span class="glyphicon glyphicon-warning-sign"></span> VocÃª tem
               certeza que deseja excluir?
             </div>
             <div class="modal-footer ">
             <input type="submit" value="Sim" class="btn btn-success">
             <button type="button" class="btn btn-default" data-dismiss="modal">
-              <span class="glyphicon glyphicon-remove"></span> Não
+              <span class="glyphicon glyphicon-remove"></span> NÃ£o
             </button>
             </div>
             </form>

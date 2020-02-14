@@ -70,7 +70,7 @@
           >
             <ul class="navbar-nav">
               <li><a href="../index.jsp">Painel Administrativo</a></li>
-              <li><a href="../registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaSolicitacoes">Novos Registros</a></li>
               <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
@@ -197,28 +197,6 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label>Login</label>
-                    <input
-                      name="login"
-                      class="form-control"
-                      placeholder="Login"
-                      type="text"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <div class="form-group">
-                    <label>Senha</label>
-                    <input
-                      name="senha"
-                      class="form-control"
-                      placeholder="*******"
-                      type="password"
-                      required
-                    />
-                  </div>
-                  <div class="form-group">
                     <label>Experiencia</label>
                     <input
                       name="experiencia"
@@ -227,7 +205,29 @@
                       type="text"
                       required
                     />
-                  </div>
+                </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                <div class="form-group">
+                    <label>Login</label>
+                    <input
+                      name="login"
+                      class="form-control"
+                      placeholder="Login"
+                      type="text"
+                      required
+                    />
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input
+                      name="senha"
+                      class="form-control"
+                      placeholder="*******"
+                      type="password"
+                      required
+                    />
+                </div>
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
@@ -280,8 +280,7 @@
                     />
                   </div>
                 </div>
-                <div class="d-flex justify-content-between">
-                  <div class="form-group">
+                <div class="form-group">
                     <label>Valor Cobrado/Hora</label>
                     <input
                       name="valor_hora"
@@ -290,7 +289,8 @@
                       type="text"
                       required
                     />
-                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
                   <div class="form-group">
                     <label>Login</label>
                     <input
@@ -306,12 +306,12 @@
                   <div class="form-group">
                   <label>Senha</label>
                   <input
-                        name="senha"
-                        class="form-control"
-                        placeholder="******"
-                        type="password"
-                        minlength="3"
-                        required
+                     name="senha"
+                     class="form-control"
+                     placeholder="******"
+                     type="password"
+                     minlength="3"
+                     required
                   />
                 </div>
                 </div>

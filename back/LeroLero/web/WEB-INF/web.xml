@@ -29,24 +29,12 @@
         <servlet-class>br.uff.servlets.ProcessaSolicitacoes</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewPlanoDeEstudos</servlet-name>
-        <servlet-class>br.uff.servlets.ViewPlanoDeEstudos</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>MontaPlanoDeEstudos</servlet-name>
         <servlet-class>br.uff.servlets.MontaPlanoDeEstudos</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewCursosDisponiveis</servlet-name>
-        <servlet-class>br.uff.servlets.ViewCursosDisponiveis</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProcessaMatriculas</servlet-name>
         <servlet-class>br.uff.servlets.ProcessaMatriculas</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ViewTurmasDisponiveis</servlet-name>
-        <servlet-class>br.uff.servlets.ViewTurmasDisponiveis</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CursosTurmasDisponiveis</servlet-name>
@@ -57,10 +45,6 @@
         <servlet-class>br.uff.servlets.ProcessaMatricula</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewSolicitacoes</servlet-name>
-        <servlet-class>br.uff.servlets.ViewSolicitacoes</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AceitaSolicitacao</servlet-name>
         <servlet-class>br.uff.servlets.AceitaSolicitacao</servlet-class>
     </servlet>
@@ -69,32 +53,12 @@
         <servlet-class>br.uff.servlets.ProcessaComentarios</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewPagamentoInstrutor</servlet-name>
-        <servlet-class>br.uff.servlets.ViewPagamentoInstrutor</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ViewTurmasInstrutor</servlet-name>
-        <servlet-class>br.uff.servlets.ViewTurmasInstrutor</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ViewAtribuiNota</servlet-name>
-        <servlet-class>br.uff.servlets.ViewAtribuiNota</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProcessaNota</servlet-name>
         <servlet-class>br.uff.servlets.ProcessaNota</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProcessaLogout</servlet-name>
         <servlet-class>br.uff.servlets.ProcessaLogout</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ViewInformacoesAluno</servlet-name>
-        <servlet-class>br.uff.servlets.ViewInformacoesAluno</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ViewInformacoesInstrutor</servlet-name>
-        <servlet-class>br.uff.servlets.ViewInformacoesInstrutor</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProcessaLogin</servlet-name>
@@ -173,7 +137,7 @@
         <servlet-class>br.uff.servlets.AtualizaTurma</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeletaTurmas</servlet-name>
+        <servlet-name>DeletaTurma</servlet-name>
         <servlet-class>br.uff.servlets.DeletaTurma</servlet-class>
     </servlet>
     <servlet>
@@ -187,6 +151,14 @@
     <servlet>
         <servlet-name>RecusaSolicitacao</servlet-name>
         <servlet-class>br.uff.servlets.RecusaSolicitacao</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaNotasAlunos</servlet-name>
+        <servlet-class>br.uff.servlets.ListaNotasAlunos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaCursosInstrutor</servlet-name>
+        <servlet-class>br.uff.servlets.ListaCursosInstrutor</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CadastraAluno</servlet-name>
@@ -209,24 +181,12 @@
         <url-pattern>/ProcessaSolicitacoes</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewPlanoDeEstudos</servlet-name>
-        <url-pattern>/ViewPlanoDeEstudos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>MontaPlanoDeEstudos</servlet-name>
         <url-pattern>/MontaPlanoDeEstudos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewCursosDisponiveis</servlet-name>
-        <url-pattern>/ViewCursosDisponiveis</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ProcessaMatriculas</servlet-name>
         <url-pattern>/ProcessaMatriculas</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewTurmasDisponiveis</servlet-name>
-        <url-pattern>/ViewTurmasDisponiveis</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CursosTurmasDisponiveis</servlet-name>
@@ -237,10 +197,6 @@
         <url-pattern>/ProcessaMatricula</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewSolicitacoes</servlet-name>
-        <url-pattern>/ViewSolicitacoes</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AceitaSolicitacao</servlet-name>
         <url-pattern>/AceitaSolicitacao</url-pattern>
     </servlet-mapping>
@@ -249,32 +205,12 @@
         <url-pattern>/ProcessaComentarios</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewPagamentoInstrutor</servlet-name>
-        <url-pattern>/ViewPagamentoInstrutor</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewTurmasInstrutor</servlet-name>
-        <url-pattern>/ViewTurmasInstrutor</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewAtribuiNota</servlet-name>
-        <url-pattern>/ViewAtribuiNota</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ProcessaNota</servlet-name>
         <url-pattern>/ProcessaNota</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProcessaLogout</servlet-name>
         <url-pattern>/ProcessaLogout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewInformacoesAluno</servlet-name>
-        <url-pattern>/ViewInformacoesAluno</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewInformacoesInstrutor</servlet-name>
-        <url-pattern>/ViewInformacoesInstrutor</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProcessaLogin</servlet-name>
@@ -353,8 +289,8 @@
         <url-pattern>/AtualizaTurma</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeletaTurmas</servlet-name>
-        <url-pattern>/DeletaTurmas</url-pattern>
+        <servlet-name>DeletaTurma</servlet-name>
+        <url-pattern>/DeletaTurma</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListaTurmas</servlet-name>
@@ -368,6 +304,14 @@
         <servlet-name>RecusaSolicitacao</servlet-name>
         <url-pattern>/RecusaSolicitacao</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaNotasAlunos</servlet-name>
+        <url-pattern>/ListaNotasAlunos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaCursosInstrutor</servlet-name>
+        <url-pattern>/ListaCursosInstrutor</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -377,7 +321,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <error-page>
-        <error-code>404</error-code>
-        <location>/erro.html</location>
+        <error-code>500</error-code>
+        <location>/erro.jsp</location>
     </error-page>
 </web-app>

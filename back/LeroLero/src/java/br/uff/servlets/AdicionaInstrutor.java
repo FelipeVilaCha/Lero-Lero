@@ -1,4 +1,3 @@
-
 package br.uff.servlets;
 
 import br.uff.dao.Conexao;
@@ -33,6 +32,9 @@ public class AdicionaInstrutor extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        boolean existe = false;
+        boolean status = false;
+        
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         int valor_hora = Integer.parseInt(request.getParameter("valor_hora"));
@@ -43,21 +45,25 @@ public class AdicionaInstrutor extends HttpServlet {
         Instrutores instrutor = new Instrutores(nome, email, valor_hora, login, senha, experiencia);
         
         try {    
-            boolean existe = instrutoresDAO.verificaInstrutor(instrutor.getLogin());
-            
-            if(!existe){
-                boolean status = instrutoresDAO.insertInstrutor(instrutor);
-                
-                if(status){
-                    request.getRequestDispatcher("/ListaInstrutores").forward(request, response);
-                } else {
-                    response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/instrutor-table.jsp");
-                }
+             existe = instrutoresDAO.verificaInstrutor(instrutor.getLogin());
+        } catch (SQLException ex) {
+            Logger.getLogger(AdicionaInstrutor.class.getName()).log(Level.SEVERE, ex.getMessage());
+        }
+        
+        if(!existe){
+            try {
+                status = instrutoresDAO.insertInstrutor(instrutor);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdicionaInstrutor.class.getName()).log(Level.SEVERE, ex.getMessage());
+            }
+
+            if(status){
+                request.getRequestDispatcher("/ListaInstrutores").forward(request, response);
             } else {
                 response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/instrutor-table.jsp");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AdicionaInstrutor.class.getName()).log(Level.SEVERE, ex.getMessage());
+        } else {
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/instrutor-table.jsp");
         }
     }
 }

@@ -346,7 +346,7 @@
               <span class="box">
                 <a href="index.jsp">Home </a>
                 <i class="lnr lnr-arrow-right"></i>
-                <a href="courses.jsp">Cursos</a>
+                <a href="http://localhost:8080/LeroLero/ListagemCursosDisponiveis">Cursos</a>
               </span>
             </div>
           </div>
@@ -383,6 +383,7 @@
                     out.println("</div>");
                     out.println("<p> " + ((List<Cursos>) request.getAttribute("cursosDisponiveis")).get(i).getEmenta() + " </p>");
                     out.println("<button href=\"#login\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#login\"> Matricule-se já!</button>");
+                    out.println("</div></div></div>");
                 }%>
                 </div>
               </div>

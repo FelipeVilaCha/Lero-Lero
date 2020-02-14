@@ -39,7 +39,7 @@ public class ControllerAluno extends HttpServlet {
         try {
             alunoLogado = alunosDAO.getAluno(userID);
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControllerAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         session.setAttribute("alunoLogado", alunoLogado);

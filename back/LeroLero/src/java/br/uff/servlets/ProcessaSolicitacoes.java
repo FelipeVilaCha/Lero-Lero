@@ -31,18 +31,17 @@ public class ProcessaSolicitacoes extends HttpServlet {
     }
     
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int userID = (Integer) session.getAttribute("userID");
         List<Alunos> solicitacoesAlunos = new ArrayList<>();
         
         try {
             solicitacoesAlunos = alunosDAO.listarSolicitacoes();
             session.setAttribute("solicitacoesAlunos", solicitacoesAlunos);
         } catch (SQLException ex) {
-            Logger.getLogger(ProcessaSolicitacoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcessaSolicitacoes.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         request.getRequestDispatcher("/ViewSolicitacoes").forward(request, response);
