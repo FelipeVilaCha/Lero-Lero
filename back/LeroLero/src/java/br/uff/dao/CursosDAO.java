@@ -24,7 +24,7 @@ public class CursosDAO {
     }
      
     public boolean insertCurso(Cursos curso) throws SQLException {
-        String sql = "INSERT INTO escola.alunos (nome, requisito, ementa, carga_horaria, preco) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO escola.cursos (nome, requisito, ementa, carga_horaria, preco) VALUES (?, ?, ?, ?, ?)";
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
@@ -70,13 +70,13 @@ public class CursosDAO {
         return listaCursos;
     }
      
-    public boolean deletaCurso(Cursos curso) throws SQLException {
+    public boolean deletaCurso(int cursoID) throws SQLException {
         String sql = "DELETE FROM escola.cursos where id = ?";
          
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
-        comando.setInt(1, curso.getId());
+        comando.setInt(1, cursoID);
          
         boolean registroDeletado = comando.executeUpdate() > 0;
         comando.close();
@@ -195,5 +195,25 @@ public class CursosDAO {
         conexaoDB.desconectar();
          
         return listaCursos;
+    }
+    
+    public boolean verificaCurso(Cursos curso) throws SQLException {
+        String verifica = "SELECT count(*) as count FROM escola.cursos WHERE nome = ?";
+        boolean registroExiste = false;
+        Connection db = conexaoDB.conectar();
+        
+        PreparedStatement comando = db.prepareStatement(verifica);
+        comando.setString(1, curso.getNome());
+ 
+        ResultSet resultado = comando.executeQuery();
+        if (resultado.next()) {
+            if(resultado.getString("count").contains("1")){
+                registroExiste = true;
+            }
+        }
+       
+        comando.close();
+        conexaoDB.desconectar();
+        return registroExiste;
     }
 }

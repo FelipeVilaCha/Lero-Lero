@@ -6,8 +6,6 @@ import br.uff.dao.AlunosDAO;
 import br.uff.model.Alunos;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -35,14 +33,12 @@ public class AdicionaAluno extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        EncriptaSenha enc = new EncriptaSenha();
-        
         String cpf = request.getParameter("cpf");
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String celular = request.getParameter("celular");
         String login = request.getParameter("login");
-        String senha = enc.novaSenha(request.getParameter("senha"));
+        String senha = request.getParameter("senha");
         String endereco = request.getParameter("endereco");
         String cidade = request.getParameter("cidade");
         String bairro = request.getParameter("bairro");
@@ -58,15 +54,15 @@ public class AdicionaAluno extends HttpServlet {
                 boolean status = alunosDAO.insertAluno(aluno);
                 
                 if(status){
-                    response.sendRedirect("http://localhost:8080/LeroLero/admin/alunos-table.jsp");
+                    request.getRequestDispatcher("/ListaAlunos").forward(request, response);
                 } else {
-                    response.sendRedirect("http://localhost:8080/LeroLero/admin/alunos-table.jsp");
+                    response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
                 }
             } else {
-                response.sendRedirect("http://localhost:8080/LeroLero/admin/alunos-table.jsp");
+                response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+            Logger.getLogger(AdicionaAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
     }
 }

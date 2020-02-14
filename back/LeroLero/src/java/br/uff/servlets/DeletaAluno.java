@@ -33,20 +33,19 @@ public class DeletaAluno extends HttpServlet {
             throws ServletException, IOException {
         
         boolean status = false;
-        EncriptaSenha enc = new EncriptaSenha();
         
-        int alunoID = Integer.parseInt(request.getParameter("id"));
+        int alunoID = Integer.parseInt(request.getParameter("alunoID"));
         
         try {
             status = alunosDAO.deletaAluno(alunoID);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
+            Logger.getLogger(DeletaAluno.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         if(status){
-            response.sendRedirect("http://localhost:8080/LeroLero/admin/alunos-table.jsp");
+            request.getRequestDispatcher("/ListaAlunos").forward(request, response);
         } else {
-            response.sendRedirect("http://localhost:8080/LeroLero/admin/alunos-table.jsp");
+            response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
         }
         
     }

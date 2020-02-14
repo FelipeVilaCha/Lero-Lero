@@ -1,3 +1,5 @@
+<%@page import="br.uff.model.Alunos"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
@@ -68,7 +70,7 @@
           >
             <ul class="navbar-nav">
               <li><a href="index.jsp">Painel Administrativo</a></li>
-              <li><a href="registrar.jsp">Novos Registros</a></li>
+              <li><a href="http://localhost:8080/LeroLero/ListaSolicitacoes">Novos Registros</a></li>
               <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>
@@ -104,70 +106,37 @@
             </div>
             <table id="mytable" class="table table-bordred table-striped">
               <thead>
-                <th><input type="checkbox" id="checkall" /></th>
+                <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>CPF</th>
                 <th>Celular</th>
                 <th>CEP</th>
-                <th>EndereÃ§o</th>
+                <th>Endereço</th>
                 <th>Cidade</th>
                 <th>Bairro</th>
                 <th>Aceitar</th>
                 <th>Negar</th>
               </thead>
               <tbody>
-                <tr>
-                  <td><input type="checkbox" class="checkthis" /></td>
-                  <td>Nicholas Ferrer</td>
-                  <td>nicholasferrer@gmail.com</td>
-                  <td>19220329322</td>
-                  <td>21933442233</td>
-                  <td>+21930138</td>
-                  <td>Rua Maldonado</td>
-                  <td>Rio de Janeiro</td>
-                  <td>Rio de Janeiro</td>
-                  <td>
-                    <p>
-                      <button class="btn btn-success btn-xs" data-title="Edit">
-                        Aceitar
-                      </button>
-                    </p>
-                  </td>
-                  <td>
-                    <p>
-                      <button class="btn btn-danger btn-xs">
-                        Excluir
-                      </button>
-                    </p>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td><input type="checkbox" class="checkthis" /></td>
-                  <td>Nicholas Ferrer</td>
-                  <td>nicholasferrer@gmail.com</td>
-                  <td>19220329322</td>
-                  <td>21933442233</td>
-                  <td>+21930138</td>
-                  <td>Rua Maldonado</td>
-                  <td>Rio de Janeiro</td>
-                  <td>Rio de Janeiro</td>
-                  <td>
-                    <p>
-                      <button class="btn btn-success btn-xs" data-title="Edit">
-                        Aceitar
-                      </button>
-                    </p>
-                  </td>
-                  <td>
-                    <p>
-                      <button class="btn btn-danger btn-xs">
-                        Excluir
-                      </button>
-                    </p>
-                  </td>
-                </tr>
+                    <% for (int i = 0; i < ((List<Alunos>) session.getAttribute("listaSolicitacoes")).size(); i++){
+                      out.println("<tr>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getId() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getNome() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getEmail() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getCpf() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getCelular() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getCep() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getEndereco() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getCidade() + " </td>");
+                      out.println("<td> " + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getBairro() + " </td>");
+                      out.println("<td> <p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Aceitar\">");
+                      out.println("<button class=\"btn btn-primary btn-xs\" data-title=\"Aceita\" data-toggle=\"modal\" data-target=\"#aceita\" data-id=\"" + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getId() + "\">Aceitar</button>");
+                      out.println("</p></td>");
+                      out.println("<td> <p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Recusar\">");
+                      out.println("<button class=\"btn btn-danger btn-xs\" data-title=\"Recusa\" data-toggle=\"modal\" data-target=\"#recusar\" data-id=\"" + ((List<Alunos>) session.getAttribute("listaSolicitacoes")).get(i).getId() + "\">Recusar</button>");
+                      out.println("</p></td></tr>");
+                  }%>
               </tbody>
             </table>
           </div>
@@ -175,7 +144,95 @@
       </div>
     </section>
     <!-- ================- End Table Area ================= -->
-
+    <div
+      class="modal fade"
+      id="aceita"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="edit"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              <span
+                class="glyphicon glyphicon-remove"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <h4 class="modal-title" id="Heading">
+              Aceitar
+            </h4>
+          </div>
+          <div class="modal-body">
+            <form action="http://localhost:8080/LeroLero/AceitaSolicitacao" method="POST">
+                <input type="hidden" class="form-control" name="solicitacaoAceita" id="id" >
+              <div class="alert alert-danger">
+              <span class="glyphicon glyphicon-warning-sign"></span> Você tem
+              certeza que deseja aceitar?
+            </div>
+            <div class="modal-footer ">
+            <input type="submit" value="Sim" class="btn btn-success">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span> Não
+            </button>
+            </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ================- End Table Area ================= -->
+    <div
+      class="modal fade"
+      id="recusar"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="edit"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              <span
+                class="glyphicon glyphicon-remove"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <h4 class="modal-title" id="Heading">
+              Recusar
+            </h4>
+          </div>
+          <div class="modal-body">
+            <form action="http://localhost:8080/LeroLero/RecusaSolicitacao" method="POST">
+                <input type="hidden" class="form-control" name="solicitacaoNegada" id="id" >
+              <div class="alert alert-danger">
+              <span class="glyphicon glyphicon-warning-sign"></span> Você tem
+              certeza que deseja recusar?
+            </div>
+            <div class="modal-footer ">
+            <input type="submit" value="Sim" class="btn btn-success">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span> Não
+            </button>
+            </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
     <!-- ================ start footer Area ================= -->
     <footer class="footer-area section-gap">
       <div class="container">
@@ -241,5 +298,25 @@
     <script src="../../js/waypoints.min.js"></script>
     <script src="../../js/jquery.nice-select.min.js"></script>
     <script src="../../js/main.js"></script>
+    <script>
+        $(function () {
+            $('#aceita').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var id = button.data('id'); // Extract info from data-* attributes
+            var modal = $(this);
+            modal.find('#id').val(id);
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#recusar').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var id = button.data('id'); // Extract info from data-* attributes
+            var modal = $(this);
+            modal.find('#id').val(id);
+            });
+        });
+    </script>
   </body>
 </html>

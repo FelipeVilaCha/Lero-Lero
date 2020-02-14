@@ -70,7 +70,7 @@
               <li><a href="index.jsp">Home</a></li>
               <li><a href="about.jsp">Sobre</a></li>
               <li><a href="http://localhost:8080/LeroLero/ListagemCursosDisponiveis">Cursos</a></li>
-              <li><a href="instructors.jsp">Instrutores</a></li>
+              <li><a href="http://localhost:8080/LeroLero/VisualizarInstrutores">Instrutores</a></li>
               <li><a href="http://localhost:8080/LeroLero/ListaComentarios">Comentários</a></li>
               <li>
                 <a

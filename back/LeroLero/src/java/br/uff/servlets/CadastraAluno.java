@@ -35,7 +35,6 @@ public class CadastraAluno extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Map<String, String> mensagens = new HashMap<>();
         EncriptaSenha enc = new EncriptaSenha();
         
         String cpf = request.getParameter("cpf");
@@ -59,15 +58,12 @@ public class CadastraAluno extends HttpServlet {
                 boolean status = alunosDAO.insertAluno(aluno);
                 
                 if(status){
-                    String permissao = "alunos";
-                    response.sendRedirect("/LeroLero/index.html");
+                    response.sendRedirect("/LeroLero/index.jsp");
                 } else {
-                    request.getRequestDispatcher("/LeroLero/index.html").forward(request, response);
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
             } else {
-                mensagens.put("cadastro","Seu cadastro já foi realizado!");
-                request.setAttribute("mensagens", mensagens);
-                response.sendRedirect("/LeroLero/index.html");
+                response.sendRedirect("/index.jsp");
             }
         } catch (SQLException ex) {
             Logger.getLogger(CadastraAluno.class.getName()).log(Level.SEVERE, ex.getMessage());

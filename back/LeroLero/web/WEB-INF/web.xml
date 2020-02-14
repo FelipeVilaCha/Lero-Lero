@@ -128,6 +128,66 @@
         <servlet-name>ListagemCursosDisponiveis</servlet-name>
         <servlet-class>br.uff.servlets.ListagemCursosDisponiveis</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VisualizarInstrutores</servlet-name>
+        <servlet-class>br.uff.servlets.VisualizarInstrutores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaCursos</servlet-name>
+        <servlet-class>br.uff.servlets.ListaCursos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizaCurso</servlet-name>
+        <servlet-class>br.uff.servlets.AtualizaCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdicionaCurso</servlet-name>
+        <servlet-class>br.uff.servlets.AdicionaCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletaCurso</servlet-name>
+        <servlet-class>br.uff.servlets.DeletaCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdicionaInstrutor</servlet-name>
+        <servlet-class>br.uff.servlets.AdicionaInstrutor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizaInstrutor</servlet-name>
+        <servlet-class>br.uff.servlets.AtualizaInstrutor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletaInstrutor</servlet-name>
+        <servlet-class>br.uff.servlets.DeletaInstrutor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaInstrutores</servlet-name>
+        <servlet-class>br.uff.servlets.ListaInstrutores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdicionaTurma</servlet-name>
+        <servlet-class>br.uff.servlets.AdicionaTurma</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizaTurma</servlet-name>
+        <servlet-class>br.uff.servlets.AtualizaTurma</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletaTurmas</servlet-name>
+        <servlet-class>br.uff.servlets.DeletaTurma</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaTurmas</servlet-name>
+        <servlet-class>br.uff.servlets.ListaTurmas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaSolicitacoes</servlet-name>
+        <servlet-class>br.uff.servlets.ListaSolicitacoes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RecusaSolicitacao</servlet-name>
+        <servlet-class>br.uff.servlets.RecusaSolicitacao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraAluno</servlet-name>
         <url-pattern>/CadastraAluno</url-pattern>
@@ -247,6 +307,66 @@
     <servlet-mapping>
         <servlet-name>ListagemCursosDisponiveis</servlet-name>
         <url-pattern>/ListagemCursosDisponiveis</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizarInstrutores</servlet-name>
+        <url-pattern>/VisualizarInstrutores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaCursos</servlet-name>
+        <url-pattern>/ListaCursos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaCurso</servlet-name>
+        <url-pattern>/AtualizaCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaCurso</servlet-name>
+        <url-pattern>/AdicionaCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletaCurso</servlet-name>
+        <url-pattern>/DeletaCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaInstrutor</servlet-name>
+        <url-pattern>/AdicionaInstrutor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaInstrutor</servlet-name>
+        <url-pattern>/AtualizaInstrutor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletaInstrutor</servlet-name>
+        <url-pattern>/DeletaInstrutor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaInstrutores</servlet-name>
+        <url-pattern>/ListaInstrutores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionaTurma</servlet-name>
+        <url-pattern>/AdicionaTurma</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizaTurma</servlet-name>
+        <url-pattern>/AtualizaTurma</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletaTurmas</servlet-name>
+        <url-pattern>/DeletaTurmas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaTurmas</servlet-name>
+        <url-pattern>/ListaTurmas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaSolicitacoes</servlet-name>
+        <url-pattern>/ListaSolicitacoes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecusaSolicitacao</servlet-name>
+        <url-pattern>/RecusaSolicitacao</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

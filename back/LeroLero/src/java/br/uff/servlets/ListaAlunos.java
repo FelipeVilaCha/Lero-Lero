@@ -38,7 +38,7 @@ public class ListaAlunos extends HttpServlet {
     }
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
@@ -50,6 +50,6 @@ public class ListaAlunos extends HttpServlet {
             Logger.getLogger(ListaAlunos.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
-        request.getRequestDispatcher("/modules/admin/tables/alunos-table.jsp").forward(request, response);
+        response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/alunos-table.jsp");
     }
 }

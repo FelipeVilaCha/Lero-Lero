@@ -23,6 +23,14 @@ public class Turmas {
         this.carga_horaria = carga_horaria;
     }
     
+    public Turmas(int instrutores_id, int cursos_id, Date data_inicio, Date data_final, int carga_horaria) {
+        this.instrutores_id = instrutores_id;
+        this.cursos_id = cursos_id;
+        this.data_inicio = data_inicio;
+        this.data_final = data_final;
+        this.carga_horaria = carga_horaria;
+    }
+    
     public int getId() {
         return id;
     }

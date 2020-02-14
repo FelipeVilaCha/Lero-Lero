@@ -1,6 +1,7 @@
 package br.uff.dao;
 
 import br.uff.model.Turmas;
+import br.uff.util.ConversorData;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -23,15 +24,15 @@ public class TurmasDAO {
     }
      
     public boolean insertTurmas(Turmas turma) throws SQLException {
-        String sql = "INSERT INTO turmas (instrutores_id, cursos_id, data_inicio, data_final, carga_horaria) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO escola.turmas (instrutores_id, cursos_id, data_inicio, data_final, carga_horaria) VALUES (?, ?, ?, ?, ?)";
         
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
         comando.setInt(1, turma.getInstrutores_id());
         comando.setInt(2, turma.getCursos_id());
-        comando.setDate(3, (Date) turma.getData_inicio());
-        comando.setDate(4, (Date) turma.getData_final());
+        comando.setDate(3, ConversorData.convert(turma.getData_inicio()));
+        comando.setDate(4, ConversorData.convert(turma.getData_final()));
         comando.setInt(5, turma.getCarga_horaria());
          
         boolean registroInserido = comando.executeUpdate() > 0;
@@ -44,7 +45,7 @@ public class TurmasDAO {
     public List<Turmas> listarTurmas() throws SQLException {
         List<Turmas> listaTurmas = new ArrayList<>();
          
-        String sql = "SELECT * FROM turmas";
+        String sql = "SELECT * FROM escola.turmas";
          
         Connection db = conexaoDB.conectar();
          
@@ -70,13 +71,13 @@ public class TurmasDAO {
         return listaTurmas;
     }
      
-    public boolean deletaTurmas(Turmas turma) throws SQLException {
-        String sql = "DELETE FROM turmas where id = ?";
+    public boolean deletaTurmas(int turmaID) throws SQLException {
+        String sql = "DELETE FROM escola.turmas where id = ?";
          
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
-        comando.setInt(1, turma.getId());
+        comando.setInt(1, turmaID);
          
         boolean registroDeletado = comando.executeUpdate() > 0;
         comando.close();
@@ -86,7 +87,7 @@ public class TurmasDAO {
     }
      
     public boolean atualizaTurmas(Turmas turma) throws SQLException {
-        String sql = "UPDATE turmas SET instrutores_id = ?, cursos_id = ?, data_inicio = ?, data_final = ?, carga_horaria = ?";
+        String sql = "UPDATE escola.turmas SET instrutores_id = ?, cursos_id = ?, data_inicio = ?, data_final = ?, carga_horaria = ?";
         sql += " WHERE id = ?";
         
         Connection db = conexaoDB.conectar();
@@ -94,8 +95,8 @@ public class TurmasDAO {
         PreparedStatement comando = db.prepareStatement(sql);
         comando.setInt(1, turma.getInstrutores_id());
         comando.setInt(2, turma.getCursos_id());
-        comando.setDate(3, (Date) turma.getData_inicio());
-        comando.setDate(4, (Date) turma.getData_final());
+        comando.setDate(3, ConversorData.convert(turma.getData_inicio()));
+        comando.setDate(4, ConversorData.convert(turma.getData_final()));
         comando.setInt(5, turma.getCarga_horaria());
         comando.setInt(6, turma.getId());
          

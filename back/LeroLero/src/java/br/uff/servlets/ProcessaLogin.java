@@ -56,7 +56,7 @@ public class ProcessaLogin extends HttpServlet {
             } else {
                 String errorMessage = "Error: Unrecognized Username or Password<br>";
                 session.setAttribute("errorMessage", errorMessage);
-                request.getRequestDispatcher("/index.html").forward(request, response);
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         }
 

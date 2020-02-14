@@ -30,27 +30,22 @@ public class AceitaSolicitacao extends HttpServlet {
     }
     
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
-        int userID = (Integer) session.getAttribute("userID");
-        int solicitacaoAceitaID = (Integer) session.getAttribute("solicitacaoAceita");
-        Map<String, String> mensagens = new HashMap<>();
+        int solicitacaoAceitaID = Integer.parseInt(request.getParameter("solicitacaoAceita"));
         boolean status = false;
         
         try {
             status = alunosDAO.aceitarSolicitacao(solicitacaoAceitaID);
         } catch (SQLException ex) {
-            Logger.getLogger(ProcessaSolicitacoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AceitaSolicitacao.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
         if(status){
-            request.getRequestDispatcher("/ViewSolicitacoes").forward(request, response);
+            request.getRequestDispatcher("/ListaSolicitacoes").forward(request, response);
         } else {
-            mensagens.put("solicitacao", "Falha na requisição, tente novamente!");
+            request.getRequestDispatcher("/ListaSolicitacoes").forward(request, response);
         }
-        request.setAttribute("mensagens", mensagens);
-        request.getRequestDispatcher("/ViewSolicitacoes").forward(request, response);
     }
 }

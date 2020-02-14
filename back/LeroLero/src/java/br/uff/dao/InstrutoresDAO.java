@@ -21,7 +21,7 @@ public class InstrutoresDAO {
     }
      
     public boolean insertInstrutor(Instrutores instrutor) throws SQLException {
-        String sql = "INSERT INTO instrutores (nome, email, valor_hora, login, senha, experiencia) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO escola.instrutores (nome, email, valor_hora, login, senha, experiencia) VALUES (?, ?, ?, ?, ?, ?)";
         
         Connection db = conexaoDB.conectar();
          
@@ -42,7 +42,7 @@ public class InstrutoresDAO {
     public List<Instrutores> listarInstrutores() throws SQLException {
         List<Instrutores> listaInstrutores = new ArrayList<>();
          
-        String sql = "SELECT * FROM instrutores";
+        String sql = "SELECT * FROM escola.instrutores";
          
         Connection db = conexaoDB.conectar();
          
@@ -70,13 +70,13 @@ public class InstrutoresDAO {
         return listaInstrutores;
     }
      
-    public boolean deletaInstrutor(Instrutores instrutor) throws SQLException {
-        String sql = "DELETE FROM instrutores where id = ?";
+    public boolean deletaInstrutor(int instrutorID) throws SQLException {
+        String sql = "DELETE FROM escola.instrutores where id = ?";
          
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
-        comando.setInt(1, instrutor.getId());
+        comando.setInt(1, instrutorID);
          
         boolean registroDeletado = comando.executeUpdate() > 0;
         comando.close();
@@ -86,7 +86,7 @@ public class InstrutoresDAO {
     }
      
     public boolean atualizaInstrutor(Instrutores instrutor) throws SQLException {
-        String sql = "UPDATE instrutores SET nome = ?, email = ?, valor_hora = ?, login = ?, senha = ?";
+        String sql = "UPDATE escola.instrutores SET nome = ?, email = ?, valor_hora = ?, login = ?, senha = ?, experiencia = ?";
         sql += " WHERE id = ?";
         
         Connection db = conexaoDB.conectar();
@@ -139,7 +139,7 @@ public class InstrutoresDAO {
     public Double calculaPagamentoPorTurma(int instrutorID, int turmaID) throws SQLException {
         Double calculoPorTurma = null;
         String sql = "SELECT i.valor_hora as valor, t.carga_horaria as horas "
-                + "FROM turmas t, instrutores i "
+                + "FROM escola.turmas t, escola.instrutores i "
                 + "WHERE t.instrutores_id = " + instrutorID + " AND t.id = " + turmaID 
                 + " AND CURDATE() BETWEEN t.data_inicio AND t.data_final";
          
@@ -180,4 +180,25 @@ public class InstrutoresDAO {
         
         return registroAtualizado;     
     }
+    
+    public boolean verificaInstrutor(String login) throws SQLException {
+        String verifica = "SELECT count(*) as count FROM escola.instrutores WHERE login = ?";
+        boolean registroExiste = false;
+        Connection db = conexaoDB.conectar();
+        
+        PreparedStatement comando = db.prepareStatement(verifica);
+        comando.setString(1, login);
+ 
+        ResultSet resultado = comando.executeQuery();
+        if (resultado.next()) {
+            if(resultado.getString("count").contains("1")){
+                registroExiste = true;
+            }
+        }
+       
+        comando.close();
+        conexaoDB.desconectar();
+        return registroExiste;
+    }
+    
 }
