@@ -137,16 +137,12 @@
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="checkbox" /> Salvar senha </label>
-                  </div>
+                    <div class="d-flex justify-content-between">
+                        <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
+                        <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
+                        <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                   <!-- checkbox .// -->
-                </div>
-                <div class="form-group">
-                    <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
-                    <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
-                  <!-- checkbox .// -->
+                    </div>
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">

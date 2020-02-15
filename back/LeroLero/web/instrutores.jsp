@@ -138,18 +138,12 @@
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="checkbox" /> Salvar senha </label>
-                  </div>
+                    <div class="d-flex justify-content-between">
+                        <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
+                        <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
+                        <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                   <!-- checkbox .// -->
-                </div>
-                <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
-                    <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
-                  </div>
-                  <!-- checkbox .// -->
+                    </div>
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
@@ -360,7 +354,7 @@
           <%    for (int i = 0; i < ((List<Instrutores>) request.getAttribute("listaInstrutores")).size(); i++){
                     out.println("<div class=\"col-lg-4\">");
                     out.println("<div class=\"card\" style=\"width: 18rem;\">");
-                    out.println("<img class=\"card-img-top\" src=\"img/testimonial/t1.jpg\" alt=\"Card image cap\" />");
+                    out.println("<img class=\"card-img-top\" src=\"img/instrutores/" + ((List<Instrutores>) request.getAttribute("listaInstrutores")).get(i).getId() + ".jpg\" alt=\"Card image cap\" />");
                     out.println("<div class=\"card-body\">");
                     out.println("<h5 class=\"card-title\">");
                     out.println(((List<Instrutores>) request.getAttribute("listaInstrutores")).get(i).getNome() + "<small> - " + ((List<Instrutores>) request.getAttribute("listaInstrutores")).get(i).getExperiencia() + " anos de experiencia");

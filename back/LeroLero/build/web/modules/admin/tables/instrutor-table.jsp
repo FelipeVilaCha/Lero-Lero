@@ -290,6 +290,16 @@
                       required
                     />
                 </div>
+                <div class="form-group">
+                    <label>Experiencia</label>
+                    <input
+                      name="experiencia"
+                      class="form-control"
+                      placeholder="Anos"
+                      type="number"
+                      required
+                    />
+                </div>
                 <div class="d-flex justify-content-between">
                   <div class="form-group">
                     <label>Login</label>

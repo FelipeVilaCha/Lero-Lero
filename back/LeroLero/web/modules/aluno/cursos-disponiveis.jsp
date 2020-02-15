@@ -122,7 +122,7 @@
                             if(((List<Cursos>) session.getAttribute("cursosDisponiveis")).get(i).getId() == ((List<Turmas>) session.getAttribute("turmasDisponiveis")).get(j).getCursos_id()){
                                 out.println("<div class=\"col-lg-4\">");
                                 out.println("<div class=\"card\" style=\"width: 18rem;\">");
-                                out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/p4.jpg\" alt=\"\"/>");
+                                out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/trainer1.jpg\" alt=\"\"/>");
                                 out.println("<div class=\"card-body\">");
                                 out.println("<div class=\"d-flex justify-content-between mb-20\">");
                                 out.println("<h5> " + ((List<Cursos>) session.getAttribute("cursosDisponiveis")).get(i).getNome() + " </h5>");

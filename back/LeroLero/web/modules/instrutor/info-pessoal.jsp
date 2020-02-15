@@ -104,29 +104,11 @@
             <div class="card">
               <article class="card-body">
                 <h4 class="card-title mb-1 mt-1">Perfil</h4>
+                <a class="float-right" data-toggle="modal" data-target="#photo">Foto</a>
                 <p class="card-title mb-4 mt-1">
-                  Adicione ou altere informações pessoais
+                    Adicione ou altere informações pessoais
                 </p>
                 <form method="POST" action="http://localhost:8080/LeroLero/AtualizaInstrutor">
-                  <div class="mb-2">Foto de Perfil</div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupFileAddon01"
-                        >Upload</span
-                      >
-                    </div>
-                    <div class="custom-file">
-                      <input
-                        type="file"
-                        class="custom-file-input"
-                        id="inputGroupFile01"
-                        aria-describedby="inputGroupFileAddon01"
-                      />
-                      <label class="custom-file-label" for="inputGroupFile01"
-                        >Escolha sua imagem</label
-                      >
-                    </div>
-                  </div>
                   <div class="d-flex justify-content-between mt-2">
                     <div class="form-group">
                       <label>Nome</label>
@@ -154,9 +136,8 @@
                       <input
                         name="valor_hora"
                         class="form-control"
-                        minlength="3"
                         placeholder="<%=((Instrutores) session.getAttribute("instrutorLogado")).getValor_hora()%>"
-                        type="text"
+                        type="number"
                       />
                     </div>
                     <div class="form-group">
@@ -165,7 +146,7 @@
                         name="experiencia"
                         class="form-control"
                         placeholder="<%=((Instrutores) session.getAttribute("instrutorLogado")).getExperiencia()%>"
-                        type="text"
+                        type="number"
                       />
                     </div>
                   </div>
@@ -216,7 +197,44 @@
         </div>
       </div>
     </section>
-
+    <!--================= modal foto ======================== -->
+    <div
+      class="modal fade"
+      id="photo"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="edit"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="card">
+            <article class="card-body">
+              <h4 class="card-title mb-4 mt-1">Incluir foto</h4>
+              <form method="POST" action="http://localhost:8080/LeroLero/UploadFoto" enctype="multipart/form-data">
+                  <div class="mb-2">Foto de Perfil</div>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                         <input type="submit" value="Upload" class="input-group-text" id="inputGroupFileAddon01">
+                      </div>
+                      <div class="custom-file">
+                        <input
+                            name="file"
+                            type="file"
+                            class="custom-file-input"
+                            id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01"
+                      />
+                      <label class="custom-file-label" for="inputGroupFile01">Escolha sua imagem</label>
+                    </div>
+                  </div>
+              </form>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- ================ start footer Area ================= -->
     <footer class="footer-area section-gap">
       <div class="container">

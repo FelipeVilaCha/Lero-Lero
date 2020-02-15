@@ -115,7 +115,7 @@
             <% for(int i = 0; i < ((List<PlanoEstudos>) session.getAttribute("planoEstudos")).size(); i++){
                     out.println("<div class=\"col-lg-4\">");
                     out.println("<div class=\"card\" style=\"width: 18rem;\">");
-                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/p4.jpg\" alt=\"\" />");
+                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/trainer1.jpg\" alt=\"\" />");
                     out.println("<div class=\"card-body\">");
                     out.println("<div class=\"d-flex justify-content-between mb-20\">");
                     out.println("<h5> " + ((List<PlanoEstudos>) session.getAttribute("planoEstudos")).get(i).getNome_curso() + " </h5>");
@@ -150,7 +150,7 @@
             <% for(int i = 0; i < ((List<PlanoEstudos>) session.getAttribute("historico")).size(); i++){
                     out.println("<div class=\"col-lg-4\">");
                     out.println("<div class=\"card\" style=\"width: 18rem;\">");
-                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/p4.jpg\" alt=\"\" />");
+                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"../../img/popular-course/trainer1.jpg\" alt=\"\" />");
                     out.println("<div class=\"card-body\">");
                     out.println("<div class=\"d-flex justify-content-between mb-20\">");
                     out.println("<h5> " + ((List<PlanoEstudos>) session.getAttribute("historico")).get(i).getNome_curso() + " </h5>");

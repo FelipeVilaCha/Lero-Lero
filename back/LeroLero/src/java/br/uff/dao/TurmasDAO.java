@@ -72,7 +72,7 @@ public class TurmasDAO {
     }
      
     public boolean deletaTurmas(int turmaID) throws SQLException {
-        String sql = "DELETE FROM escola.turmas where id = ?";
+        String sql = "DELETE FROM escola.turma where id = ?";
          
         Connection db = conexaoDB.conectar();
          

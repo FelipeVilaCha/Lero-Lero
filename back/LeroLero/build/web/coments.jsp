@@ -139,18 +139,12 @@
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="checkbox" /> Salvar senha </label>
-                  </div>
+                    <div class="d-flex justify-content-between">
+                        <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
+                        <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
+                        <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                   <!-- checkbox .// -->
-                </div>
-                <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
-                    <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
-                    <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
-                  </div>
-                  <!-- checkbox .// -->
+                    </div>
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
@@ -361,7 +355,7 @@
           <% for (int i = 0; i < ((List<Alunos>) request.getAttribute("comentariosAlunos")).size(); i++){
               out.println("<div class=\"col-lg-4\">");
               out.println("<div class=\"card\" style=\"width: 18em;\">");
-              out.println("<img class=\"card-img-top\" src=\"img/testimonial/t1.jpg\" alt=\"Card image cap\"/>");
+              out.println("<img class=\"card-img-top\" src=\"img/alunos/" + ((List<Alunos>) request.getAttribute("comentariosAlunos")).get(i).getId() + ".jpg\" alt=\"Card image cap\"/>");
               out.println("<div class=\"card-body\">");
               out.println("<h5 class=\"card-title\">");
               out.println(((List<Alunos>) request.getAttribute("comentariosAlunos")).get(i).getNome() + " <small> - Aluno</small>");

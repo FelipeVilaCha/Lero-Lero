@@ -3,6 +3,7 @@ package br.uff.servlets;
 import br.uff.dao.Conexao;
 import br.uff.dao.InstrutoresDAO;
 import br.uff.model.Instrutores;
+import br.uff.util.Encriptador;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -42,8 +43,7 @@ public class AtualizaInstrutor extends HttpServlet {
         String senha = request.getParameter("senha");
         String experiencia = request.getParameter("experiencia");
         
-        
-        Instrutores instrutor = new Instrutores(id, nome, email, valor_hora, login, senha, experiencia);
+        Instrutores instrutor = new Instrutores(id, nome, email, valor_hora, login, new Encriptador().encripta(senha), experiencia);
         
         try {
             status = instrutoresDAO.atualizaInstrutor(instrutor);

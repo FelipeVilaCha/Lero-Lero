@@ -73,7 +73,7 @@
               <li><a href="index.jsp">Home</a></li>
               <li><a href="turmas.jsp">Turmas</a></li>
               <li><a href="remuneracao.jsp">Remuneração</a></li>
-              <li><a href="infoPessoal.jsp">Informações pessoais</a></li>
+              <li><a href="info-pessoal.jsp">Informações pessoais</a></li>
               <li><a href="http://localhost:8080/LeroLero/ProcessaLogout">Logout</a></li>
             </ul>
           </div>

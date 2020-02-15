@@ -143,16 +143,12 @@
                   <!-- checkbox .// -->
                 </div>
                 <div class="form-group">
-                    <div>
-                    <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
+                    <div class="d-flex justify-content-between">
+                        <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
+                        <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
+                        <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
+                  <!-- checkbox .// -->
                     </div>
-                    <div>
-                    <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
-                    </div>
-                    <div>
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
-                    </div>
-                <!-- checkbox .// -->
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
@@ -338,10 +334,10 @@
         <div class="row justify-content-center fullscreen align-items-center">
           <div class="col-lg-5 col-md-8 home-banner-left">
             <h1 class="text-white">
-              Ih rapaz, Deu erro!
+              Ih, deu erro!
             </h1>
             <p class="mx-auto text-white  mt-20 mb-40">
-              O erro eu vou deixar aqui pra você ver, foi o seguinte:
+              Vou deixar aqui pra você ver, foi o seguinte erro:
               <%= request.getAttribute("message")%>
             </p>
           </div>

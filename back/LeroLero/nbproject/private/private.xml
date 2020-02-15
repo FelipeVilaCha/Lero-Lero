@@ -17,6 +17,7 @@
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/filters/LoginFilter.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/AtualizaInstrutor.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaMatricula.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/erro.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/admin/index.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/AdministradorDAO.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ListaCursos.java</file>
@@ -37,22 +38,23 @@
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/admin/tables/instrutor-table.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/model/Usuario.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/aluno/cursos-disponiveis.jsp</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/solicitacaoRealizada.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/CadastraAluno.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/AdicionaAluno.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ListaComentarios.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ProcessaLogin.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/VisualizarInstrutores.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ListaNotasAlunos.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/UploadFoto.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/instrutores.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/CursosTurmasDisponiveis.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/util/Encriptador.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/TurmasDAO.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/model/Turmas.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/MontaPlanoDeEstudos.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/admin/tables/cursos-table.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/admin/tables/alunos-table.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ListaInstrutores.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/util/EncriptaSenha.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/admin/registrar.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/aluno/info-pessoal.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerInstrutores.java</file>
@@ -61,15 +63,14 @@
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/AdicionaCurso.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ListagemCursosDisponiveis.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/admin/tables/cursos-instrutores-table.jsp</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/planoVazio.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/modules/instrutor/infoPessoal.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/util/ConversorData.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/RecusaSolicitacao.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ControllerAdmin.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/AceitaSolicitacao.java</file>
-            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/erro.html</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/AdicionaInstrutor.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/DeletaInstrutor.java</file>
+            <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/dao/LoginDAO.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/web/coments.jsp</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/DeletaAluno.java</file>
             <file>file:/C:/Users/FelipeVilaChadosSant/Documents/UFF/Lero-Lero/back/LeroLero/src/java/br/uff/servlets/ListaCursosInstrutor.java</file>

@@ -139,18 +139,12 @@
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="checkbox" /> Salvar senha </label>
-                  </div>
+                    <div class="d-flex justify-content-between">
+                        <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
+                        <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
+                        <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
                   <!-- checkbox .// -->
-                </div>
-                <div class="form-group">
-                  <div class="checkbox">
-                    <label> <input type="radio" name="permissao" value="alunos"/> Alunos </label>
-                    <label> <input type="radio" name="permissao" value="instrutores"/> Instrutores </label>
-                    <label> <input type="radio" name="permissao" value="administrador"/> Administrador </label>
-                  </div>
-                  <!-- checkbox .// -->
+                    </div>
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
@@ -375,7 +369,7 @@
             <% for (int i = 0; i < ((List<Cursos>) request.getAttribute("cursosDisponiveis")).size(); i++){
                     out.println("<div class=\"col-lg-4\">");
                     out.println("<div class=\"card\" style=\"width: 18rem;\">");
-                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"img/popular-course/p4.jpg\" alt=\"\" />");
+                    out.println("<img class=\"f-img img-fluid mx-auto\" src=\"img/popular-course/trainer1.jpg\" alt=\"\" />");
                     out.println("<div class=\"card-body\">");
                     out.println("<div class=\"d-flex justify-content-between mb-20\">");
                     out.println("<h5> " + ((List<Cursos>) request.getAttribute("cursosDisponiveis")).get(i).getNome() + " </h5>");
