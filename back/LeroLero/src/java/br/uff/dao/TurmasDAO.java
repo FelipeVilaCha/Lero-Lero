@@ -72,7 +72,7 @@ public class TurmasDAO {
     }
      
     public boolean deletaTurmas(int turmaID) throws SQLException {
-        String sql = "DELETE FROM escola.turma where id = ?";
+        String sql = "DELETE FROM escola.turmas where id = ?";
          
         Connection db = conexaoDB.conectar();
          
@@ -196,5 +196,49 @@ public class TurmasDAO {
         conexaoDB.desconectar();
          
         return listaTurmas;
+    }
+    
+    public boolean validaTurmaCurso(int cursoID) throws SQLException {
+        String verificaCurso = "SELECT count(*) as count FROM escola.cursos where id = ?";
+        
+        boolean registroValido = false;
+        Connection db = conexaoDB.conectar();
+        
+        PreparedStatement comandoCurso = db.prepareStatement(verificaCurso);
+        comandoCurso.setInt(1, cursoID);
+
+        ResultSet resultadoCurso = comandoCurso.executeQuery();
+       
+        if (resultadoCurso.next()) {
+            if(resultadoCurso.getString("count").contains("1")){
+                registroValido = true;
+            }
+        }
+       
+        comandoCurso.close();
+        conexaoDB.desconectar();
+        return registroValido;
+    }
+    
+    public boolean validaTurmaInstrutor(int instrutorID) throws SQLException {
+        String verificaInstrutor = "SELECT count(*) as count FROM escola.instrutores where id = ?";
+        
+        boolean registroValido = false;
+        Connection db = conexaoDB.conectar();
+        
+        PreparedStatement comandoInstrutor = db.prepareStatement(verificaInstrutor);
+        comandoInstrutor.setInt(1, instrutorID);
+
+        ResultSet resultadoInstrutor = comandoInstrutor.executeQuery();
+        
+        if (resultadoInstrutor.next()) {
+            if(resultadoInstrutor.getString("count").contains("1")){
+                registroValido = true;
+            }
+        }
+       
+        comandoInstrutor.close();
+        conexaoDB.desconectar();
+        return registroValido;
     }
 }

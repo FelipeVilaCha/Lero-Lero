@@ -34,6 +34,8 @@ public class AdicionaTurma extends HttpServlet {
             throws ServletException, IOException {
         
         boolean status = false;
+        boolean validaCurso = false;
+        boolean validaInstrutor = false;
         
         int instrutores_id = Integer.parseInt(request.getParameter("instrutores_id"));
         int cursos_id = Integer.parseInt(request.getParameter("cursos_id"));
@@ -44,15 +46,29 @@ public class AdicionaTurma extends HttpServlet {
         Turmas turma = new Turmas(instrutores_id, cursos_id, data_inicio, data_final, carga_horaria);
         
         try {
-            status = turmasDAO.insertTurmas(turma);
+            validaCurso = turmasDAO.validaTurmaCurso(cursos_id);
         } catch (SQLException ex) {
             Logger.getLogger(AdicionaTurma.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
         
-        if(status){
-                request.getRequestDispatcher("/ListaTurmas").forward(request, response);
+        try {
+            validaInstrutor = turmasDAO.validaTurmaInstrutor(instrutores_id);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdicionaTurma.class.getName()).log(Level.SEVERE, ex.getMessage());
+        }
+        
+        if(validaCurso && validaInstrutor) {
+            try {
+                status = turmasDAO.insertTurmas(turma);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdicionaTurma.class.getName()).log(Level.SEVERE, ex.getMessage());
+            }
         } else {
             response.sendRedirect("http://localhost:8080/LeroLero/modules/admin/tables/turmas-table.jsp");
+        }
+        
+        if(status){
+            request.getRequestDispatcher("/ListaTurmas").forward(request, response);
         }
     }
 }

@@ -5,6 +5,7 @@ import br.uff.dao.AlunosDAO;
 import br.uff.model.Alunos;
 import br.uff.util.Encriptador;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,15 +36,13 @@ public class AtualizaAluno extends HttpServlet {
         
         boolean status = false;
         
-        Encriptador enc = new Encriptador();
-        
         int id = Integer.parseInt(request.getParameter("id"));
         String cpf = request.getParameter("cpf");
-        String nome = request.getParameter("nome");
+        String nome = new String((request.getParameter("nome").getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
         String email = request.getParameter("email");
         String celular = request.getParameter("celular");
         String login = request.getParameter("login");
-        String senha = enc.encripta(request.getParameter("senha"));
+        String senha = new Encriptador().encripta(request.getParameter("senha"));
         String endereco = request.getParameter("endereco");
         String cidade = request.getParameter("cidade");
         String bairro = request.getParameter("bairro");

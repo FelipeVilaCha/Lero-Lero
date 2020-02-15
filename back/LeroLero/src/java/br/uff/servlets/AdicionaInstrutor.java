@@ -3,6 +3,7 @@ package br.uff.servlets;
 import br.uff.dao.Conexao;
 import br.uff.dao.InstrutoresDAO;
 import br.uff.model.Instrutores;
+import br.uff.util.Encriptador;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -39,7 +40,7 @@ public class AdicionaInstrutor extends HttpServlet {
         String email = request.getParameter("email");
         int valor_hora = Integer.parseInt(request.getParameter("valor_hora"));
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String senha = new Encriptador().encripta(request.getParameter("senha"));
         String experiencia = request.getParameter("experiencia");
         
         Instrutores instrutor = new Instrutores(nome, email, valor_hora, login, senha, experiencia);

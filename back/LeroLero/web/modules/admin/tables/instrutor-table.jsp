@@ -1,3 +1,4 @@
+<%@page import="br.uff.util.Encriptador"%>
 <%@page import="br.uff.model.Instrutores"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -130,7 +131,7 @@
                             out.println("<td> " + ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(i).getEmail() + " </td>");
                             out.println("<td> " + ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(i).getValor_hora() + " </td>");
                             out.println("<td> " + ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(i).getLogin() + " </td>");
-                            out.println("<td> " + ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(i).getSenha() + " </td>");
+                            out.println("<td> " + new Encriptador().encripta(((List<Instrutores>) session.getAttribute("listaInstrutores")).get(i).getSenha()) + " </td>");
                             out.println("<td> " + ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(i).getExperiencia() + " </td>");
                             out.println("<td> <p data-placement=\"top\" data-toggle=\"tooltip\" title=\"Edit\">");
                             out.println("<button class=\"btn btn-primary btn-xs\" data-title=\"Edit\" data-toggle=\"modal\" data-target=\"#edit\" data-id=\"" + ((List<Instrutores>) session.getAttribute("listaInstrutores")).get(i).getId() + "\">Editar</button>");

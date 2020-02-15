@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class Conexao {
     private final String jdbcURL = "jdbc:mysql://localhost:3306/escola?useTimezone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
     private final String jdbcUser = "root";
-    private final String jdbcSenha = "1234";
+    private final String jdbcSenha = "";
     private Connection jdbcConexao;
      
     public Conexao(){};
@@ -25,7 +25,7 @@ public class Conexao {
             }
             jdbcConexao = DriverManager.getConnection(jdbcURL, jdbcUser, jdbcSenha);
         }
-        
+
         return jdbcConexao;
     }
 

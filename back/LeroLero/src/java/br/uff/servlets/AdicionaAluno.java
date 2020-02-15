@@ -3,6 +3,7 @@ package br.uff.servlets;
 import br.uff.dao.Conexao;
 import br.uff.dao.AlunosDAO;
 import br.uff.model.Alunos;
+import br.uff.util.Encriptador;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -40,7 +41,7 @@ public class AdicionaAluno extends HttpServlet {
         String email = request.getParameter("email");
         String celular = request.getParameter("celular");
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String senha = new Encriptador().encripta(request.getParameter("senha"));
         String endereco = request.getParameter("endereco");
         String cidade = request.getParameter("cidade");
         String bairro = request.getParameter("bairro");
