@@ -104,7 +104,7 @@
             <div class="card">
               <article class="card-body">
                 <h4 class="card-title mb-1 mt-1">Perfil</h4>
-                <a class="float-right" data-toggle="modal" data-target="#photo">Foto</a>
+                <button class="float-right" class="btn btn-primary" data-toggle="modal" data-target="#photo">Foto</button>
                 <p class="card-title mb-4 mt-1">
                     Adicione ou altere informações pessoais
                 </p>
@@ -116,7 +116,7 @@
                         name="nome"
                         class="form-control"
                         minlength="3"
-                        placeholder="<%=((Instrutores) session.getAttribute("instrutorLogado")).getNome()%>"
+                        value="<%=((Instrutores) session.getAttribute("instrutorLogado")).getNome()%>"
                         type="text"
                       />
                     </div>
@@ -125,7 +125,7 @@
                       <input
                         name="email"
                         class="form-control"
-                        placeholder="<%=((Instrutores) session.getAttribute("instrutorLogado")).getEmail()%>"
+                        value="<%=((Instrutores) session.getAttribute("instrutorLogado")).getEmail()%>"
                         type="email"
                       />
                     </div>
@@ -136,7 +136,7 @@
                       <input
                         name="valor_hora"
                         class="form-control"
-                        placeholder="<%=((Instrutores) session.getAttribute("instrutorLogado")).getValor_hora()%>"
+                        value="<%=((Instrutores) session.getAttribute("instrutorLogado")).getValor_hora()%>"
                         type="number"
                       />
                     </div>
@@ -145,7 +145,7 @@
                       <input
                         name="experiencia"
                         class="form-control"
-                        placeholder="<%=((Instrutores) session.getAttribute("instrutorLogado")).getExperiencia()%>"
+                        value="<%=((Instrutores) session.getAttribute("instrutorLogado")).getExperiencia()%>"
                         type="number"
                       />
                     </div>
@@ -156,7 +156,7 @@
                       <input
                         name="login"
                         class="form-control"
-                        placeholder="<%=((Instrutores) session.getAttribute("instrutorLogado")).getLogin()%>"
+                        value="<%=((Instrutores) session.getAttribute("instrutorLogado")).getLogin()%>"
                         type="text"
                         minlength="3"
                       />
@@ -166,7 +166,7 @@
                     <input
                       name="senha"
                       class="form-control"
-                      placeholder="<%= new Encriptador().desencripta(((Instrutores) session.getAttribute("instrutorLogado")).getSenha()).replaceAll(".", "*") %>"
+                      value="<%= new Encriptador().desencripta(((Instrutores) session.getAttribute("instrutorLogado")).getSenha()).replaceAll(".", "*") %>"
                       minlength="3"
                       type="password"
                     />
@@ -175,7 +175,7 @@
                     <label>Confirmar senha</label>
                     <input
                       class="form-control"
-                      placeholder="<%= new Encriptador().desencripta(((Instrutores) session.getAttribute("instrutorLogado")).getSenha()).replaceAll(".", "*") %>"
+                      value="<%= new Encriptador().desencripta(((Instrutores) session.getAttribute("instrutorLogado")).getSenha()).replaceAll(".", "*") %>"
                       minlength="3"
                       type="password"
                     />

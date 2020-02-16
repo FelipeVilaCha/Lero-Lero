@@ -197,7 +197,7 @@
                     <div class="form-group">
                         <label> Avaliação do curso </label>
                         <form action="http://localhost:8080/LeroLero/ProcessaComentarios" method="POST">
-                            <input type="text" class="form-control" rows="2" id="comment" name="comentario" placeholder="Aprendi tudo o que eu sei sobre javascript aqui, enorme gratidão a plataforma LeroLero." >
+                            <input type="text" class="form-control" rows="2" id="comment" name="comentario" placeholder="Se desejar, escreva sua avaliação." >
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" > Fechar </button>

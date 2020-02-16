@@ -105,7 +105,7 @@
             <div class="card">
               <article class="card-body">
                 <h4 class="card-title mb-1 mt-1">Perfil</h4>
-                <a class="float-right" data-toggle="modal" data-target="#photo">Foto</a>
+                <button class="float-right" class="btn btn-primary" data-toggle="modal" data-target="#photo">Foto</button>
                 <p class="card-title mb-4 mt-1">
                   Adicione ou altere informaçoes pessoais
                 </p>
@@ -117,7 +117,7 @@
                         name="name"
                         class="form-control"
                         minlength="3"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getNome() %>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getNome() %>"
                         type="text"
                       />
                     </div>
@@ -126,7 +126,7 @@
                       <input
                         name="email"
                         class="form-control"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getEmail() %>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getEmail() %>"
                         type="email"
                       />
                     </div>
@@ -139,7 +139,7 @@
                         class="form-control"
                         minlength="11"
                         maxlength="11"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getCpf() %>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getCpf() %>"
                         type="text"
                       />
                     </div>
@@ -148,7 +148,7 @@
                       <input
                         name="celular"
                         class="form-control"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getCelular() %>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getCelular() %>"
                         minlength="14"
                         maxlength="14"
                         type="text"
@@ -163,7 +163,7 @@
                         class="form-control"
                         minlength="8"
                         maxlength="8"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getCep() %>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getCep() %>"
                         type="text"
                       />
                     </div>
@@ -172,7 +172,7 @@
                       <input
                         name="endereco"
                         class="form-control"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getEndereco()%>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getEndereco()%>"
                         type="text"
                         minlength="3"
                       />
@@ -184,7 +184,7 @@
                       <input
                         name="cidade"
                         class="form-control"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getCidade() %>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getCidade() %>"
                         type="text"
                         minlength="3"
                       />
@@ -194,7 +194,7 @@
                       <input
                         name="bairro"
                         class="form-control"
-                        placeholder="<%= ((Alunos) session.getAttribute("alunoLogado")).getBairro() %>"
+                        value="<%= ((Alunos) session.getAttribute("alunoLogado")).getBairro() %>"
                         type="text"
                         minlength="3"
                       />
@@ -206,7 +206,7 @@
                     <input
                       name="senha"
                       class="form-control"
-                      placeholder="<%= new Encriptador().desencripta(((Alunos) session.getAttribute("alunoLogado")).getSenha()).replaceAll(".", "*") %>"
+                      value="<%= new Encriptador().desencripta(((Alunos) session.getAttribute("alunoLogado")).getSenha()).replaceAll(".", "*") %>"
                       type="password"
                       minlength="3"
                     />
@@ -215,7 +215,7 @@
                     <label>Confirmar senha</label>
                     <input
                       class="form-control"
-                      placeholder="<%= new Encriptador().desencripta(((Alunos) session.getAttribute("alunoLogado")).getSenha()).replaceAll(".", "*") %>"
+                      value="<%= new Encriptador().desencripta(((Alunos) session.getAttribute("alunoLogado")).getSenha()).replaceAll(".", "*") %>"
                       minlength="3"
                       type="password"
                     />

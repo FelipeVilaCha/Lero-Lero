@@ -1,9 +1,7 @@
 package br.uff.servlets;
 
 import br.uff.dao.Conexao;
-import br.uff.dao.InstrutoresDAO;
 import br.uff.dao.TurmasDAO;
-import br.uff.model.Instrutores;
 import br.uff.model.Turmas;
 import java.io.IOException;
 import java.sql.SQLException;

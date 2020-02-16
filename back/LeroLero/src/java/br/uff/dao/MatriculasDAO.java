@@ -2,6 +2,7 @@ package br.uff.dao;
 
 import br.uff.model.Matriculas;
 import br.uff.model.PlanoEstudos;
+import br.uff.util.ConversorData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,8 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +25,7 @@ public class MatriculasDAO {
         this.conexaoDB = conexaoDB;
     }
      
-    public boolean insertMatricula(Matriculas matricula) throws SQLException {
+    public boolean insertMatricula(Matriculas matricula) throws SQLException, ParseException {
         String sql = "INSERT INTO escola.matriculas (turmas_id, alunos_id, data_matricula, nota) VALUES (?, ?, ?, ?)";
         
         Connection db = conexaoDB.conectar();
@@ -31,12 +33,7 @@ public class MatriculasDAO {
         PreparedStatement comando = db.prepareStatement(sql);
         comando.setInt(1, matricula.getTurmas_id());
         comando.setInt(2, matricula.getAlunos_id());
-        
-        //converte o tipo de data
-        java.util.Date dataUtil = matricula.getData_matricula();
-        java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-        
-        comando.setDate(3, dataSql);
+        comando.setDate(3, ConversorData.convertToSQL(matricula.getData_matricula()));
         comando.setDouble(4, matricula.getNota());
          
         boolean registroInserido = comando.executeUpdate() > 0;
@@ -60,10 +57,18 @@ public class MatriculasDAO {
             int id = resultado.getInt("id");
             int turmas_id = resultado.getInt("turmas_id");
             int alunos_id = resultado.getInt("alunos_id");
-            Date data_matricula = resultado.getDate("data_matricula");
+            String data_matricula = resultado.getString("data_matricula");
             double nota = resultado.getDouble("nota");
-             
-            Matriculas matricula = new Matriculas(id, turmas_id, alunos_id, data_matricula, nota);
+            
+            java.util.Date data_matricula_formatada = null;
+            
+            try {
+                data_matricula_formatada = ConversorData.convertToUtil(data_matricula);
+            } catch (ParseException ex) {
+                Logger.getLogger(MatriculasDAO.class.getName()).log(Level.SEVERE, ex.getMessage());
+            }
+            
+            Matriculas matricula = new Matriculas(id, turmas_id, alunos_id, data_matricula_formatada, nota);
             listaMatriculas.add(matricula);
         }
          
@@ -89,7 +94,7 @@ public class MatriculasDAO {
         return registroDeletado;     
     }
      
-    public boolean atualizaMatricula(Matriculas matricula) throws SQLException {
+    public boolean atualizaMatricula(Matriculas matricula) throws SQLException, ParseException {
         String sql = "UPDATE matriculas SET turmas_id = ?, alunos_id = ?, data_matricula = ?, nota = ?";
         sql += " WHERE id = ?";
         
@@ -98,7 +103,7 @@ public class MatriculasDAO {
         PreparedStatement comando = db.prepareStatement(sql);
         comando.setInt(1, matricula.getTurmas_id());
         comando.setInt(2, matricula.getAlunos_id());
-        comando.setDate(3, (java.sql.Date) matricula.getData_matricula());
+        comando.setDate(3, ConversorData.convertToSQL(matricula.getData_matricula()));
         comando.setDouble(4, matricula.getNota());
         comando.setInt(5, matricula.getId());
          
@@ -123,10 +128,18 @@ public class MatriculasDAO {
         if (resultado.next()) {
             int turmas_id = resultado.getInt("turmas_id");
             int alunos_id = resultado.getInt("alunos_id");
-            Date data_matricula = resultado.getDate("data_matricula");
+            String data_matricula = resultado.getString("data_matricula");
             double nota = resultado.getDouble("nota");
-             
-            matricula = new Matriculas(id, turmas_id, alunos_id, data_matricula, nota);
+            
+            java.util.Date data_matricula_formatada = null;
+            
+            try {
+                data_matricula_formatada = ConversorData.convertToUtil(data_matricula);
+            } catch (ParseException ex) {
+                Logger.getLogger(MatriculasDAO.class.getName()).log(Level.SEVERE, ex.getMessage());
+            }
+            
+            matricula = new Matriculas(id, turmas_id, alunos_id, data_matricula_formatada, nota);
         }
          
         resultado.close();
@@ -209,10 +222,18 @@ public class MatriculasDAO {
             int id = resultado.getInt("id");
             int turmas_id = resultado.getInt("turmas_id");
             int alunos_id = resultado.getInt("alunos_id");
-            Date data_matricula = resultado.getDate("data_matricula");
+            String data_matricula = resultado.getString("data_matricula");
             double nota = resultado.getDouble("nota");
-             
-            Matriculas matricula = new Matriculas(id, turmas_id, alunos_id, data_matricula, nota);
+            
+            java.util.Date data_matricula_formatada = null;
+            
+            try {
+                data_matricula_formatada = ConversorData.convertToUtil(data_matricula);
+            } catch (ParseException ex) {
+                Logger.getLogger(MatriculasDAO.class.getName()).log(Level.SEVERE, ex.getMessage());
+            }
+            
+            Matriculas matricula = new Matriculas(id, turmas_id, alunos_id, data_matricula_formatada, nota);
             listaMatriculas.add(matricula);
         }
          

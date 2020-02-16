@@ -38,7 +38,7 @@ public class UploadFoto extends HttpServlet {
             id = ((Alunos) session.getAttribute("alunoLogado")).getId();
             pasta = "alunos";
             page = "aluno";
-        }
+            }
         
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
@@ -46,19 +46,19 @@ public class UploadFoto extends HttpServlet {
  
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
+                        if(new File(request.getServletContext().getRealPath("img")+ File.separator + pasta + File.separator + id + ".jpg").exists()){
+                            File oldFile = new File(request.getServletContext().getRealPath("img")+ File.separator + pasta + File.separator + id + ".jpg");
+                            oldFile.delete();
+                        }
                         item.write(new File(request.getServletContext().getRealPath("img")+ File.separator + pasta + File.separator + id + ".jpg"));
                     }
                 }
  
             } catch (Exception ex) {
                 request.setAttribute("message", "Upload de arquivo falhou devido a "+ ex);
+                request.getRequestDispatcher("/erro.jsp").forward(request, response);
             }
- 
-        } else {
-            request.setAttribute("message","Desculpe este Servlet lida apenas com pedido de upload de arquivos");
         }
- 
         response.sendRedirect("http://localhost:8080/LeroLero/modules/" + page + "/info-pessoal.jsp");
     }
- 
 }

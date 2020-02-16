@@ -5,6 +5,7 @@ import br.uff.dao.MatriculasDAO;
 import br.uff.model.Matriculas;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,7 +56,7 @@ public class ProcessaMatricula extends HttpServlet {
         if(!existe){
             try {
                 matriculasDAO.insertMatricula(matricula);
-            } catch (SQLException ex) {
+            } catch (SQLException | ParseException ex) {
                 Logger.getLogger(ProcessaMatricula.class.getName()).log(Level.SEVERE, ex.getMessage());
             }
             

@@ -205,7 +205,7 @@
                     <input
                       name="cpf"
                       class="form-control"
-                      minlength="3"
+                      minlength="11"
                       maxlength="11"
                       placeholder="999.999.999-99"
                       type="text"
@@ -218,7 +218,7 @@
                       name="celular"
                       class="form-control"
                       placeholder="99 999 99999999"
-                      minlength="3"
+                      minlength="14"
                       maxlength="14"
                       type="text"
                       required
@@ -231,7 +231,7 @@
                     <input
                       name="cep"
                       class="form-control"
-                      minlength="3"
+                      minlength="8"
                       maxlength="8"
                       placeholder="21930150"
                       type="text"
@@ -239,7 +239,7 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label>EndereÃ§o</label>
+                    <label>Endereço</label>
                     <input
                       name="endereco"
                       class="form-control"

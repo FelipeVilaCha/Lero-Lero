@@ -520,9 +520,8 @@
         </div>
         <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
     </div>
-
+    
     <!-- ================ start footer Area ================= -->
     <footer class="footer-area section-gap">
       <div class="container">

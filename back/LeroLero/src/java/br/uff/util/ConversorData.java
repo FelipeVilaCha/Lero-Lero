@@ -1,7 +1,8 @@
 package br.uff.util;
 
-import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -9,14 +10,13 @@ import java.text.SimpleDateFormat;
  */
 public class ConversorData {
      
-    public static Date convert(java.util.Date data) {
-        
-        
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String stringDate = df.format(data);
-            
-        java.sql.Date newDate = Date.valueOf(stringDate);
-        
+    public static Date convertToUtil(String data) throws ParseException {
+        Date newDate = new SimpleDateFormat("yyyy-MM-dd").parse(data);
+        return newDate;
+    }
+    
+    public static java.sql.Date convertToSQL(java.util.Date data) throws ParseException {
+        java.sql.Date newDate = new java.sql.Date(data.getTime());
         return newDate;
     }
     
