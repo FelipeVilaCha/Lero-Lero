@@ -35,8 +35,14 @@ public class ProcessaLogin extends HttpServlet {
             
             String user = request.getParameter("login");
             String senha = request.getParameter("senha");
-            String permissao = request.getParameter("permissao");
+            String permissao = "";
             
+            if(request.getParameter("permissao") == null){
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else {
+                permissao = request.getParameter("permissao");
+            }
+ 
             Encriptador enc = new Encriptador();
             String senhaEncriptada = enc.encripta(senha);
             
