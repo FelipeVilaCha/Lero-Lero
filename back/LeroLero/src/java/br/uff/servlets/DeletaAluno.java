@@ -1,8 +1,8 @@
-
 package br.uff.servlets;
 
 import br.uff.dao.Conexao;
 import br.uff.dao.AlunosDAO;
+import br.uff.dao.MatriculasDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -20,11 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 public class DeletaAluno extends HttpServlet {
 
     private AlunosDAO alunosDAO;
+    private MatriculasDAO matriculasDAO;
     private Conexao conexaoDB;
     
     @Override
     public void init() {
         conexaoDB = new Conexao();
+        matriculasDAO = new MatriculasDAO(conexaoDB); 
         alunosDAO = new AlunosDAO(conexaoDB);    
     }
     
@@ -37,6 +39,7 @@ public class DeletaAluno extends HttpServlet {
         int alunoID = Integer.parseInt(request.getParameter("alunoID"));
         
         try {
+            matriculasDAO.deletaMatricula(alunoID);
             status = alunosDAO.deletaAluno(alunoID);
         } catch (SQLException ex) {
             Logger.getLogger(DeletaAluno.class.getName()).log(Level.SEVERE, ex.getMessage());

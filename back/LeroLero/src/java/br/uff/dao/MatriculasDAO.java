@@ -79,13 +79,13 @@ public class MatriculasDAO {
         return listaMatriculas;
     }
      
-    public boolean deletaMatricula(Matriculas matricula) throws SQLException {
-        String sql = "DELETE FROM escola.matriculas where id = ?";
+    public boolean deletaMatricula(int alunoID) throws SQLException {
+        String sql = "DELETE FROM escola.matriculas where alunos_id = ?";
          
         Connection db = conexaoDB.conectar();
          
         PreparedStatement comando = db.prepareStatement(sql);
-        comando.setInt(1, matricula.getId());
+        comando.setInt(1, alunoID);
          
         boolean registroDeletado = comando.executeUpdate() > 0;
         comando.close();
